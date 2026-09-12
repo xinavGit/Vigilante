@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <!--appearantly everything has to be TownOfUsMira.Role.RoleName, not Vigilante.Role.RoleName :/-->
+    <!-- Dreamer - Crewmate Power -->
+    <!-- Dreamer Wiki / Abilities -->
+    <string name="TownOfUsMira.Role.Dreamer">Dreamer</string>
+    <string name="TownOfUsMira.Role.Dreamer.DreamingShortName">Dream</string>
+    <string name="TownOfUsMira.Role.Dreamer.IntroBlurb">Imagine the possibilities!</string>
+    <string name="TownOfUsMira.Role.Dreamer.MedDescription">During the meeting, dream Crewmates into the roles you desire.</string>
+    <string name="TownOfUsMira.Role.Dreamer.TabDescription">Dream Crewmates into the roles you desire.</string>
+    <string name="TownOfUsMira.Role.Dreamer.WikiDescription">The Dreamer is a Crewmate Power role that can temporarily change the roles of other players for one round. During the meeting, they can choose a target player and a role they would like them to be. The target player will turn into that role for one round if they are a Crewmate and the role is available.</string>
+    <string name="TownOfUsMira.Role.DreamerDream">Dream</string>
+    <string name="TownOfUsMira.Role.DreamerDream.WikiDescription">Dream of a player to change their role. If they are a Crewmate and the role chosen is currently available, the target will become that new role. If the target is not a Crewmate, the dream will fail and nothing will happen.</string>
+    <!-- Dreamer Feedback -->
+    <string name="Vigilante.Role.DreamerDreamTargetSelect">You will attempt to change [player]'s role to the [role] when the next round starts!</string>
+    <string name="Vigilante.Role.DreamerDreamSuccess">Your role was temporarily changed by the Dreamer! You are now the [role] for this round.</string>
+    <string name="Vigilante.Role.DreamerDreamReverted">The dream wore off and your role has been reverted!</string>
+    <string name="Vigilante.Role.DreamerAttemptedDream">The Dreamer tried to change your role but failed!</string>
+    <string name="Vigilante.Role.DreamerAttemptedDreamWithRole">The Dreamer tried to change your role to the [role] but failed!</string>
+    <string name="Vigilante.Role.DreamerAttemptedDreamRoleUnavailable">The role you chose was unavailable! This means that the role is already in play and cannot be added again currently, so your dream failed!</string>
+    <string name="Vigilante.Role.DreamerAttemptedDreamRandomRole">The role you chose was unavailable! This means that the role is already in play and cannot be added again currently. You instead attempted change [player]'s role to the [role].</string>
+    <string name="Vigilante.Role.DreamerTabHeader">Current Dream Target:</string>
+    <string name="Vigilante.Role.DreamerTabTarget">[player] as the [role]</string>
+    <!-- Dreamer Options -->
+    <string name="VigilanteOptionDreamerNotifyEvilTargetOnAttempt">Notify Evil Target On Attempted Dream</string>
+    <string name="VigilanteOptionDreamerNotifyAttemptedRole">Also Notify Evil Target Of Attempted Dream Role</string>
+    <string name="VigilanteOptionDreamerInsomniaRounds">Number Of Rounds Target Cannot Be Reimagined Again</string>
+    <string name="VigilanteOptionDreamerReimagineRestriction">Dreamer Cannot Reimagine Into</string>
+    <string name="VigilanteOptionDreamerRestrictionEnumNoRestriction">Nothing</string>
+    <string name="VigilanteOptionDreamerRestrictionEnumCrewmateKilling">Crewmate Killing</string>
+    <string name="VigilanteOptionDreamerRestrictionEnumCrewmatePower">Crewmate Power</string>
+    <string name="VigilanteOptionDreamerOnUngivableDreamRole">If Dream Role Can't Be Given</string>
+    <string name="VigilanteOptionDreamerUngivableRoleEnumGiveRandom">Give Random Role</string>
+    <string name="VigilanteOptionDreamerUngivableRoleEnumFailDream">Dream Fails</string>
+    <!-- Chameleon - Crewmate Investigative -->
+    <!-- Chameleon Wiki / Abilities -->
+    <string name="TownOfUsMira.Role.Chameleon">Chameleon</string>
+    <string name="TownOfUsMira.Role.Chameleon.IntroBlurb">Blend in with the shadows!</string>
+    <string name="TownOfUsMira.Role.Chameleon.MedDescription">Camouflage to sneakily get around and gather info!</string>
+    <string name="TownOfUsMira.Role.Chameleon.TabDescription">Use your Camouflage ability to turn invisible and gather information.</string>
+    <string name="TownOfUsMira.Role.Chameleon.WikiDescription">The Chameleon is a Crewmate Investigative role that can use their ability to temporarily turn invisible to all other players. During the time that they are invisible, the Chameleon will get a speed boost, and if settings allow, the ability to vent.</string>
+    <string name="TownOfUsMira.Role.ChameleonCamouflage">Camouflage</string>
+    <string name="TownOfUsMira.Role.ChameleonCamoflauge.WikiDescription">Camouflage to turn invisible. While invisible, you gain a speed boost and will be able to vent if settings allow.</string>
+    <!-- Dreamer Feedback -->
+    <string name="TownOfUsMira.Role.ChameleonUncamouflage">Uncamouflage</string>
+    <string name="TownOfUsMira.Role.ChameleonCamouflaged">Camouflaged</string>
+    <!-- Chameleon Options -->
+    <string name="VigilanteOptionChameleonUses">Max Camouflage Uses</string>
+    <string name="VigilanteOptionChameleonCooldown">Camouflage Cooldown</string>
+    <string name="VigilanteOptionChameleonDuration">Camouflage Duration</string>
+    <string name="VigilanteOptionChameleonSpeedBoost">Camouflage Speed Boost</string>
+    <string name="VigilanteOptionChameleonCanVent">Can Vent While Camouflaged</string>
+</resources>
