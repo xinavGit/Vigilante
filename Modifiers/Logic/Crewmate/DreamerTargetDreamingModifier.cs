@@ -26,7 +26,7 @@ public sealed class DreamerTargetDreamingModifier(ushort originalRoleId, ushort 
     public bool Visible => Player.AmOwner || PlayerControl.LocalPlayer.HasDied() || FairyRole.FairySeesRoleVisibilityFlag(Player);
     public CacheRoleGuess GuessMode => CacheRoleGuess.ActiveRole; // placeholder
     public RoleBehaviour CachedRole => RoleManager.Instance.GetRole((RoleTypes)OriginalRoleId);
-    public string CachedRoleName => $"{VigilanteColors.Dreamer.ToTextColor()}{MiraLocaleManager.Get($"Vigilante.Role.Dreamer.DreamingShortName")}</color>";
+    public string CachedRoleName => $"{VigilanteColors.Dreamer.ToTextColor()}{MiraLocaleManager.Get($"TownOfUsMira.Role.Dreamer.DreamingShortName")}</color>";
 
     public override void OnActivate()
     {
@@ -40,7 +40,7 @@ public sealed class DreamerTargetDreamingModifier(ushort originalRoleId, ushort 
         var dreamRoleName = (RoleManager.Instance.GetRole((RoleTypes)DreamRoleId) as ITownOfUsRole)?.RoleName ?? "a new role";
 
         Helpers.CreateAndShowNotification(
-            $"<b>{MiraLocaleManager.Get($"Vigilante.Role.DreamerDreamSuccess").Replace("<role>", dreamRoleName)}</b>",
+            $"<b>{MiraLocaleManager.Get($"TownOfUsMira.Role.DreamerDreamSuccess").Replace("<role>", dreamRoleName)}</b>",
             Color.white, spr: VigilanteAssets.DreamerIcon.LoadAsset());
         
         Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Dreamer));
@@ -56,7 +56,7 @@ public sealed class DreamerTargetDreamingModifier(ushort originalRoleId, ushort 
         }
 
         Helpers.CreateAndShowNotification(
-            $"<b>{MiraLocaleManager.Get($"Vigilante.Role.DreamerDreamReverted")}</b>",
+            $"<b>{MiraLocaleManager.Get($"TownOfUsMira.Role.DreamerDreamReverted")}</b>",
             Color.white, spr: VigilanteAssets.DreamerIcon.LoadAsset());
         
         Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Dreamer));

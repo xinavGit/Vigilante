@@ -12,15 +12,15 @@
     <string name="TownOfUsMira.Role.DreamerDream">Dream</string>
     <string name="TownOfUsMira.Role.DreamerDream.WikiDescription">Dream of a player to change their role. If they are a Crewmate and the role chosen is currently available, the target will become that new role. If the target is not a Crewmate, the dream will fail and nothing will happen.</string>
     <!-- Dreamer Feedback -->
-    <string name="Vigilante.Role.DreamerDreamTargetSelect">You will attempt to change [player]'s role to the [role] when the next round starts!</string>
-    <string name="Vigilante.Role.DreamerDreamSuccess">Your role was temporarily changed by the Dreamer! You are now the [role] for this round.</string>
-    <string name="Vigilante.Role.DreamerDreamReverted">The dream wore off and your role has been reverted!</string>
-    <string name="Vigilante.Role.DreamerAttemptedDream">The Dreamer tried to change your role but failed!</string>
-    <string name="Vigilante.Role.DreamerAttemptedDreamWithRole">The Dreamer tried to change your role to the [role] but failed!</string>
-    <string name="Vigilante.Role.DreamerAttemptedDreamRoleUnavailable">The role you chose was unavailable! This means that the role is already in play and cannot be added again currently, so your dream failed!</string>
-    <string name="Vigilante.Role.DreamerAttemptedDreamRandomRole">The role you chose was unavailable! This means that the role is already in play and cannot be added again currently. You instead attempted change [player]'s role to the [role].</string>
-    <string name="Vigilante.Role.DreamerTabHeader">Current Dream Target:</string>
-    <string name="Vigilante.Role.DreamerTabTarget">[player] as the [role]</string>
+    <string name="TownOfUsMira.Role.DreamerDreamTargetSelect">You will attempt to change [player]'s role to the [role] when the next round starts!</string>
+    <string name="TownOfUsMira.Role.DreamerDreamSuccess">Your role was temporarily changed by the Dreamer! You are now the [role] for this round.</string>
+    <string name="TownOfUsMira.Role.DreamerDreamReverted">The dream wore off and your role has been reverted!</string>
+    <string name="TownOfUsMira.Role.DreamerAttemptedDream">The Dreamer tried to change your role but failed!</string>
+    <string name="TownOfUsMira.Role.DreamerAttemptedDreamWithRole">The Dreamer tried to change your role to the [role] but failed!</string>
+    <string name="TownOfUsMira.Role.DreamerAttemptedDreamRoleUnavailable">The role you chose was unavailable! This means that the role is already in play and cannot be added again currently, so your dream failed!</string>
+    <string name="TownOfUsMira.Role.DreamerAttemptedDreamRandomRole">The role you chose was unavailable! This means that the role is already in play and cannot be added again currently. You instead attempted change [player]'s role to the [role].</string>
+    <string name="TownOfUsMira.Role.DreamerTabHeader">Current Dream Target:</string>
+    <string name="TownOfUsMira.Role.DreamerTabTarget">[player] as the [role]</string>
     <!-- Dreamer Options -->
     <string name="VigilanteOptionDreamerNotifyEvilTargetOnAttempt">Notify Evil Target On Attempted Dream</string>
     <string name="VigilanteOptionDreamerNotifyAttemptedRole">Also Notify Evil Target Of Attempted Dream Role</string>
@@ -38,7 +38,7 @@
     <string name="TownOfUsMira.Role.Chameleon.IntroBlurb">Blend in with the shadows!</string>
     <string name="TownOfUsMira.Role.Chameleon.MedDescription">Camouflage to sneakily get around and gather info!</string>
     <string name="TownOfUsMira.Role.Chameleon.TabDescription">Use your Camouflage ability to turn invisible and gather information.</string>
-    <string name="TownOfUsMira.Role.Chameleon.WikiDescription">The Chameleon is a Crewmate Investigative role that can use their ability to temporarily turn invisible to all other players. During the time that they are invisible, the Chameleon will get a speed boost, and if settings allow, the ability to vent.</string>
+    <string name="TownOfUsMira.Role.Chameleon.WikiDescription">The Chameleon is a Crewmate Investigative role that can use their ability to temporarily turn invisible to all other players. During the time that they are invisible, the Chameleon will get a speed boost, and if settings allow, the ability to vent. Idea by mystic_haze2</string>
     <string name="TownOfUsMira.Role.ChameleonCamouflage">Camouflage</string>
     <string name="TownOfUsMira.Role.ChameleonCamoflauge.WikiDescription">Camouflage to turn invisible. While invisible, you gain a speed boost and will be able to vent if settings allow.</string>
     <!-- Dreamer Feedback -->
@@ -50,4 +50,19 @@
     <string name="VigilanteOptionChameleonDuration">Camouflage Duration</string>
     <string name="VigilanteOptionChameleonSpeedBoost">Camouflage Speed Boost</string>
     <string name="VigilanteOptionChameleonCanVent">Can Vent While Camouflaged</string>
+    <!-- Decryptor - Crewmate Investigative -->
+    <!-- Decryptor Wiki / Abilities -->
+    <string name="TownOfUsMira.Role.Decryptor">Decryptor</string>
+    <string name="TownOfUsMira.Role.Decryptor.IntroBlurb">Decrypt and decieve!</string>
+    <string name="TownOfUsMira.Role.Decryptor.MedDescription">Complete tasks to reveal the letters of players' roles.</string>
+    <string name="TownOfUsMira.Role.Decryptor.TabDescription">Complete tasks to reveal letters from players' roles, and decrypt the scrambled codes.</string>
+    <string name="TownOfUsMira.Role.Decryptor.WikiDescription">The Decryptor is a Crewmate Investigative role that can complete tasks to slowly reveal the letters in players' roles. If settings allow, evils may be alerted of the Decryptor's presence.</string>
+    <!-- Dreamer Feedback -->
+    <string name="TownOfUsMira.Role.DecryptorRevealedLetter">You have revealed a letter of everyone's role!</string>
+    <string name="TownOfUsMira.Role.DecryptorEvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
+    <string name="TownOfUsMira.Role.DecryptorExposedAlert">Evils now know of your presence!</string>
+    <!-- Chameleon Options -->
+    <string name="VigilanteOptionDecryptorTasksPerLetter">Number Of Tasks For Letter Reveal</string>
+    <string name="VigilanteOptionDecryptorAlertEvils">Alert Evils Of Decryptor</string>
+    <string name="VigilanteOptionDecryptorLettersForAlert">Number Of Letters Revealed For Evil Alert</string>
 </resources>

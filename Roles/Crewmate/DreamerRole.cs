@@ -85,10 +85,10 @@ public sealed class DreamerRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
     public StringBuilder SetTabText()
     {
         var stringB = ITownOfUsRole.SetNewTabText(this);
-        stringB.AppendLine(TownOfUsPlugin.Culture, $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.Dreamer.TabDescription")}</b>");
 
         if (!(DreamRoleId == default) || !(DreamTargetId == byte.MaxValue))
         {
+            stringB.AppendLine(TownOfUsPlugin.Culture, $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerTabHeader")}</b>");
             var targetName = VigilanteUtils.GetPlayerName(DreamTargetId);
             var (roleName, roleColor) = VigilanteUtils.GetRoleDisplayInfo(DreamRoleId);
             stringB.AppendLine(TownOfUsPlugin.Culture, $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerTabTarget").Replace("<player>", $"{targetName}").Replace("<role>", $"<color=#{roleColor}>{roleName}</color>")}</b>");

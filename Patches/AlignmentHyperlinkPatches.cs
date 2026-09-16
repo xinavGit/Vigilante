@@ -1,8 +1,10 @@
-using AmongUs.GameOptions;
+/*using AmongUs.GameOptions;
 using HarmonyLib;
 using MiraAPI.Modifiers;
+using TMPro;
 using TownOfUs;
 using TownOfUs.Modules.Components;
+using TownOfUs.Patches.Misc;
 using TownOfUs.Roles;
 using TownOfUs.Utilities;
 using UnityEngine;
@@ -11,16 +13,11 @@ using Vigilante.Roles.Crewmate;
 
 namespace Vigilante.Patches;
 
-[HarmonyPatch(typeof(HudManagerHelper), "GetRoleNameText")]
-public static class VigilanteHudPatches
+[HarmonyPatch(typeof(WikiHyperLinkPatches), nameof(WikiHyperLinkPatches.CheckForTags))]
+public static class AlignmentHyperlinkPatches
 {
-    public static void Postfix(PlayerControl player, ref (Color PlayerColor, string PlayerName) __result)
+    public static void Prefix(ref (string text, TextMeshPro tmp))
     {
-        if (PlayerControl.LocalPlayer == null)
-        {
-            return;
-        }
-
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)
         {
             if (player.Data.IsDead)
@@ -44,4 +41,4 @@ public static class VigilanteHudPatches
             __result = (playerColor, playerName);
         }
     }
-}
+}*/

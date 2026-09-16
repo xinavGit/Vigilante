@@ -33,4 +33,14 @@
     <EmbeddedResource Include="Resources\**\*.*" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <AmongUsPath>D:\Users\Public\Videos\Steam\steamapps\common\Among Us</AmongUsPath>
+    <BepInExPath>$(AmongUsPath)\BepInEx</BepInExPath>
+  </PropertyGroup>
+
+  <Target Name="CopyToPlugins" AfterTargets="Build" Condition="Exists('$(BepInExPath)\plugins')">
+    <Copy SourceFiles="$(OutputPath)Vigilante.dll" DestinationFolder="$(BepInExPath)\plugins\" />
+    <Message Text="Copied $(AssemblyName).dll to BepInEx plugins folder!" Importance="High" />
+  </Target>
+
 </Project>
