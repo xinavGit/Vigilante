@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <AmongUsPath>D:\Users\Public\Videos\Steam\steamapps\common\Among Us</AmongUsPath>
+    <AmongUsPath>c:\Users\abhin_v9qxvnh\OneDrive\Desktop\DevUs</AmongUsPath>
     <BepInExPath>$(AmongUsPath)\BepInEx</BepInExPath>
   </PropertyGroup>
 

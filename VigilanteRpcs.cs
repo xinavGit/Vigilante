@@ -2,7 +2,7 @@ namespace Vigilante;
 
 public enum VigilanteRpcs : uint
 {
-    SetReimagineTarget,
-    Reimagine,
+    DreamerSetReimagineTarget,
+    DreamerReimagine,
     DecryptorAlert
 }

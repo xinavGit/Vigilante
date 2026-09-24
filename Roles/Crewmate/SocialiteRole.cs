@@ -33,13 +33,13 @@ using TownOfUs.Buttons;
 namespace Vigilante.Roles.Crewmate;
 
 #pragma warning disable CA1001
-public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
+public sealed class SocialiteRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
 #pragma warning restore CA1001
 {
-    public string IdPart => "Chameleon";
+    public string IdPart => "Socialite";
     public Color RoleColor => VigilanteColors.Chameleon;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
-    public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
+    public RoleAlignment RoleAlignment => RoleAlignment.CrewmateProtective;
 
     public string RoleName => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}");
     public string RoleDescription => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.IntroBlurb");
@@ -75,22 +75,4 @@ public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
         IntroSound = TouAudio.DetectiveIntroSound,
         GetsVentData = OptionGroupSingleton<ChameleonOptions>.Instance.CanVent.Value
     };
-
-    public override void Initialize(PlayerControl player)
-    {
-        RoleBehaviourStubs.Initialize(this, player);
-        if (Player.AmOwner)
-        {
-            CustomButtonSingleton<FakeVentButton>.Instance.Show = false;
-        }
-    }
-
-    public override void Deinitialize(PlayerControl targetPlayer)
-    {
-        RoleBehaviourStubs.Deinitialize(this, targetPlayer);
-        if (Player.AmOwner)
-        {
-            CustomButtonSingleton<FakeVentButton>.Instance.Show = true;
-        }
-    }
 }

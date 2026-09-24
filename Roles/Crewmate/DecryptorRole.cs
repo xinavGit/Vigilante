@@ -23,7 +23,6 @@ using UnityEngine;
 using TownOfUs.Modifiers;
 using System.Text;
 using MiraAPI.Translation;
-using Vigilante.Utilities;
 using MiraAPI.Utilities.Assets;
 using TownOfUs.Modifiers.Crewmate;
 using TownOfUs.Assets;

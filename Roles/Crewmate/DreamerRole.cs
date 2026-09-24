@@ -23,7 +23,7 @@ using UnityEngine;
 using TownOfUs.Modifiers;
 using System.Text;
 using MiraAPI.Translation;
-using Vigilante.Utilities;
+//using Vigilante.Utilities;
 using MiraAPI.Utilities.Assets;
 using TownOfUs.Modifiers.Crewmate;
 
@@ -89,9 +89,11 @@ public sealed class DreamerRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
         if (!(DreamRoleId == default) || !(DreamTargetId == byte.MaxValue))
         {
             stringB.AppendLine(TownOfUsPlugin.Culture, $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerTabHeader")}</b>");
-            var targetName = VigilanteUtils.GetPlayerName(DreamTargetId);
-            var (roleName, roleColor) = VigilanteUtils.GetRoleDisplayInfo(DreamRoleId);
-            stringB.AppendLine(TownOfUsPlugin.Culture, $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerTabTarget").Replace("<player>", $"{targetName}").Replace("<role>", $"<color=#{roleColor}>{roleName}</color>")}</b>");
+
+            var targetData = GameData.Instance.GetPlayerById(DreamTargetId)?.Object;
+            var roleObj = RoleManager.Instance.GetRole((RoleTypes)DreamRoleId) as ITownOfUsRole;
+
+            stringB.AppendLine(TownOfUsPlugin.Culture, $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerTabTarget").Replace("<player>", $"{targetData?.Data.PlayerName}").Replace("<role>", $"{roleObj?.RoleColor.ToTextColor()}{roleObj?.RoleName}</color>")}</b>");
             return stringB;
         }
 
@@ -232,16 +234,16 @@ public sealed class DreamerRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
 
         RpcSetReimagineTarget(Player, targetId, roleId);
 
-        var (dreamRole, dreamRoleHex) = VigilanteUtils.GetRoleDisplayInfo(roleId);
+        var roleObj = RoleManager.Instance.GetRole((RoleTypes)roleId) as ITownOfUsRole;
 
         var notif = Helpers.CreateAndShowNotification(
-            $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerDreamTargetSelect").Replace("<player>", $"{VigilanteColors.Dreamer.ToTextColor()}{target.Data.PlayerName}</color>").Replace("<role>", $"<color=#{dreamRoleHex}>{dreamRole}</color>")}</b>",
+            $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerDreamTargetSelect").Replace("<player>", $"{VigilanteColors.Dreamer.ToTextColor()}{target.Data.PlayerName}</color>").Replace("<role>", $"{roleObj?.RoleColor.ToTextColor()}{roleObj?.RoleName}</color>")}</b>",
             Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DreamerIcon.LoadAsset());
 
         notif.AdjustNotification();
     }
 
-    [MethodRpc((uint)VigilanteRpcs.SetReimagineTarget)]
+    [MethodRpc((uint)VigilanteRpcs.DreamerSetReimagineTarget)]
     public static void RpcSetReimagineTarget(PlayerControl dreamer, byte targetId, ushort roleId)
     {
         if (dreamer?.Data?.Role is not DreamerRole dreamerRole)
@@ -253,7 +255,7 @@ public sealed class DreamerRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
         dreamerRole.DreamRoleId = roleId;
     }
 
-    [MethodRpc((uint)VigilanteRpcs.Reimagine)]
+    [MethodRpc((uint)VigilanteRpcs.DreamerReimagine)]
     public static void RpcReimagine(PlayerControl dreamer, PlayerControl target, ushort dreamRoleId)
     {
         if (!AmongUsClient.Instance.AmClient)
@@ -293,10 +295,9 @@ public sealed class DreamerRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
 
                     if (dreamer.AmOwner)
                     {
-                        var (dreamRole, dreamRoleHex) = VigilanteUtils.GetRoleDisplayInfo(dreamerRole.DreamRoleId);
-
+                        var roleObj = role as ITownOfUsRole;
                         var notif = Helpers.CreateAndShowNotification(
-                        $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerAttemptedDreamRandomRole").Replace("<player>", $"{VigilanteColors.Dreamer.ToTextColor()}{target.Data.PlayerName}</color>").Replace("<role>", $"<color=#{dreamRoleHex}>{dreamRole}</color>")}</b>",
+                        $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerAttemptedDreamRandomRole").Replace("<player>", $"{VigilanteColors.Dreamer.ToTextColor()}{target.Data.PlayerName}</color>").Replace("<role>", $"{roleObj?.RoleColor.ToTextColor()}{roleObj?.RoleName}</color>")}</b>",
                         Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DreamerIcon.LoadAsset());
 
                         notif.AdjustNotification();
@@ -315,10 +316,10 @@ public sealed class DreamerRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUs
             {
                 if (target.AmOwner)
                 {
-                    var (dreamRole, dreamRoleHex) = VigilanteUtils.GetRoleDisplayInfo(dreamerRole.DreamRoleId);
+                    var roleObj = RoleManager.Instance.GetRole((RoleTypes)dreamerRole.DreamRoleId) as ITownOfUsRole;
 
                     var notif = Helpers.CreateAndShowNotification(
-                    $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerAttemptedDreamWithRole").Replace("<role>", $"<color=#{dreamRoleHex}>{dreamRole}</color>")}</b>",
+                    $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DreamerAttemptedDreamWithRole").Replace("<role>", $"{roleObj?.RoleColor.ToTextColor()}{roleObj?.RoleName}</color>")}</b>",
                     Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DreamerIcon.LoadAsset());
 
                     notif.AdjustNotification();
