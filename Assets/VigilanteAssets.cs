@@ -13,7 +13,6 @@ public static class VigilanteAssets
     private const string SoundPath = "Vigilante.Resources.Sound";
 
     //icons
-    public static LoadableAsset<Sprite> DreamerIcon { get; } = new LoadableResourceAsset($"{IconPath}.Dreamer.png", 200);
     public static LoadableAsset<Sprite> ChameleonIcon { get; } = new LoadableResourceAsset($"{IconPath}.Chameleon.png", 200);
     public static LoadableAsset<Sprite> DecryptorIcon { get; } = new LoadableResourceAsset($"{IconPath}.Decryptor.png", 200);
 
