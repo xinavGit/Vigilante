@@ -91,6 +91,22 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
     //rpc for reveal letter? maybe... RpcDecryptorRevealLetter
     //rpc for alerting evils RpcDecryptorAlert
 
+    public static Dictionary<byte, string> SpawnRoleNames { get; } = [];
+
+    public static void SnapshotSpawnRoles()
+    {
+        SpawnRoleNames.Clear();
+        KnownCharacters.Clear();
+        LettersRevealed = 0;
+        TasksTowardCompletion = 0;
+
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (player == null || player.Data?.Role == null) continue;
+            SpawnRoleNames[player.PlayerId] = player.Data.Role.GetRoleName().ToUpperInvariant();
+        }
+    }
+
     [MethodRpc((uint)VigilanteRpcs.DecryptorAlert)]
     public static void RpcDecryptorAlert(PlayerControl decryptor)
     {
@@ -121,13 +137,10 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
     {
         foreach (var player in PlayerControl.AllPlayerControls)
         {
-            if (player == null || player.Data.IsDead)
-            {
-                continue;
-            }
+            if (player == null || player.Data.IsDead) continue;
 
-            var roleName = player.Data.Role.GetRoleName().ToUpper(CultureInfo.InvariantCulture);
-            
+            if (!SpawnRoleNames.TryGetValue(player.PlayerId, out var roleName)) continue;
+
             if (!KnownCharacters.TryGetValue(player.PlayerId, out var known))
             {
                 known = [];
@@ -135,10 +148,9 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
             }
 
             var pool = GetRemainingLetterPool(roleName, known);
-            if (pool.Count == 0) continue; // this player's name is fully decrypted
+            if (pool.Count == 0) continue;
 
             known.Add(pool[UnityEngine.Random.Range(0, pool.Count)]);
-
         }
 
         LettersRevealed++;

@@ -1,37 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <!--appearantly everything has to be TownOfUsMira.Role.RoleName, not Vigilante.Role.RoleName :/-->
+    <!--appearantly everything has to be Vigilante.Role.RoleName, not Vigilante.Role.RoleName :/-->s
     <!-- Chameleon - Crewmate Investigative -->
     <!-- Chameleon Wiki / Abilities -->
-    <string name="TownOfUsMira.Role.Chameleon">Chameleon</string>
-    <string name="TownOfUsMira.Role.Chameleon.IntroBlurb">Blend in with the shadows!</string>
-    <string name="TownOfUsMira.Role.Chameleon.MedDescription">Camouflage to sneakily get around and gather info!</string>
-    <string name="TownOfUsMira.Role.Chameleon.TabDescription">Use your Camouflage ability to turn invisible and gather information.</string>
-    <string name="TownOfUsMira.Role.Chameleon.WikiDescription">The Chameleon is a Crewmate Investigative role that can use their ability to temporarily turn invisible to all other players. During the time that they are invisible, the Chameleon will get a speed boost, and if settings allow, the ability to vent. Idea by mystic_haze2</string>
-    <string name="TownOfUsMira.Role.ChameleonCamouflage">Camouflage</string>
-    <string name="TownOfUsMira.Role.ChameleonCamoflauge.WikiDescription">Camouflage to turn invisible. While invisible, you gain a speed boost and will be able to vent if settings allow.</string>
-    <!-- Dreamer Feedback -->
-    <string name="TownOfUsMira.Role.ChameleonUncamouflage">Uncamouflage</string>
-    <string name="TownOfUsMira.Role.ChameleonCamouflaged">Camouflaged</string>
+    <string name="Vigilante.Role.Chameleon">Chameleon</string>
+    <string name="Vigilante.Role.Chameleon.IntroBlurb">Blend in with the shadows!</string>
+    <string name="Vigilante.Role.Chameleon.MedDescription">Camouflage to sneakily get around and gather info!</string>
+    <string name="Vigilante.Role.Chameleon.TabDescription">Use your Camouflage ability to turn invisible and gather information.</string>
+    <string name="Vigilante.Role.Chameleon.WikiDescription">The Chameleon is a Crewmate Investigative role that can use their ability to temporarily turn invisible to all other players. During the time that they are invisible, the Chameleon will get a speed boost, and if settings allow, the ability to vent. Idea by mystic_haze2</string>
+    <string name="Vigilante.Role.ChameleonCamouflage">Camouflage</string>
+    <string name="Vigilante.Role.ChameleonCamoflauge.WikiDescription">Camouflage to turn invisible. While invisible, you gain a speed boost and will be able to vent if settings allow.</string>
+    <!-- Chameleon Feedback -->
+    <string name="Vigilante.Feedback.ChameleonUncamouflage">Uncamouflage</string>
+    <string name="Vigilante.Feedback.ChameleonCamouflaged">Camouflaged</string>
     <!-- Chameleon Options -->
-    <string name="VigilanteOptionChameleonUses">Max Camouflage Uses</string>
-    <string name="VigilanteOptionChameleonCooldown">Camouflage Cooldown</string>
-    <string name="VigilanteOptionChameleonDuration">Camouflage Duration</string>
-    <string name="VigilanteOptionChameleonSpeedBoost">Camouflage Speed Boost</string>
-    <string name="VigilanteOptionChameleonCanVent">Can Vent While Camouflaged</string>
+    <string name="Vigilante.Options.ChameleonUses">Max Camouflage Uses</string>
+    <string name="Vigilante.Options.ChameleonCooldown">Camouflage Cooldown</string>
+    <string name="Vigilante.Options.ChameleonDuration">Camouflage Duration</string>
+    <string name="Vigilante.Options.ChameleonSpeedBoost">Camouflage Speed Boost</string>
+    <string name="Vigilante.Options.ChameleonCanVent">Can Vent While Camouflaged</string>
     <!-- Decryptor - Crewmate Investigative -->
     <!-- Decryptor Wiki / Abilities -->
     <string name="TownOfUsMira.Role.Decryptor">Decryptor</string>
     <string name="TownOfUsMira.Role.Decryptor.IntroBlurb">Decrypt and decieve!</string>
     <string name="TownOfUsMira.Role.Decryptor.MedDescription">Complete tasks to reveal the letters of players' roles.</string>
-    <string name="TownOfUsMira.Role.Decryptor.TabDescription">Complete tasks to reveal letters from players' roles, and decrypt the scrambled codes.</string>
-    <string name="TownOfUsMira.Role.Decryptor.WikiDescription">The Decryptor is a Crewmate Investigative role that can complete tasks to slowly reveal the letters in players' roles. If settings allow, evils may be alerted of the Decryptor's presence.</string>
-    <!-- Dreamer Feedback -->
+    <string name="TownOfUsMira.Role.Decryptor.TabDescription">Complete tasks to reveal letters of the roles that players spawned with, and decrypt the scrambled codes.</string>
+    <string name="TownOfUsMira.Role.Decryptor.WikiDescription">The Decryptor is a Crewmate Investigative role that can complete tasks to slowly reveal the letters in players' original roles. If settings allow, evils may be alerted of the Decryptor's presence. The Decryptor only decrypts the roles players spawned into the game with, not necessarily what they currently are.</string>
+    <!-- Decryptor Feedback -->
     <string name="TownOfUsMira.Role.DecryptorRevealedLetter">You have revealed a letter of everyone's role!</string>
     <string name="TownOfUsMira.Role.DecryptorEvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
     <string name="TownOfUsMira.Role.DecryptorExposedAlert">Evils now know of your presence!</string>
-    <!-- Chameleon Options -->
+    <!-- Decryptor Options -->
     <string name="VigilanteOptionDecryptorTasksPerLetter">Number Of Tasks For Letter Reveal</string>
     <string name="VigilanteOptionDecryptorAlertEvils">Alert Evils Of Decryptor</string>
     <string name="VigilanteOptionDecryptorLettersForAlert">Number Of Letters Revealed For Evil Alert</string>
+    <!-- Auditor - Neutral Outlier -->
+    <!-- Auditor Wiki / Abilities -->
+    <string name="Vigilante.Role.Auditor">Auditor</string>
+    <string name="Vigilante.Role.Auditor.IntroBlurb">Work against the Crew!</string>
+    <string name="Vigilante.Role.Auditor.MedDescription">Use your abilities to work against Crewmates.</string>
+    <string name="Vigilante.Role.Auditor.TabDescription">Work with evils to stop the Crew from winning!</string>
+    <string name="Vigilante.Role.Auditor.WikiDescription">The Auditor is a Neutral Outlier role that must work against the Crew to win the game.</string>
+    <string name="Vigilante.Role.Auditor.Smokebomb">Smokebomb</string>
+    <string name="Vigilante.Role.Auditor.Smokebomb.WikiDescription">Smokebomb all players within your vicinity. You will reveal information about every player caught in your smokebomb. Smokebombing a player once gives you their alignment, twice gives you their subalignment, and three times gives you their role.</string>
+    <string name="Vigilante.Role.Auditor.Audit">Audit</string>
+    <string name="Vigilante.Role.Auditor.Audit.WikiDescription">Roleblock a player temporarily.</string>
+    <!-- Auditor Feedback -->
+    <string name="Vigilante.Feedback.Auditor.SmokebombedAlert">You were smokebombed by the Auditor!</string>
+    <string name="Vigilante.Feedback.Auditor.AuditedAlert">You were audited by the Auditor and cannot use your abilities!</string>
+    <!-- Auditor Options -->
+    <string name="Vigilante.Options.Auditor.SmokebombUses">Max Smokebomb Uses</string>
+    <string name="Vigilante.Options.Auditor.SmokebombCooldown">Smokebomb Cooldown</string>
+    <string name="Vigilante.Options.Auditor.SmokebombDuration">Smokebomb Duration</string>
+    <string name="Vigilante.Options.Auditor.AuditUses">Max Audit Uses</string>
+    <string name="Vigilante.Options.Auditor.AuditCooldown">Audit Cooldown</string>
+    <string name="Vigilante.Options.Auditor.AuditDuration">Audit Duration</string>
+    <string name="Vigilante.Options.Auditor.CanRevealAlliances">Can See Alliances With Smokebomb</string>
 </resources>

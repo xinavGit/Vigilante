@@ -29,11 +29,12 @@ using TownOfUs.Modifiers.Crewmate;
 using TownOfUs.Assets;
 using MiraAPI.Hud;
 using TownOfUs.Buttons;
+using Vigilante.Interfaces;
 
 namespace Vigilante.Roles.Crewmate;
 
 #pragma warning disable CA1001
-public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
+public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
 #pragma warning restore CA1001
 {
     public string IdPart => "Chameleon";

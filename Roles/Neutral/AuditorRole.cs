@@ -35,7 +35,7 @@ public sealed class AuditorRole(IntPtr cppPtr)
         orCreateTask.name = "NeutralRoleText";
     }
 
-    public DoomableType DoomHintType => DoomableType.Protective;
+    public DoomableType DoomHintType => DoomableType.Insight;
     public string IdPart => "Auditor";
     public string RoleMedDescriptionLocale => $"TownOfUsMira.Role.{IdPart}.TabDescription";
 
@@ -53,23 +53,26 @@ public sealed class AuditorRole(IntPtr cppPtr)
         {
             return
             [
-                new(MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Safeguard", "Safeguard"),
-                    MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Safeguard.WikiDescription"),
-                    TouNeutAssets.VestSprite)
+                new(MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Smokebomb", "Smokebomb"),
+                    MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Audit.WikiDescription"),
+                    TouImpAssets.FlashSprite),
+                new(MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Audit", "Audit"),
+                    MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Audit.WikiDescription"),
+                    TouCrewAssets.RoleblockSprite)
             ];
         }
     }
 
-    public Color RoleColor => TownOfUsColors.Survivor;
+    public Color RoleColor => VigilanteColors.Auditor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
 
-    public RoleAlignment RoleAlignment => RoleAlignment.NeutralBenign;
+    public RoleAlignment RoleAlignment => RoleAlignment.NeutralOutlier;
 
     public CustomRoleConfiguration Configuration => new(this)
     {
-        IconTmp = TmpSpriteUtils.CreateSpriteAsset(TouRoleIcons.Survivor.LoadAsset(), "TouMira.Role.Neutral.Survivor", 1.45f),
+        IconTmp = TmpSpriteUtils.CreateSpriteAsset(TouRoleIcons.Barkeeper.LoadAsset(), "TouMira.Role.Neutral.Survivor", 1.45f),
         IntroSound = TouAudio.ToppatIntroSound,
-        Icon = TouRoleIcons.Survivor,
+        Icon = TouRoleIcons.Barkeeper,
         OptionsScreenshot = TouBanners.NeutralRoleBanner,
     };
 
@@ -83,22 +86,4 @@ public sealed class AuditorRole(IntPtr cppPtr)
     {
         return !Player.HasDied();
     }*/
-
-    public bool WinConditionMet()
-    {
-        var hasLivingHalters = MiscUtils.NKillersAliveCount > 0 ||
-                               MiscUtils.ImpAliveCount > 0 || MiscUtils.CrewKillersAliveCount > 0 ||
-                               (MiscUtils.GameHaltersAliveCount > 0 && Helpers.GetAlivePlayers().Count > 1)
-                               || Helpers.GetAlivePlayers().All(x =>
-                                   (x.IsCrewmate() || x.Is(RoleAlignment.NeutralBenign)) && !x.IsImpostorAligned());
-        var survCount = CustomRoleUtils.GetActiveRolesOfType<SurvivorRole>().Count(x => !x.Player.HasDied());
-
-        if (survCount == 0 || MiscUtils.NonGameEndingNeutralCount == 0 || Helpers.GetAlivePlayers().Count > 3 ||
-            hasLivingHalters)
-        {
-            return false;
-        }
-
-        return true;
-    }
 }

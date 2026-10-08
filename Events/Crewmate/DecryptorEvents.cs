@@ -17,6 +17,15 @@ namespace Vigilante.Events.Crewmate;
 public static class DecryptorEvents
 {
     [RegisterEvent]
+    public static void OnRoundStart(RoundStartEvent evt)
+    {
+        if (evt.TriggeredByIntro)
+        {
+            DecryptorRole.SnapshotSpawnRoles();
+        }
+    }
+    
+    [RegisterEvent]
     public static void OnTaskComplete(CompleteTaskEvent evt)
     {
         if (evt.Player == null || !evt.Player.AmOwner)
