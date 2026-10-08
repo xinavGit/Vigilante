@@ -64,7 +64,7 @@
 [Reactor](https://github.com/NuclearPowered/Reactor) - Dependency for the mod\
 [BepInEx](https://github.com/BepInEx) - For hooking game functions\
 [Divani Mods](https://github.com/DivaniNL/TownOfUsMiraDivaniModsAddOn) - Code reference\
-[TOU-Mira](https://github.com/AU-Avengers/TOU-Mira) - Code reference, mod framework\
+[TOU-Mira](https://github.com/AU-Avengers/TOU-Mira) - Code reference, mod framework, assets\
 
 espeon3 - Chameleon Role
 

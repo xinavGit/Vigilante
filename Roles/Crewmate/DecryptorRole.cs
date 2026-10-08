@@ -30,32 +30,33 @@ using MiraAPI.Hud;
 using TownOfUs.Buttons;
 using Reactor.Utilities;
 using System.Globalization;
+using Vigilante.Interfaces;
 
 namespace Vigilante.Roles.Crewmate;
 
-public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
+public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
 {
     public string IdPart => "Decryptor";
     public Color RoleColor => VigilanteColors.Decryptor;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
 
-    public string RoleName => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}");
-    public string RoleDescription => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.IntroBlurb");
-    public string RoleLongDescription => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.TabDescription");
+    public string RoleName => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}");
+    public string RoleDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.IntroBlurb");
+    public string RoleLongDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.TabDescription");
 
     public DoomableType DoomHintType => DoomableType.Insight;
 
     public string GetAdvancedDescription()
     {
         return
-            MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.WikiDescription") +
+            MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.WikiDescription") +
             MiscUtils.AppendOptionsText(GetType());
     }
 
     public CustomRoleConfiguration Configuration => new(this)
     {
-        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DecryptorIcon.LoadAsset(), "TownOfUsMira.Role.Crewmate.Decryptor", 1.45f),
+        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DecryptorIcon.LoadAsset(), "Vigilante.Role.Crewmate.Decryptor", 1.45f),
         Icon = VigilanteAssets.DecryptorIcon,
         IntroSound = TouAudio.GlitchSound,
         MaxRoleCount = 1
@@ -113,7 +114,7 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
         if (decryptor.AmOwner && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
         {
             var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DecryptorExposedAlert")}</b>",
+                $"<b>{MiraLocaleManager.Get("Vigilante.Role.DecryptorExposedAlert")}</b>",
                 Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
 
                 notif.AdjustNotification();
@@ -124,7 +125,7 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITownOf
         if (PlayerControl.LocalPlayer.IsImpostorAligned() && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
         {
             var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("TownOfUsMira.Role.DecryptorEvilsAlert")}</b>",
+                $"<b>{MiraLocaleManager.Get("Vigilante.Role.DecryptorEvilsAlert")}</b>",
                 Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
 
                 notif.AdjustNotification();

@@ -42,16 +42,16 @@ public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
 
-    public string RoleName => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}");
-    public string RoleDescription => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.IntroBlurb");
-    public string RoleLongDescription => MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.TabDescription");
+    public string RoleName => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}");
+    public string RoleDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.IntroBlurb");
+    public string RoleLongDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.TabDescription");
 
     public DoomableType DoomHintType => DoomableType.Perception;
 
     public string GetAdvancedDescription()
     {
         return
-            MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.WikiDescription") +
+            MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.WikiDescription") +
             MiscUtils.AppendOptionsText(GetType());
     }
 
@@ -62,8 +62,8 @@ public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         {
             return
             [
-                new(MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Camouflage", "Camouflage"),
-                    MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}Camouflage.WikiDescription"),
+                new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Camouflage", "Camouflage"),
+                    MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Camouflage.WikiDescription"),
                     TouCrewAssets.CrewSwoopSprite)
             ];
         }
@@ -71,7 +71,7 @@ public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
     public CustomRoleConfiguration Configuration => new(this)
     {
-        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.ChameleonIcon.LoadAsset(), "TownOfUsMira.Role.Crewmate.Chameleon", 1.45f),
+        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.ChameleonIcon.LoadAsset(), "Vigilante.Role.Crewmate.Chameleon", 1.45f),
         Icon = VigilanteAssets.ChameleonIcon,
         IntroSound = TouAudio.DetectiveIntroSound,
         GetsVentData = OptionGroupSingleton<ChameleonOptions>.Instance.CanVent.Value

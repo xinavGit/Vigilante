@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <!--appearantly everything has to be Vigilante.Role.RoleName, not Vigilante.Role.RoleName :/-->s
+    <string name="DiedToJudge">Judged</string>
+    <string name="DiedToKidnapper">Exterminated</string>
+    
     <!-- Chameleon - Crewmate Investigative -->
     <!-- Chameleon Wiki / Abilities -->
     <string name="Vigilante.Role.Chameleon">Chameleon</string>
@@ -19,21 +21,23 @@
     <string name="Vigilante.Options.ChameleonDuration">Camouflage Duration</string>
     <string name="Vigilante.Options.ChameleonSpeedBoost">Camouflage Speed Boost</string>
     <string name="Vigilante.Options.ChameleonCanVent">Can Vent While Camouflaged</string>
+
     <!-- Decryptor - Crewmate Investigative -->
     <!-- Decryptor Wiki / Abilities -->
-    <string name="TownOfUsMira.Role.Decryptor">Decryptor</string>
-    <string name="TownOfUsMira.Role.Decryptor.IntroBlurb">Decrypt and decieve!</string>
-    <string name="TownOfUsMira.Role.Decryptor.MedDescription">Complete tasks to reveal the letters of players' roles.</string>
-    <string name="TownOfUsMira.Role.Decryptor.TabDescription">Complete tasks to reveal letters of the roles that players spawned with, and decrypt the scrambled codes.</string>
-    <string name="TownOfUsMira.Role.Decryptor.WikiDescription">The Decryptor is a Crewmate Investigative role that can complete tasks to slowly reveal the letters in players' original roles. If settings allow, evils may be alerted of the Decryptor's presence. The Decryptor only decrypts the roles players spawned into the game with, not necessarily what they currently are.</string>
+    <string name="Vigilante.Role.Decryptor">Decryptor</string>
+    <string name="Vigilante.Role.Decryptor.IntroBlurb">Decrypt and decieve!</string>
+    <string name="Vigilante.Role.Decryptor.MedDescription">Complete tasks to reveal the letters of players' roles.</string>
+    <string name="Vigilante.Role.Decryptor.TabDescription">Complete tasks to reveal letters of the roles that players spawned with, and decrypt the scrambled codes.</string>
+    <string name="Vigilante.Role.Decryptor.WikiDescription">The Decryptor is a Crewmate Investigative role that can complete tasks to slowly reveal the letters in players' original roles. If settings allow, evils may be alerted of the Decryptor's presence. The Decryptor only decrypts the roles players spawned into the game with, not necessarily what they currently are.</string>
     <!-- Decryptor Feedback -->
-    <string name="TownOfUsMira.Role.DecryptorRevealedLetter">You have revealed a letter of everyone's role!</string>
-    <string name="TownOfUsMira.Role.DecryptorEvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
-    <string name="TownOfUsMira.Role.DecryptorExposedAlert">Evils now know of your presence!</string>
+    <string name="Vigilante.Role.DecryptorRevealedLetter">You have revealed a letter of everyone's role!</string>
+    <string name="Vigilante.Role.DecryptorEvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
+    <string name="Vigilante.Role.DecryptorExposedAlert">Evils now know of your presence!</string>
     <!-- Decryptor Options -->
-    <string name="VigilanteOptionDecryptorTasksPerLetter">Number Of Tasks For Letter Reveal</string>
-    <string name="VigilanteOptionDecryptorAlertEvils">Alert Evils Of Decryptor</string>
-    <string name="VigilanteOptionDecryptorLettersForAlert">Number Of Letters Revealed For Evil Alert</string>
+    <string name="Vigilante.Options.DecryptorTasksPerLetter">Number Of Tasks For Letter Reveal</string>
+    <string name="Vigilante.Options.DecryptorAlertEvils">Alert Evils Of Decryptor</string>
+    <string name="Vigilante.Options.DecryptorLettersForAlert">Number Of Letters Revealed For Evil Alert</string>
+
     <!-- Auditor - Neutral Outlier -->
     <!-- Auditor Wiki / Abilities -->
     <string name="Vigilante.Role.Auditor">Auditor</string>
@@ -56,4 +60,49 @@
     <string name="Vigilante.Options.Auditor.AuditCooldown">Audit Cooldown</string>
     <string name="Vigilante.Options.Auditor.AuditDuration">Audit Duration</string>
     <string name="Vigilante.Options.Auditor.CanRevealAlliances">Can See Alliances With Smokebomb</string>
+
+    <!-- Judge desperately needs a rename stat - Crewmate Power -->
+    <!-- Judge Wiki / Abilities -->
+    <string name="Vigilante.Role.Judge">Judge</string>
+    <string name="Vigilante.Role.Judge.IntroBlurb">Bring judgement to evils!</string>
+    <string name="Vigilante.Role.Judge.MedDescription">Kill players who are opposed to your Juror.</string>
+    <string name="Vigilante.Role.Judge.TabDescription">Recruit a Juror and bring judgement to their enemies!</string>
+    <string name="Vigilante.Role.Judge.WikiDescription">The Judge is a Crewmate Power role that can recruit a player every round to be a Juror. The Judge can then bring judgement to any player in the meeting except the Juror. If the player is an enemy of the Juror, they will die. If they are an ally of the Juror, the Judge will die?</string>
+    <string name="Vigilante.Role.Judge.Enlist">Enlist</string>
+    <string name="Vigilante.Role.Judge.Enlist.WikiDescription">Enlist a player to be your Juror for the next meeting.</string>
+    <string name="Vigilante.Role.Judge.Judge">Judge</string>
+    <string name="Vigilante.Role.Judge.Judge.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed?</string>
+    <!-- Judge Feedback -->
+    <string name="Vigilante.Feedback.Judge.Judgement">[player] has been judged and executed.</string>
+    <string name="Vigilante.Feedback.Judge.YouWereJudged">You were judged and executed!</string>
+    <!-- Judge Options -->
+    <string name="Vigilante.Options.Judge.JudgeUses">Max Judgements</string>
+    <string name="Vigilante.Options.Judge.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>
+    <string name="Vigilante.Options.Judge.TasksPerAbilityUse">Tasks Per Ability Use</string>
+    <string name="Vigilante.Options.Judge.EnlistDelay">Enlist Delay (Can Cancel)</string>
+    <string name="Vigilante.Options.Judge.NotifyJuror">Notify Juror On Enlistment</string>
+
+    <!-- Inspector - Crewmate Investigative what if the magnifiying glass was black and white like assassin ui lol -->
+    <!-- Inspector Wiki / Abilities -->
+    <string name="Vigilante.Role.Inspector">Inspector</string>
+    <string name="Vigilante.Role.Inspector.IntroBlurb">Inspect false claims!</string>
+    <string name="Vigilante.Role.Inspector.MedDescription">Check player's roles and reveal them.</string>
+    <string name="Vigilante.Role.Inspector.TabDescription">Inspect players during the meeting, then reveal them if you know their roles!</string>
+    <string name="Vigilante.Role.Inspector.WikiDescription">The Inspector is a Crewmate Investigative role that can Inspect players during the meeting to see if they are a certain role. If they are correct, they can publish their role for everyone to see.</string>
+    <string name="Vigilante.Role.Inspector.Inspect">Inspect</string>
+    <string name="Vigilante.Role.Inspector.Inspect.WikiDescription">Inspect a player during the meeting to check if they are a certain role with a guesser menu.</string>
+    <string name="Vigilante.Role.Inspector.Publish">Publish</string>
+    <string name="Vigilante.Role.Inspector.Publish.WikiDescription">Inspector a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed?</string>
+    <!-- Inspector Feedback -->
+    <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>
+    <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
+    <!-- Inspector Options -->
+    <string name="Vigilante.Options.Inspector.InspectUsesPerMeeting">Inspect Uses Per Meeting</string>
+    <string name="Vigilante.Options.Inspector.PublishUses">Max Publish Uses</string>
+    <string name="Vigilante.Options.Inspector.InspectableRoles">Inspectable Roles</string>
+    <string name="Vigilante.Options.Inspector.InspectableRolesEnumCrewmate">Crewmate Roles</string>
+    <string name="Vigilante.Options.Inspector.InspectableRolesEnumNonCrewmate">Non-Crew Roles</string>
+    <string name="Vigilante.Options.Inspector.InspectableRolesEnumAll">All Roles</string>
+    <string name="Vigilante.Options.Inspector.PublishAllianceMods">Publish Shows Alliance Modifiers</string>
+    
 </resources>
