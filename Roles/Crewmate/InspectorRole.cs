@@ -55,6 +55,8 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public DoomableType DoomHintType => DoomableType.Insight;
 
     public static Dictionary<PlayerControl, RoleBehaviour> InspectedPlayers { get; } = [];
+    private int playersPublished;
+    private int RoundInspects;
 
     public string GetAdvancedDescription()
     {
@@ -75,12 +77,14 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     {
         RoleBehaviourStubs.Initialize(this, player);
         InspectedPlayers.Clear();
+        RoundInspects = 0;
+        playersPublished = 0;
 
         inspectMenu = new MeetingMenu(
                 this,
                 OpenInspectMenu,
                 MeetingAbilityType.Click,
-                TouAssets.Guess,
+                VigilanteAssets.InspectorInspect,
                 null!,
                 IsInspectExempt,
                 hoverColor: VigilanteColors.Inspector);//will break next toum update
@@ -98,7 +102,8 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public override void OnMeetingStart()
     {
         RoleBehaviourStubs.OnMeetingStart(this);
-
+        
+        RoundInspects = 0;
         var meeting = MeetingHud.Instance;
         if (Player.AmOwner && meeting != null && !Player.HasDied())
         {
@@ -199,6 +204,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsInspectExempt(PlayerVoteArea voteArea)
     {
+        if (RoundInspects >= OptionGroupSingleton<InspectorOptions>.Instance.InspectsPerMeeting.Value)
+        {
+            return true;
+        }
+
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
             return true;
@@ -222,6 +232,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsPublishExempt(PlayerVoteArea voteArea)
     {
+        if (playersPublished >= OptionGroupSingleton<InspectorOptions>.Instance.MaxPublishUses.Value)
+        {
+            return true;
+        }
+
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
             return true;
@@ -243,7 +258,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     }
 
     [MethodRpc((uint)VigilanteRpcs.InspectorPublish)]
-    public void RpcInspectorPublish(PlayerControl inspected, ushort publishRole)
+    public static void RpcInspectorPublish(PlayerControl inspected, ushort publishRole)
     {
         Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Inspector));
 
@@ -254,7 +269,13 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         notif.AdjustNotification();
 
-        inspected.AddModifier<InspectorRevealModifier>(RoleManager.Instance.GetRole((RoleTypes)publishRole));
+        InspectedPlayers.Remove(inspected);
+        if (PlayerControl.LocalPlayer.Data.Role is InspectorRole)
+        {
+            inspected.RemoveModifier<InspectorRevealModifier>();
+        }
+
+        inspected.AddModifier<InspectorPublishedModifier>(RoleManager.Instance.GetRole((RoleTypes)publishRole));
     }
 
     [HideFromIl2Cpp]
@@ -281,9 +302,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             notif.AdjustNotification();
 
             InspectedPlayers[inspected] = inspectRole;
-            
-            var meeting = MeetingHud.Instance;
-            publishMenu?.GenButtons(meeting, true);
+            inspected.AddModifier<InspectorRevealModifier>(); //should only happen on the inspector's side
         }
         else
         {
@@ -296,6 +315,12 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
             notif.AdjustNotification();
         }
+
+        RoundInspects++;
+
+        var meeting = MeetingHud.Instance;
+        publishMenu?.GenButtons(meeting, true);
+        inspectMenu?.GenButtons(meeting, true);
     }
 
 

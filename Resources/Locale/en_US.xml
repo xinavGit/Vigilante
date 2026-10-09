@@ -92,7 +92,7 @@
     <string name="Vigilante.Role.Inspector.Inspect">Inspect</string>
     <string name="Vigilante.Role.Inspector.Inspect.WikiDescription">Inspect a player during the meeting to check if they are a certain role with a guesser menu.</string>
     <string name="Vigilante.Role.Inspector.Publish">Publish</string>
-    <string name="Vigilante.Role.Inspector.Publish.WikiDescription">Inspector a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed?</string>
+    <string name="Vigilante.Role.Inspector.Publish.WikiDescription">Reveal the role of a player that you successfully inspected to everyone. This does not reveal alliance modifiers.</string>
     <!-- Inspector Feedback -->
     <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
@@ -106,5 +106,26 @@
     <string name="Vigilante.Options.Inspector.InspectableRolesEnumNonCrewmate">Non-Crew Roles</string>
     <string name="Vigilante.Options.Inspector.InspectableRolesEnumAll">All Roles</string>
     <string name="Vigilante.Options.Inspector.PublishAllianceMods">Publish Shows Alliance Modifiers</string>
+
+    <!-- Kidnapper - Impostor Power maybe mayor doesnt get extra votes if kidnapped? idk-->
+    <!-- Inspector Wiki / Abilities -->
+    <string name="Vigilante.Role.Kidnapper">Kidnapper</string>
+    <string name="Vigilante.Role.Kidnapper.IntroBlurb">Kidnap and exterminate!</string>
+    <string name="Vigilante.Role.Kidnapper.MedDescription">Kidnap players and exterminate high-value targets.</string>
+    <string name="Vigilante.Role.Kidnapper.TabDescription">Kidnap players to jail them next meeting. They will see that they were jailed by the Jailor.</string>
+    <string name="Vigilante.Role.Kidnapper.WikiDescription">The Kidnapper is an Impostor Power role that can kidnap players into the meeting. Kidnapped players will appear to be jailed by the Jailor, and you will appear as a Jailor to them. You have a one-time execute button to kill a kidnapped player.</string>
+    <string name="Vigilante.Role.Kidnapper.Kidnap">Kidnap</string>
+    <string name="Vigilante.Role.Kidnapper.Kidnap.WikiDescription">Inspect a player during the meeting to check if they are a certain role with a guesser menu.</string>
+    <string name="Vigilante.Role.Kidnapper.Exterminate">Exterminate</string>
+    <string name="Vigilante.Role.Kidnapper.Exterminate.WikiDescription">Kill the currently kidnapped player. You can only do this once.</string>
+    <!-- Kidnapper Feedback -->
+    <string name="Vigilante.Feedback.Kidnapper.CannotExecute">Unstoppable attack meets immovable object! [player] cannot be executed! They must be Invulnerable or blessed! You can no longer exterminate.</string>
+    <string name="Vigilante.Feedback.Kidnapper.ExterminatedYesKidnap">[player] was successfully exterminated! You can no longer exterminate.</string>
+    <string name="Vigilante.Feedback.Kidnapper.ExterminatedNoKidnap">[player] was successfully exterminated! You can no longer kidnap players.</string>
+    <!-- Kidnapper Options maybe change to uses per kill and make it a decimal value -->
+    <string name="Vigilante.Options.Kidnapper.KidnapUses">Inital Kidnap Uses</string>
+    <string name="Vigilante.Options.Kidnapper.MoreUsesFromKills">Get More Uses From Kills</string>
+    <string name="Vigilante.Options.Kidnapper.KillsPerUse">Kills Needed For Ability Use</string>
+    <string name="Vigilante.Options.Kidnapper.CanKidnapPostExterminate">Can Kidnap After Exterminating Player</string>
     
 </resources>

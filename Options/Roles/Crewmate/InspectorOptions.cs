@@ -20,16 +20,16 @@ public class InspectorOptions : AbstractOptionGroup<InspectorRole>
     public override string GroupName => MiraLocaleManager.Get("Vigilante.Role.Inspector", "Inspector");
 
     public ModdedNumberOption InspectsPerMeeting { get; } = new(
-        "Vigilante.Options.Inspector.InspectUsesPerMeeting", 1f, 1f, 3f, 1f, MiraNumberSuffixes.None);
+        "Vigilante.Options.Inspector.InspectUsesPerMeeting", 3f, 1f, 5f, 1f, MiraNumberSuffixes.None);
     
     public ModdedNumberOption MaxPublishUses { get; } = new(
-        "Vigilante.Options.Inspector.PublishUses", 1f, 1f, 3f, 1f, MiraNumberSuffixes.None);
+        "Vigilante.Options.Inspector.PublishUses", 2f, 1f, 5f, 1f, MiraNumberSuffixes.None);
     
     public ModdedEnumOption InspectableRoles { get; } = new(
         "Vigilante.Options.Inspector.InspectableRoles", (int)InspectorInspectableRoles.AllRoles,
         typeof(InspectorInspectableRoles),
         ["Vigilante.Options.Inspector.InspectableRolesEnumCrewmate", "Vigilante.Options.Inspector.InspectableRolesEnumNonCrewmate", "Vigilante.Options.Inspector.InspectableRolesEnumAll"]);
 
-    public ModdedToggleOption PublishAllianceMods { get; } =
-        new("Vigilante.Options.Inspector.PublishAllianceMods", true);
+    /*public ModdedToggleOption PublishAllianceMods { get; } =
+        new("Vigilante.Options.Inspector.PublishAllianceMods", true);*/
 }

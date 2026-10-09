@@ -11,6 +11,7 @@
 
 <p align="center">
   <img src="./Resources/Groups/CrewInvest.png" alt="Crewmate Investigative"/>
+  <img width="10%" src="./Resources/Icons/Chameleon.png" alt="Chameleon"/>
   <img width="10%" src="./Resources/Icons/Decryptor.png" alt="Decryptor"/>
   <img width="10%" src="./Resources/Icons/Inspector.png" alt="Inspector"/>
   <img src="./Resources/Groups/CrewPower.png" alt="Crewmate Power"/>
