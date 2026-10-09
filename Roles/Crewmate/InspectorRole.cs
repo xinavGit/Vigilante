@@ -31,15 +31,20 @@ using TownOfUs.Buttons;
 using Reactor.Utilities;
 using System.Globalization;
 using Vigilante.Interfaces;
+using Rewired;
+using HarmonyLib;
+using Il2CppSystem.IO;
 
 namespace Vigilante.Roles.Crewmate;
 
 public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
 {
-    private MeetingMenu? meetingMenu;
+    private MeetingMenu? inspectMenu;
+    private MeetingMenu? publishMenu;
+    private GuesserMenu? inspectGuesserMenu;
 
     public string IdPart => "Inspector";
-    public Color RoleColor => VigilanteColors.Decryptor;
+    public Color RoleColor => VigilanteColors.Inspector;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmateInvestigative;
 
@@ -48,6 +53,8 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public string RoleLongDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.TabDescription");
 
     public DoomableType DoomHintType => DoomableType.Insight;
+
+    public static Dictionary<PlayerControl, RoleBehaviour> InspectedPlayers { get; } = [];
 
     public string GetAdvancedDescription()
     {
@@ -58,123 +65,238 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
     public CustomRoleConfiguration Configuration => new(this)
     {
-        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DecryptorIcon.LoadAsset(), "Vigilante.Role.Crewmate.Decryptor", 1.45f),
-        Icon = VigilanteAssets.DecryptorIcon,
+        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.InspectorIcon.LoadAsset(), "Vigilante.Role.Crewmate.Inspector", 1.45f),
+        Icon = VigilanteAssets.InspectorIcon,
         IntroSound = TouAudio.GlitchSound,
         MaxRoleCount = 1
     };
 
-
-    public static Dictionary<byte, List<char>> KnownCharacters {get; private set;} = [];
-    private static int LettersRevealed;
-
-    public static int TasksTowardCompletion {get; set;}
-
-    [HideFromIl2Cpp]
-    public StringBuilder SetTabText()
-    {
-        var stringB = ITownOfUsRole.SetNewTabText(this);
-
-        //reveals left till evils alerted (if option on)
-
-        //tasks left to next reveal
-
-        return stringB;
-    }
-
     public override void Initialize(PlayerControl player)
     {
         RoleBehaviourStubs.Initialize(this, player);
+        InspectedPlayers.Clear();
 
-        meetingMenu = new MeetingMenu(
+        inspectMenu = new MeetingMenu(
                 this,
-                ClickGuess,
+                OpenInspectMenu,
                 MeetingAbilityType.Click,
                 TouAssets.Guess,
                 null!,
-                IsExempt);//will break next toum update
+                IsInspectExempt,
+                hoverColor: VigilanteColors.Inspector);//will break next toum update
+        
+        publishMenu = new MeetingMenu(
+                this,
+                CheckPublish,
+                MiraLocaleManager.Get("Vigilante.Role.Inspector.Publish"),
+                MeetingAbilityType.Click,
+                TouAssets.RevealCleanSprite,
+                null!,
+                IsPublishExempt,
+                position: new Vector3(-0.35f, 0f, -3f));//this too
     }
-
-    //rpc for reveal letter? maybe... RpcDecryptorRevealLetter
-    //rpc for alerting evils RpcDecryptorAlert
-
-    public static Dictionary<byte, string> SpawnRoleNames { get; } = [];
-
-    public static void SnapshotSpawnRoles()
+    public override void OnMeetingStart()
     {
-        SpawnRoleNames.Clear();
-        KnownCharacters.Clear();
-        LettersRevealed = 0;
-        TasksTowardCompletion = 0;
+        RoleBehaviourStubs.OnMeetingStart(this);
 
-        foreach (var player in PlayerControl.AllPlayerControls)
+        var meeting = MeetingHud.Instance;
+        if (Player.AmOwner && meeting != null && !Player.HasDied())
         {
-            if (player == null || player.Data?.Role == null) continue;
-            SpawnRoleNames[player.PlayerId] = player.Data.Role.GetRoleName().ToUpperInvariant();
+            inspectMenu?.GenButtons(meeting, true);
+            publishMenu?.GenButtons(meeting, true);
         }
     }
 
-    [MethodRpc((uint)VigilanteRpcs.DecryptorAlert)]
-    public static void RpcDecryptorAlert(PlayerControl decryptor)
+    [HideFromIl2Cpp]
+    public void OpenInspectMenu(PlayerVoteArea voteArea, MeetingHud meeting)
     {
-        if (decryptor.AmOwner && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
+        if (meeting.state == MeetingHud.MeetingStates.Discussion || IsInspectExempt(voteArea))
         {
-            var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("Vigilante.Role.DecryptorExposedAlert")}</b>",
-                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
-
-                notif.AdjustNotification();
-                
-            Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Decryptor));
+            return;
         }
 
-        if (PlayerControl.LocalPlayer.IsImpostorAligned() && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
+        if (Minigame.Instance)
         {
-            var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("Vigilante.Role.DecryptorEvilsAlert")}</b>",
-                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
+            return;
+        }
 
-                notif.AdjustNotification();
+        var inspectTarget = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
+        if (inspectTarget == null)
+        {
+            return;
+        }
+
+        inspectGuesserMenu = GuesserMenu.Create();
+        inspectGuesserMenu.Begin(IsRoleValid, role => OnRoleSelected(role, inspectTarget.PlayerId));
+    }
+
+    [HideFromIl2Cpp]
+    public void CheckPublish(PlayerVoteArea voteArea, MeetingHud meeting)
+    {
+        if (meeting.state == MeetingHud.MeetingStates.Discussion || IsPublishExempt(voteArea))
+        {
+            return;
+        }
+
+        if (Minigame.Instance)
+        {
+            return;
+        }
+
+        var inspectTarget = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
+        if (inspectTarget == null)
+        {
+            return;
+        }
+
+        if (InspectedPlayers.TryGetValue(inspectTarget, out RoleBehaviour? publishRole) && publishRole != null)
+        {
+            RpcInspectorPublish(inspectTarget, RoleId.Get(publishRole.GetType()));
+        }
+    }
+
+    [HideFromIl2Cpp]
+    public static bool IsRoleValid(RoleBehaviour role)
+    {
+        if (role is not ITownOfUsRole)
+        {
+            return false;
+        }
+
+        if (role is MayorRole)
+        {
+            return false;
+        }
+
+        var inspectable = (InspectorInspectableRoles)OptionGroupSingleton<InspectorOptions>.Instance.InspectableRoles.Value;
+        if (role.GetRoleAlignment() is RoleAlignment.CrewmateInvestigative || role.GetRoleAlignment() is RoleAlignment.CrewmateKilling || role.GetRoleAlignment() is RoleAlignment.CrewmatePower || role.GetRoleAlignment() is RoleAlignment.CrewmateProtective || role.GetRoleAlignment() is RoleAlignment.CrewmateSupport)
+        {
+            return inspectable is InspectorInspectableRoles.CrewRoles || inspectable is InspectorInspectableRoles.AllRoles;
+        }
+
+        if (role.GetRoleAlignment() is RoleAlignment.ImpostorConcealing || role.GetRoleAlignment() is RoleAlignment.ImpostorKilling || role.GetRoleAlignment() is RoleAlignment.ImpostorPower || role.GetRoleAlignment() is RoleAlignment.ImpostorSupport || role.GetRoleAlignment() is RoleAlignment.NeutralBenign || role.GetRoleAlignment() is RoleAlignment.NeutralEvil || role.GetRoleAlignment() is RoleAlignment.NeutralKilling || role.GetRoleAlignment() is RoleAlignment.NeutralOutlier)
+        {
+            return inspectable is InspectorInspectableRoles.NonCrewRoles || inspectable is InspectorInspectableRoles.AllRoles;
+        }
+
+        return false;
+    }
+
+    [HideFromIl2Cpp]
+    public void OnRoleSelected(RoleBehaviour role, byte targetId)
+    {
+        var target = GameData.Instance.GetPlayerById(targetId)?.Object;
+
+        if (target == null)
+        {
+            return;
+        }
+
+        inspectGuesserMenu?.Close();
+        InspectPlayer(target, role);
+    }
+
+    [HideFromIl2Cpp]
+    public bool IsInspectExempt(PlayerVoteArea voteArea)
+    {
+        if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
+        {
+            return true;
+        }
+
+        var target = voteArea.GetPlayer();
+
+        if (target == null || target.HasDied())// check if target has been successfully inspected
+        {
+            return true;
+        }
+
+        if (InspectedPlayers.ContainsKey(target))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    [HideFromIl2Cpp]
+    public bool IsPublishExempt(PlayerVoteArea voteArea)
+    {
+        if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
+        {
+            return true;
+        }
+
+        var target = voteArea.GetPlayer();
+
+        if (target == null || target.HasDied())// check if target has been successfully inspected again
+        {
+            return true;
+        }
+
+        if (!InspectedPlayers.ContainsKey(target))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    [MethodRpc((uint)VigilanteRpcs.InspectorPublish)]
+    public void RpcInspectorPublish(PlayerControl inspected, ushort publishRole)
+    {
+        Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Inspector));
+
+        var notif = Helpers.CreateAndShowNotification(
+            $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InformationWasPublished")
+            .Replace("<player>", $"{inspected.Data.PlayerName}")}</b>",
+            Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.InspectorIcon.LoadAsset());
+
+        notif.AdjustNotification();
+
+        inspected.AddModifier<InspectorRevealModifier>(RoleManager.Instance.GetRole((RoleTypes)publishRole));
+    }
+
+    [HideFromIl2Cpp]
+    public void InspectPlayer(PlayerControl inspected, RoleBehaviour inspectRole) //not static because of the GenButtons line
+    {
+        MeetingMenu.Instances.Do(x => x.HideSingle(inspected.PlayerId));
+
+        //test
+        /*var notiftest = Helpers.CreateAndShowNotification(
+                $"<b>{inspected.Data.Role} compared with {inspectRole}!!!</b>",
+                Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.DoubleShot.LoadAsset());
+
+            notiftest.AdjustNotification();*/
+        
+        if (inspected.Data.Role.Role == inspectRole.Role)
+        {
+            Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Doomsayer));
+
+            var notif = Helpers.CreateAndShowNotification(
+                $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InspectTrue")
+                .Replace("<player>", $"{inspected.Data.PlayerName}").Replace("<role>", $"{inspectRole.NameColor.ToTextColor()}{inspectRole.GetRoleName()}</color>")}</b>",
+                Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.DoubleShot.LoadAsset());
+
+            notif.AdjustNotification();
+
+            InspectedPlayers[inspected] = inspectRole;
             
-            Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Decryptor));
+            var meeting = MeetingHud.Instance;
+            publishMenu?.GenButtons(meeting, true);
         }
-    }
-
-    public static void RevealLetter()
-    {
-        foreach (var player in PlayerControl.AllPlayerControls)
+        else
         {
-            if (player == null || player.Data.IsDead) continue;
+            Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Impostor));
 
-            if (!SpawnRoleNames.TryGetValue(player.PlayerId, out var roleName)) continue;
+            var notif = Helpers.CreateAndShowNotification(
+                $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InspectFalse")
+                .Replace("<player>", $"{inspected.Data.PlayerName}").Replace("<role>", $"{inspectRole.NameColor.ToTextColor()}{inspectRole.GetRoleName()}</color>")}</b>",
+                Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.DoubleShot.LoadAsset());
 
-            if (!KnownCharacters.TryGetValue(player.PlayerId, out var known))
-            {
-                known = [];
-                KnownCharacters[player.PlayerId] = known;
-            }
-
-            var pool = GetRemainingLetterPool(roleName, known);
-            if (pool.Count == 0) continue;
-
-            known.Add(pool[UnityEngine.Random.Range(0, pool.Count)]);
-        }
-
-        LettersRevealed++;
-
-        if (LettersRevealed == (int)OptionGroupSingleton<DecryptorOptions>.Instance.LettersForAlert.Value && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
-        {
-            RpcDecryptorAlert(PlayerControl.LocalPlayer);
+            notif.AdjustNotification();
         }
     }
 
-    private static List<char> GetRemainingLetterPool(string roleName, List<char> alreadyRevealed)
-    {
-        var remaining = roleName.Where(char.IsLetter).ToList();
 
-        foreach (var known in alreadyRevealed)
-            remaining.Remove(known); // removes just one copy, not all matching letters
-
-        return remaining;
-    }
 }

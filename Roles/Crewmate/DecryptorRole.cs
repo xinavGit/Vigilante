@@ -114,7 +114,7 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         if (decryptor.AmOwner && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
         {
             var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("Vigilante.Role.DecryptorExposedAlert")}</b>",
+                $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.ExposedAlert")}</b>",
                 Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
 
                 notif.AdjustNotification();
@@ -125,7 +125,7 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         if (PlayerControl.LocalPlayer.IsImpostorAligned() && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
         {
             var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("Vigilante.Role.DecryptorEvilsAlert")}</b>",
+                $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.EvilsAlert")}</b>",
                 Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
 
                 notif.AdjustNotification();

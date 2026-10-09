@@ -12,6 +12,7 @@ public static class VigilanteColors
     // Crew Colors
     public static Color Chameleon => UseBasic ? Palette.CrewmateBlue : new Color32(122, 220, 193, 255);
     public static Color Decryptor => UseBasic ? Palette.CrewmateBlue : new Color32(0, 102, 0, 255);
+    public static Color Inspector => UseBasic ? Palette.CrewmateBlue : new Color32(15, 40, 135, 255);
 
     // Neut Colors
     public static Color Auditor => UseBasic ? Palette.CrewmateBlue : new Color32(0, 102, 0, 255);

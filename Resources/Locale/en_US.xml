@@ -30,13 +30,13 @@
     <string name="Vigilante.Role.Decryptor.TabDescription">Complete tasks to reveal letters of the roles that players spawned with, and decrypt the scrambled codes.</string>
     <string name="Vigilante.Role.Decryptor.WikiDescription">The Decryptor is a Crewmate Investigative role that can complete tasks to slowly reveal the letters in players' original roles. If settings allow, evils may be alerted of the Decryptor's presence. The Decryptor only decrypts the roles players spawned into the game with, not necessarily what they currently are.</string>
     <!-- Decryptor Feedback -->
-    <string name="Vigilante.Role.DecryptorRevealedLetter">You have revealed a letter of everyone's role!</string>
-    <string name="Vigilante.Role.DecryptorEvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
-    <string name="Vigilante.Role.DecryptorExposedAlert">Evils now know of your presence!</string>
+    <string name="Vigilante.Feedback.Decryptor.RevealedLetter">You have revealed a letter of everyone's role!</string>
+    <string name="Vigilante.Feedback.Decryptor.EvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
+    <string name="Vigilante.Feedback.Decryptor.ExposedAlert">Evils now know of your presence!</string>
     <!-- Decryptor Options -->
-    <string name="Vigilante.Options.DecryptorTasksPerLetter">Number Of Tasks For Letter Reveal</string>
-    <string name="Vigilante.Options.DecryptorAlertEvils">Alert Evils Of Decryptor</string>
-    <string name="Vigilante.Options.DecryptorLettersForAlert">Number Of Letters Revealed For Evil Alert</string>
+    <string name="Vigilante.Options.Decryptor.TasksPerLetter">Number Of Tasks For Letter Reveal</string>
+    <string name="Vigilante.Options.Decryptor.AlertEvils">Alert Evils Of Decryptor</string>
+    <string name="Vigilante.Options.Decryptor.LettersForAlert">Number Of Letters Revealed For Evil Alert</string>
 
     <!-- Auditor - Neutral Outlier -->
     <!-- Auditor Wiki / Abilities -->
@@ -96,6 +96,8 @@
     <!-- Inspector Feedback -->
     <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
+    <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
+    <string name="Vigilante.Feedback.Inspector.InformationWasPublished">Information has been published about [player].</string>
     <!-- Inspector Options -->
     <string name="Vigilante.Options.Inspector.InspectUsesPerMeeting">Inspect Uses Per Meeting</string>
     <string name="Vigilante.Options.Inspector.PublishUses">Max Publish Uses</string>

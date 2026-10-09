@@ -2,5 +2,6 @@ namespace Vigilante;
 
 public enum VigilanteRpcs : uint
 {
-    DecryptorAlert
+    DecryptorAlert,
+    InspectorPublish
 }
