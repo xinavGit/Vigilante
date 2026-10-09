@@ -21,6 +21,9 @@ public class InspectorOptions : AbstractOptionGroup<InspectorRole>
 
     public ModdedNumberOption InspectsPerMeeting { get; } = new(
         "Vigilante.Options.Inspector.InspectUsesPerMeeting", 3f, 1f, 5f, 1f, MiraNumberSuffixes.None);
+
+    public ModdedToggleOption CanInspectSamePersonTwice { get; } =
+        new("Vigilante.Options.Inspector.CanInspectSamePersonTwice", false);
     
     public ModdedNumberOption MaxPublishUses { get; } = new(
         "Vigilante.Options.Inspector.PublishUses", 2f, 1f, 5f, 1f, MiraNumberSuffixes.None);

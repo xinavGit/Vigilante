@@ -221,6 +221,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             return true;
         }
 
+        if (target.HasModifier<InspectorRevealModifier>() || target.HasModifier<InspectorPublishedModifier>())
+        {
+            return true;
+        }
+
         if (InspectedPlayers.ContainsKey(target))
         {
             return true;
@@ -232,13 +237,16 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsPublishExempt(PlayerVoteArea voteArea)
     {
+        Debug.Log($"player is {voteArea.GetPlayer()}, checking exempt...");
         if (playersPublished >= OptionGroupSingleton<InspectorOptions>.Instance.MaxPublishUses.Value)
         {
+            Debug.Log($"inspector publish exempt - publish all used");
             return true;
         }
 
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
+            Debug.Log($"null target or target is inspector");
             return true;
         }
 
@@ -246,14 +254,17 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         if (target == null || target.HasDied())// check if target has been successfully inspected again
         {
+            Debug.Log($"target null or has died!");
             return true;
         }
 
         if (!InspectedPlayers.ContainsKey(target))
         {
+            Debug.Log($"no key found... exempt");
             return true;
         }
 
+        Debug.Log($"chill! can be published, not exempt");
         return false;
     }
 
@@ -261,6 +272,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public static void RpcInspectorPublish(PlayerControl inspected, ushort publishRole)
     {
         Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Inspector));
+        TouAudio.PlaySound(VigilanteAssets.InspectorPublish);
 
         var notif = Helpers.CreateAndShowNotification(
             $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InformationWasPublished")
@@ -281,8 +293,6 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public void InspectPlayer(PlayerControl inspected, RoleBehaviour inspectRole) //not static because of the GenButtons line
     {
-        MeetingMenu.Instances.Do(x => x.HideSingle(inspected.PlayerId));
-
         //test
         /*var notiftest = Helpers.CreateAndShowNotification(
                 $"<b>{inspected.Data.Role} compared with {inspectRole}!!!</b>",
@@ -302,7 +312,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             notif.AdjustNotification();
 
             InspectedPlayers[inspected] = inspectRole;
-            inspected.AddModifier<InspectorRevealModifier>(); //should only happen on the inspector's side
+            inspected.AddModifier<InspectorRevealModifier>(inspectRole); //should only happen on the inspector's side
+
+            RoundInspects++;
+
+            RefreshButtons();
         }
         else
         {
@@ -314,11 +328,36 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.DoubleShot.LoadAsset());
 
             notif.AdjustNotification();
-        }
 
-        RoundInspects++;
+            if (!OptionGroupSingleton<InspectorOptions>.Instance.CanInspectSamePersonTwice.Value)
+            {
+                MeetingMenu.Instances.Do(x => x.HideSingle(inspected.PlayerId));
+            }
+
+            RoundInspects++;
+
+            RefreshButtons();
+        }
+    }
+
+    public void RefreshButtons()
+    {
+        Coroutines.Start(CoRefreshButtons());
+    }
+
+    [HideFromIl2Cpp]
+    private System.Collections.IEnumerator CoRefreshButtons()
+    {
+        // wait until the guesser overlay has actually closed
+        while (Minigame.Instance != null)
+        {
+            yield return null;
+        }
+        yield return null; // one extra frame for the UI state to settle
 
         var meeting = MeetingHud.Instance;
+        if (meeting == null) yield break;
+
         publishMenu?.GenButtons(meeting, true);
         inspectMenu?.GenButtons(meeting, true);
     }

@@ -22,7 +22,7 @@ public static class VigilanteAssets
     public static LoadableAsset<Sprite> ChameleonVent { get; } = new LoadableResourceAsset($"{ButtonPath}.ChameleonVent.png");
 
     // Audio clips (16000hz)
-    public static LoadableAsset<AudioClip> DreamerIntro { get; } = new LoadableAudioResourceAsset($"{SoundPath}.DreamerIntro.wav");
+    public static LoadableAsset<AudioClip> InspectorPublish { get; } = new LoadableAudioResourceAsset($"{SoundPath}.InspectorPublish.wav");
 
     // Meeting nameplate toggles:
     public static LoadableAsset<Sprite> InspectorInspect { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f);

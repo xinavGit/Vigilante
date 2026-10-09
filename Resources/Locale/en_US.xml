@@ -100,6 +100,7 @@
     <string name="Vigilante.Feedback.Inspector.InformationWasPublished">Information has been published about [player].</string>
     <!-- Inspector Options -->
     <string name="Vigilante.Options.Inspector.InspectUsesPerMeeting">Inspect Uses Per Meeting</string>
+    <string name="Vigilante.Options.Inspector.CanInspectSamePersonTwice">Can Inspect Same Person Again In Same Round</string>
     <string name="Vigilante.Options.Inspector.PublishUses">Max Publish Uses</string>
     <string name="Vigilante.Options.Inspector.InspectableRoles">Inspectable Roles</string>
     <string name="Vigilante.Options.Inspector.InspectableRolesEnumCrewmate">Crewmate Roles</string>
