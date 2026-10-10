@@ -21,12 +21,19 @@ public static class VigilanteHudPatches
             return;
         }
 
+        var (playerColor, playerName) = __result;
+
+        if (player.HasModifier<MagistrateJurorModifier>() &&
+             PlayerControl.LocalPlayer.IsRole<MagistrateRole>())
+        {
+            playerName += "<color=#cc9900> +</color>";
+        }
+
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)
         {
             if (player.Data.IsDead)
                 return;
 
-            var (playerColor, playerName) = __result;
 
             playerName += "\n";
 
@@ -40,8 +47,8 @@ public static class VigilanteHudPatches
             {
                 playerName += $"<size=60%><color=#FFFFFF>{letter}</color></size>";
             }
-
-            __result = (playerColor, playerName);
         }
+
+        __result = (playerColor, playerName);
     }
 }

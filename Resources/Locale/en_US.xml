@@ -76,16 +76,19 @@
     <string name="Vigilante.Feedback.Magistrate.Enlisting">Enlisting</string>
     <string name="Vigilante.Feedback.Magistrate.EnlistingPlayer">You decided to enlist [player] for your trial in [seconds] seconds...</string>
     <string name="Vigilante.Feedback.Magistrate.EnlistingSuccess">[player] was successfully enlisted for your next trial!</string>
+    <string name="Vigilante.Feedback.Magistrate.EnlistingFail">The enlistment of [player] failed?!</string>
     <string name="Vigilante.Feedback.Magistrate.EnlistingCancel">You instead decided not to enlist [player].</string>
     <string name="Vigilante.Feedback.Magistrate.JurorNotify">The Magistrate chose you to be their Juror!</string>
     <string name="Vigilante.Feedback.Magistrate.Juror">Juror</string>
-    <string name="Vigilante.Feedback.Magistrate.JurorDescription">The Magistrate chose you to compare your alliance with another player in the next meeting!</string>
+    <string name="Vigilante.Feedback.Magistrate.JurorDescription">The Magistrate chose you to compare your alliance with another player in the next meeting! ig thief can steal this if you can see this... :/</string>
+    <string name="Vigilante.Feedback.Magistrate.JudgementsRemaining">Judgements Remaining</string>
     <string name="Vigilante.Feedback.Magistrate.Judgement">[player] has been judged and executed.</string>
     <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string>
     <!-- Magistrate Options -->
     <string name="Vigilante.Options.Magistrate.JudgeUses">Max Judgements</string>
     <string name="Vigilante.Options.Magistrate.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>
     <string name="Vigilante.Options.Magistrate.TasksPerAbilityUse">Tasks Per Ability Use</string>
+    <string name="Vigilante.Options.Magistrate.EnlistCooldown">Max Judgements</string>
     <string name="Vigilante.Options.Magistrate.EnlistDelay">Enlist Delay (Can Cancel)</string>
     <string name="Vigilante.Options.Magistrate.NotifyJuror">Notify Juror On Enlistment</string>
 

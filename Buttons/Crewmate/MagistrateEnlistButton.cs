@@ -17,6 +17,7 @@ using TownOfUs.Roles.Crewmate;
 using TownOfUs.Utilities;
 using UnityEngine;
 using Vigilante.Assets;
+using Vigilante.Options;
 using Vigilante.Roles.Crewmate;
 
 namespace Vigilante.Buttons.Crewmate;
@@ -26,14 +27,14 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
     public override string Name => MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.Enlist");
     public override BaseKeybind Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => VigilanteColors.Magistrate;
-    public override float Cooldown => OptionGroupSingleton<MonarchOptions>.Instance.KnightCooldown + MapCooldown;
-    public override float EffectDuration => OptionGroupSingleton<MonarchOptions>.Instance.KnightDelay;
+    public override float Cooldown => OptionGroupSingleton<MagistrateOptions>.Instance.EnlistCooldown.Value + MapCooldown;
+    public override float EffectDuration => OptionGroupSingleton<MagistrateOptions>.Instance.EnlistDelay.Value;
     public override int MaxUses => 1;
     public override LoadableAsset<Sprite> Sprite => TouCrewAssets.KnightSprite;
     public PlayerControl? _enlistedTarget;
     private bool _isProcessingClick;
 
-    public override bool UsableFirstRound => OptionGroupSingleton<MonarchOptions>.Instance.FirstRoundUse;
+    //public override bool UsableFirstRound => OptionGroupSingleton<MonarchOptions>.Instance.FirstRoundUse;
 
     public override bool CanUse()
     {
@@ -178,7 +179,7 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
                 .UseCrewmateTeamColorToggle.Value;
         }
 
-        MonarchRole.RpcKnight(PlayerControl.LocalPlayer, _enlistedTarget);
+        MagistrateRole.RpcEnlist(PlayerControl.LocalPlayer, _enlistedTarget);
         _enlistedTarget = null;
     }
 
