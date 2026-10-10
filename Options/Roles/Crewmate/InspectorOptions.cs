@@ -25,6 +25,9 @@ public class InspectorOptions : AbstractOptionGroup<InspectorRole>
     public ModdedToggleOption CanInspectSamePersonTwice { get; } =
         new("Vigilante.Options.Inspector.CanInspectSamePersonTwice", false);
     
+    public ModdedToggleOption CanInspectSameRoleTwice { get; } =
+        new("Vigilante.Options.Inspector.CanInspectSameRoleTwice", false);
+    
     public ModdedNumberOption MaxPublishUses { get; } = new(
         "Vigilante.Options.Inspector.PublishUses", 2f, 1f, 5f, 1f, MiraNumberSuffixes.None);
     

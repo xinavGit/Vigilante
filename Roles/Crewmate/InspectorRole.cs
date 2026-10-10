@@ -55,6 +55,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public DoomableType DoomHintType => DoomableType.Insight;
 
     public static Dictionary<PlayerControl, RoleBehaviour> InspectedPlayers { get; } = [];
+    public static List<RoleBehaviour> RoundInspectedRoles { get; } = [];
     private int playersPublished;
     private int RoundInspects;
 
@@ -77,6 +78,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     {
         RoleBehaviourStubs.Initialize(this, player);
         InspectedPlayers.Clear();
+        RoundInspectedRoles.Clear();
         RoundInspects = 0;
         playersPublished = 0;
 
@@ -102,6 +104,13 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public override void OnMeetingStart()
     {
         RoleBehaviourStubs.OnMeetingStart(this);
+
+        foreach (var uninspectable in ModifierUtils.GetPlayersWithModifier<InspectorUninspectableModifier>().ToList())
+        {
+            uninspectable.RemoveModifier<InspectorUninspectableModifier>();
+        }
+
+        RoundInspectedRoles.Clear();
         
         RoundInspects = 0;
         var meeting = MeetingHud.Instance;
@@ -173,6 +182,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             return false;
         }
 
+        if (RoundInspectedRoles.Contains(role))
+        {
+            return false;
+        }
+
         var inspectable = (InspectorInspectableRoles)OptionGroupSingleton<InspectorOptions>.Instance.InspectableRoles.Value;
         if (role.GetRoleAlignment() is RoleAlignment.CrewmateInvestigative || role.GetRoleAlignment() is RoleAlignment.CrewmateKilling || role.GetRoleAlignment() is RoleAlignment.CrewmatePower || role.GetRoleAlignment() is RoleAlignment.CrewmateProtective || role.GetRoleAlignment() is RoleAlignment.CrewmateSupport)
         {
@@ -221,7 +235,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             return true;
         }
 
-        if (target.HasModifier<InspectorRevealModifier>() || target.HasModifier<InspectorPublishedModifier>())
+        if (target.HasModifier<InspectorRevealModifier>() || target.HasModifier<InspectorPublishedModifier>() || target.HasModifier<InspectorUninspectableModifier>())
         {
             return true;
         }
@@ -313,10 +327,6 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
             InspectedPlayers[inspected] = inspectRole;
             inspected.AddModifier<InspectorRevealModifier>(inspectRole); //should only happen on the inspector's side
-
-            RoundInspects++;
-
-            RefreshButtons();
         }
         else
         {
@@ -331,13 +341,18 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
             if (!OptionGroupSingleton<InspectorOptions>.Instance.CanInspectSamePersonTwice.Value)
             {
-                MeetingMenu.Instances.Do(x => x.HideSingle(inspected.PlayerId));
+                inspected.AddModifier<InspectorUninspectableModifier>();
             }
-
-            RoundInspects++;
-
-            RefreshButtons();
         }
+
+        if (!OptionGroupSingleton<InspectorOptions>.Instance.CanInspectSameRoleTwice)
+        {
+            RoundInspectedRoles.Add(inspectRole);
+        }
+
+        RoundInspects++;
+
+        RefreshButtons();
     }
 
     public void RefreshButtons()
