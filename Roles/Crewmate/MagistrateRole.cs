@@ -154,7 +154,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
         if (juror == null && Player.AmOwner)
         {
-            judgeMenu?.HideButtons();
+            ClearMenu();
             return;
         }
 
@@ -177,7 +177,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
         if (Player.AmOwner)
         {
-            judgeMenu?.HideButtons();
+            ClearMenu();
         }
     }
 
@@ -209,6 +209,10 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                 causeOfDeath: "Judge");
         }
     }*/
+    public void ClearMenu()
+    {
+        judgeMenu?.HideButtons();
+    }
 
     public override void Deinitialize(PlayerControl targetPlayer)
     {

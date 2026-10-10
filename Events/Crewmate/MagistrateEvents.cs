@@ -11,6 +11,7 @@ using TownOfUs.Utilities;
 using MiraAPI.Utilities;
 using MiraAPI.Events.Vanilla.Player;
 using Il2CppSystem.Runtime.InteropServices;
+using MiraAPI.Roles;
 
 namespace Vigilante.Events.Crewmate;
 
@@ -27,6 +28,20 @@ public static class MagistrateEvents
         foreach (var juror in ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList())
         {
             juror.RemoveModifier<MagistrateJurorModifier>();
+        }
+    }
+
+    [RegisterEvent]
+    public static void AfterMurderEvent(AfterMurderEvent evt)
+    {
+        var victim = evt.Target;
+
+        if (victim.HasModifier<MagistrateJurorModifier>())
+        {
+            foreach (var magi in CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>())
+            {
+                magi.ClearMenu();
+            }
         }
     }
 }
