@@ -34,10 +34,10 @@ using Vigilante.Interfaces;
 namespace Vigilante.Roles.Crewmate;
 
 #pragma warning disable CA1001
-public sealed class JudgeVigiRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
+public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
 #pragma warning restore CA1001
 {
-    public string IdPart => "Judge";
+    public string IdPart => "Magistrate";
     public Color RoleColor => VigilanteColors.Chameleon;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;

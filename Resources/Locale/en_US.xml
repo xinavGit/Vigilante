@@ -61,26 +61,33 @@
     <string name="Vigilante.Options.Auditor.AuditDuration">Audit Duration</string>
     <string name="Vigilante.Options.Auditor.CanRevealAlliances">Can See Alliances With Smokebomb</string>
 
-    <!-- Judge desperately needs a rename stat - Crewmate Power -->
-    <!-- Judge Wiki / Abilities -->
-    <string name="Vigilante.Role.Judge">Judge</string>
-    <string name="Vigilante.Role.Judge.IntroBlurb">Bring judgement to evils!</string>
-    <string name="Vigilante.Role.Judge.MedDescription">Kill players who are opposed to your Juror.</string>
-    <string name="Vigilante.Role.Judge.TabDescription">Recruit a Juror and bring judgement to their enemies!</string>
-    <string name="Vigilante.Role.Judge.WikiDescription">The Judge is a Crewmate Power role that can recruit a player every round to be a Juror. The Judge can then bring judgement to any player in the meeting except the Juror. If the player is an enemy of the Juror, they will die. If they are an ally of the Juror, the Judge will die?</string>
-    <string name="Vigilante.Role.Judge.Enlist">Enlist</string>
-    <string name="Vigilante.Role.Judge.Enlist.WikiDescription">Enlist a player to be your Juror for the next meeting.</string>
-    <string name="Vigilante.Role.Judge.Judge">Judge</string>
-    <string name="Vigilante.Role.Judge.Judge.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed?</string>
-    <!-- Judge Feedback -->
-    <string name="Vigilante.Feedback.Judge.Judgement">[player] has been judged and executed.</string>
-    <string name="Vigilante.Feedback.Judge.YouWereJudged">You were judged and executed!</string>
-    <!-- Judge Options -->
-    <string name="Vigilante.Options.Judge.JudgeUses">Max Judgements</string>
-    <string name="Vigilante.Options.Judge.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>
-    <string name="Vigilante.Options.Judge.TasksPerAbilityUse">Tasks Per Ability Use</string>
-    <string name="Vigilante.Options.Judge.EnlistDelay">Enlist Delay (Can Cancel)</string>
-    <string name="Vigilante.Options.Judge.NotifyJuror">Notify Juror On Enlistment</string>
+    <!-- Magistrate now renamed from Judge - Crewmate Power -->
+    <!-- Magistrate Wiki / Abilities -->
+    <string name="Vigilante.Role.Magistrate">Magistrate</string>
+    <string name="Vigilante.Role.Magistrate.IntroBlurb">Bring judgement to evils!</string>
+    <string name="Vigilante.Role.Magistrate.MedDescription">Kill players who are opposed to your Juror.</string>
+    <string name="Vigilante.Role.Magistrate.TabDescription">Recruit a Juror and bring judgement to their enemies!</string>
+    <string name="Vigilante.Role.Magistrate.WikiDescription">The Magistrate is a Crewmate Power role that can recruit a player every round to be a Juror. The Magistrate can then bring judgement to any player in the meeting except the Juror. If the player is an enemy of the Juror, they will die. If they are an ally of the Juror, the Magistrate will die.</string>
+    <string name="Vigilante.Role.Magistrate.Enlist">Enlist</string>
+    <string name="Vigilante.Role.Magistrate.Enlist.WikiDescription">Enlist a player to be your Juror for the next meeting.</string>
+    <string name="Vigilante.Role.Magistrate.Magistrate">Judge</string>
+    <string name="Vigilante.Role.Magistrate.Magistrate.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed.</string>
+    <!-- Magistrate Feedback -->
+    <string name="Vigilante.Feedback.Magistrate.Enlisting">Enlisting</string>
+    <string name="Vigilante.Feedback.Magistrate.EnlistingPlayer">You decided to enlist [player] for your trial in [seconds] seconds...</string>
+    <string name="Vigilante.Feedback.Magistrate.EnlistingSuccess">[player] was successfully enlisted for your next trial!</string>
+    <string name="Vigilante.Feedback.Magistrate.EnlistingCancel">You instead decided not to enlist [player].</string>
+    <string name="Vigilante.Feedback.Magistrate.JurorNotify">The Magistrate chose you to be their Juror!</string>
+    <string name="Vigilante.Feedback.Magistrate.Juror">Juror</string>
+    <string name="Vigilante.Feedback.Magistrate.JurorDescription">The Magistrate chose you to compare your alliance with another player in the next meeting!</string>
+    <string name="Vigilante.Feedback.Magistrate.Judgement">[player] has been judged and executed.</string>
+    <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string>
+    <!-- Magistrate Options -->
+    <string name="Vigilante.Options.Magistrate.JudgeUses">Max Judgements</string>
+    <string name="Vigilante.Options.Magistrate.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>
+    <string name="Vigilante.Options.Magistrate.TasksPerAbilityUse">Tasks Per Ability Use</string>
+    <string name="Vigilante.Options.Magistrate.EnlistDelay">Enlist Delay (Can Cancel)</string>
+    <string name="Vigilante.Options.Magistrate.NotifyJuror">Notify Juror On Enlistment</string>
 
     <!-- Inspector - Crewmate Investigative what if the magnifiying glass was black and white like assassin ui lol -->
     <!-- Inspector Wiki / Abilities -->
@@ -110,7 +117,7 @@
     <string name="Vigilante.Options.Inspector.PublishAllianceMods">Publish Shows Alliance Modifiers</string>
 
     <!-- Kidnapper - Impostor Power maybe mayor doesnt get extra votes if kidnapped? idk-->
-    <!-- Inspector Wiki / Abilities -->
+    <!-- Kidnapper Wiki / Abilities -->
     <string name="Vigilante.Role.Kidnapper">Kidnapper</string>
     <string name="Vigilante.Role.Kidnapper.IntroBlurb">Kidnap and exterminate!</string>
     <string name="Vigilante.Role.Kidnapper.MedDescription">Kidnap players and exterminate high-value targets.</string>
