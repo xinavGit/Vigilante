@@ -57,7 +57,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     public static Dictionary<PlayerControl, RoleBehaviour> InspectedPlayers { get; } = [];
     public static List<RoleBehaviour> RoundInspectedRoles { get; } = [];
     private int playersPublished;
-    private int RoundInspects;
+    public int RoundInspects;
 
     public string GetAdvancedDescription()
     {

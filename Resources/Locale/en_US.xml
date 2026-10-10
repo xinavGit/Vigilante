@@ -101,6 +101,7 @@
     <string name="Vigilante.Role.Inspector.Publish">Publish</string>
     <string name="Vigilante.Role.Inspector.Publish.WikiDescription">Reveal the role of a player that you successfully inspected to everyone. This does not reveal alliance modifiers.</string>
     <!-- Inspector Feedback -->
+    <string name="Vigilante.Feedback.Inspector.InspectsRemaining">inspections available this round.</string>
     <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
     <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
