@@ -1,5 +1,7 @@
-# Vigilante
-
+<div align="center">
+  <img src="./Resources/VigilanteBanner.png" alt="Vigilante"/>
+  <p>Vigilante</p>
+</div>
 
 
 
