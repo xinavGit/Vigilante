@@ -11,20 +11,20 @@
 
 <p align="center">
   <img src="./Resources/Groups/CrewInvest.png" alt="Crewmate Investigative"/>
-  <img width="30%" src="./Resources/RoleBanners/Chameleon.png" alt="Chameleon"/>
-  <img width="30%" src="./Resources/RoleBanners/Decryptor.png" alt="Decryptor"/>
-  <img width="30%" src="./Resources/RoleBanners/Inspector.png" alt="Inspector"/>
+  <img width="30%" src="./Resources/RoleBanners/chameleon.png" alt="Chameleon"/>
+  <img width="30%" src="./Resources/RoleBanners/decryptor.png" alt="Decryptor"/>
+  <img width="30%" src="./Resources/RoleBanners/inspector.png" alt="Inspector"/>
   <img src="./Resources/Groups/CrewPower.png" alt="Crewmate Power"/>
-  <img width="30%" src="./Resources/RoleBanners/Magistrate.png" alt="Magistrate"/>
+  <img width="30%" src="./Resources/RoleBanners/magistrate.png" alt="Magistrate"/>
   <img src="./Resources/Groups/ImpKilling.png" alt="Impostor Killing"/>
-  <img width="30%" src="./Resources/RoleBanners/Jinx.png" alt="Jinx"/>
+  <img width="30%" src="./Resources/RoleBanners/jinx.png" alt="Jinx"/>
   <img src="./Resources/Groups/ImpPower.png" alt="Impostor Power"/>
-  <img width="30%" src="./Resources/RoleBanners/Diplomat.png" alt="Diplomat"/>
-  <img width="30%" src="./Resources/RoleBanners/Kidnapper.png" alt="Kidnapper"/>
+  <img width="30%" src="./Resources/RoleBanners/diplomat.png" alt="Diplomat"/>
+  <img width="30%" src="./Resources/RoleBanners/kidnapper.png" alt="Kidnapper"/>
   <img src="./Resources/Groups/ImpSupport.png" alt="Impostor Support"/>
-  <img width="30%" src="./Resources/RoleBanners/Banshee.png" alt="Banshee"/>  
+  <img width="30%" src="./Resources/RoleBanners/banshee.png" alt="Banshee"/>  
   <img src="./Resources/Groups/ImpMods.png" alt="Impostor modifiers"/>
-  <img width="30%" src="./Resources/RoleBanners/Breakdown.png" alt="Breakdown"/>
+  <img width="30%" src="./Resources/RoleBanners/breakdown.png" alt="Breakdown"/>
 </p>
 
 
