@@ -26,5 +26,5 @@ public static class VigilanteAssets
 
     // Meeting nameplate toggles:
     public static LoadableAsset<Sprite> InspectorInspect { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f);
-    public static LoadableAsset<Sprite> MagistrateJudgement { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f); // button from BTOS2
+    public static LoadableAsset<Sprite> MagistrateJudgement { get; } = new LoadableResourceAsset($"{ButtonPath}.Judgement.png", 300f); // button from BTOS2
 }

@@ -43,7 +43,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     private MeetingMenu? judgeMenu;
 
     public string IdPart => "Magistrate";
-    public Color RoleColor => VigilanteColors.Chameleon;
+    public Color RoleColor => VigilanteColors.Magistrate;
     public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
     public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;
 
@@ -95,10 +95,10 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                 this,
                 ClickJudge,
                 MeetingAbilityType.Click,
-                VigilanteAssets.InspectorInspect,
+                VigilanteAssets.MagistrateJudgement,
                 null!,
                 IsJudgementExempt,
-                hoverColor: VigilanteColors.Inspector);
+                position: new Vector3(-0.35f, 0f, -3f));
     }
 
     public override void OnMeetingStart()

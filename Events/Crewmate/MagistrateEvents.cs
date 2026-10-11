@@ -12,6 +12,8 @@ using MiraAPI.Utilities;
 using MiraAPI.Events.Vanilla.Player;
 using Il2CppSystem.Runtime.InteropServices;
 using MiraAPI.Roles;
+using MiraAPI.Hud;
+using Vigilante.Buttons.Crewmate;
 
 namespace Vigilante.Events.Crewmate;
 
@@ -29,6 +31,10 @@ public static class MagistrateEvents
         {
             juror.RemoveModifier<MagistrateJurorModifier>();
         }
+
+        var button = CustomButtonSingleton<MagistrateEnlistButton>.Instance;
+        ++button.UsesLeft;
+        button.SetUses(button.UsesLeft);
     }
 
     [RegisterEvent]
