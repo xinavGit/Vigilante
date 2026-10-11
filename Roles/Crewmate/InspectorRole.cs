@@ -296,12 +296,14 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         notif.AdjustNotification();
 
         InspectedPlayers.Remove(inspected);
-        if (PlayerControl.LocalPlayer.Data.Role is InspectorRole)
+        if (PlayerControl.LocalPlayer.Data.Role is InspectorRole insp)
         {
             inspected.RemoveModifier<InspectorRevealModifier>();
+            insp.RefreshButtons();
         }
 
         inspected.AddModifier<InspectorPublishedModifier>(RoleManager.Instance.GetRole((RoleTypes)publishRole));
+        
     }
 
     [HideFromIl2Cpp]

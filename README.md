@@ -24,7 +24,10 @@
   <img width="30%" src="./Resources/RoleBanners/diplomat.png" alt="Diplomat"/>
   <img width="30%" src="./Resources/RoleBanners/kidnapper.png" alt="Kidnapper"/>
   <img src="./Resources/Groups/ImpSupport.png" alt="Impostor Support"/>
-  <img width="30%" src="./Resources/RoleBanners/banshee.png" alt="Banshee"/>  
+  <img width="30%" src="./Resources/RoleBanners/banshee.png" alt="Banshee"/>
+  <img src="./Resources/Groups/NeutEvil.png" alt="Neutral Evil"/>
+  <img width="30%" src="./Resources/RoleBanners/anomaly.png" alt="Anomaly"/>
+  <img width="30%" src="./Resources/RoleBanners/ravager.png" alt="Ravager"/>  
   <img src="./Resources/Groups/ImpMods.png" alt="Impostor modifiers"/>
   <img width="30%" src="./Resources/RoleBanners/breakdown.png" alt="Breakdown"/>
 </p>
@@ -38,7 +41,9 @@
 
 
 
-
+## Progress
+- ~~Chameleon~~
+- Inspector (90)
 
 ## Known Bugs
 - Venting right when Chameleon camouflage ends causes the user to be stuck in the vents... so don't do that
