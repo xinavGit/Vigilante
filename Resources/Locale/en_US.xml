@@ -2,6 +2,7 @@
 <resources>
     <string name="DiedToJudge">Judged</string>
     <string name="DiedToKidnapper">Exterminated</string>
+    <string name="DiedToJinx">Jinxed</string>
     
     <!-- Chameleon - Crewmate Investigative -->
     <!-- Chameleon Wiki / Abilities -->
@@ -104,7 +105,7 @@
     <string name="Vigilante.Role.Inspector.Publish">Publish</string>
     <string name="Vigilante.Role.Inspector.Publish.WikiDescription">Reveal the role of a player that you successfully inspected to everyone. This does not reveal alliance modifiers.</string>
     <!-- Inspector Feedback -->
-    <string name="Vigilante.Feedback.Inspector.InspectsRemaining">inspections available this round.</string>
+    <string name="Vigilante.Feedback.Inspector.InspectsRemaining">inspections used this round.</string>
     <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
     <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
@@ -140,5 +141,33 @@
     <string name="Vigilante.Options.Kidnapper.MoreUsesFromKills">Get More Uses From Kills</string>
     <string name="Vigilante.Options.Kidnapper.KillsPerUse">Kills Needed For Ability Use</string>
     <string name="Vigilante.Options.Kidnapper.CanKidnapPostExterminate">Can Kidnap After Exterminating Player</string>
-    
+
+    <!-- Jinx - Impostor Killing-->
+    <!-- Jinx Wiki / Abilities -->
+    <string name="Vigilante.Role.Jinx">Jinx</string>
+    <string name="Vigilante.Role.Jinx.IntroBlurb">Jinx your bodies!</string>
+    <string name="Vigilante.Role.Jinx.MedDescription">Bodies you kill are jinxed and deadly for a while.</string>
+    <string name="Vigilante.Role.Jinx.TabDescription">Jinx bodies you kill, making them deadly for a while.</string>
+    <string name="Vigilante.Role.Jinx.WikiDescription">The Jinx is an Impostor Killing role whose bodies will kill whoever reports them for a short time. Sparkles on a body are a visual indicator that it is deadly to report. The Jinx can also choose a player to jinx during the meeting, making the first person to interact with that player to die with a jinxed body.</string>
+    <string name="Vigilante.Role.Jinx.Jinx">Jinx</string>
+    <string name="Vigilante.Role.Jinx.Exterminate.WikiDescription">Choose a person during the meeting to jinx, killing the first person to interact with them the next round with a jinxed body.</string>
+    <!-- Jinx Feedback -->
+    <string name="Vigilante.Feedback.Jinx.YouWereJinxed">You were jinxed by the Jinx! The first person to interact with you will die.</string>
+    <!-- Jinx Options -->
+    <string name="Vigilante.Options.Jinx.JinxedBodyDuration">Jinx Deadly Body Duration</string>
+    <string name="Vigilante.Options.Jinx.KidnapUses">Inital Jinx Uses</string>
+    <string name="Vigilante.Options.Jinx.MoreUsesFromKills">Get More Jinx Uses From Kills</string>
+    <string name="Vigilante.Options.Jinx.KillsPerUse">Kills Needed For Jinx Use</string>
+
+
+
+    <!-- Modifiers-->
+
+    <!-- Breakdown - Impostor -->
+    <!-- Breakdown Wiki / Abilities -->
+    <string name="Vigilante.Role.Breakdown">Breakdown</string>
+    <string name="Vigilante.Role.Breakdown.IntroBlurb">Kill bodies to reduce button uses.</string>
+    <string name="Vigilante.Role.Breakdown.TabDescription">Remove button uses from others with every kill you get.</string>
+    <string name="Vigilante.Role.Breakdown.WikiDescription">Every kill you get, you passively remove a random non-impostor's ability to button.</string>
+
 </resources>
