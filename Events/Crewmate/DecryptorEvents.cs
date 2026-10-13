@@ -47,10 +47,4 @@ public static class DecryptorEvents
             DecryptorRole.TasksTowardCompletion = 0;
         }
     }
-
-    [RegisterEvent]
-    public static void OnRoleChange(SetRoleEvent evt)
-    {
-        DecryptorRole.KnownCharacters[evt.Player.PlayerId].Clear();
-    }
 }

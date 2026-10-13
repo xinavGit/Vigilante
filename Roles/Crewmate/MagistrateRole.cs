@@ -33,6 +33,7 @@ using Vigilante.Interfaces;
 using Vigilante.Utilities;
 using TownOfUs.Networking;
 using Reactor.Utilities.Extensions;
+using Reactor.Utilities;
 
 namespace Vigilante.Roles.Crewmate;
 //using TOUM monarch role code for enlist rpc
@@ -158,25 +159,34 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             return;
         }
 
+        var victimName = "";
+
         if (VigilanteUtils.AreFriendly(target, juror))
         {
-            // Even though Deputy doesn't use the nameplate normally, it should grab it anyways incase Deputy isn't meant to reveal themselves
-            Player.RpcMeetingMurder(target, MeetingAnimation.RoleSpecific, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
+            Debug.Log($"target is friendly, judge dies  {target.Data.Role.GetRoleName()}, {juror.Data.Role.GetRoleName()}");
+            juror.RpcMeetingMurder(Player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                 causeOfDeath: "Judge");
+            victimName = Player.name;
         }
         else
         {
-            Player.RpcMeetingMurder(Player, MeetingAnimation.RoleSpecific, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
+            Debug.Log($"judgement successful {target.Data.Role.GetRoleName()}, {juror.Data.Role.GetRoleName()}");
+            Player.RpcMeetingMurder(target, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                 causeOfDeath: "Judge");
-            var msg = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.Judgement");
+            victimName = target.name;
+        }
+
+        var msg = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.Judgement").Replace("<player>", $"{victimName}");
             var notif1 = Helpers.CreateAndShowNotification(
                 $"<b>{VigilanteColors.Magistrate.ToTextColor()}{msg}</b></color>",
                 Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
             notif1.AdjustNotification();
-        }
+        
+        Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Magistrate));
 
         if (Player.AmOwner)
         {
+            JudgementUsesLeft--;
             ClearMenu();
         }
     }

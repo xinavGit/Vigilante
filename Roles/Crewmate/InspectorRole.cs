@@ -300,6 +300,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         {
             inspected.RemoveModifier<InspectorRevealModifier>();
             insp.RefreshButtons();
+            insp.playersPublished++;
         }
 
         inspected.AddModifier<InspectorPublishedModifier>(RoleManager.Instance.GetRole((RoleTypes)publishRole));
