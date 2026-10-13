@@ -17,6 +17,7 @@ public static class VigilanteAssets
     public static LoadableAsset<Sprite> DecryptorIcon { get; } = new LoadableResourceAsset($"{IconPath}.Decryptor.png", 200);
     public static LoadableAsset<Sprite> InspectorIcon { get; } = new LoadableResourceAsset($"{IconPath}.Inspector.png", 200);
     public static LoadableAsset<Sprite> JudgeIcon { get; } = new LoadableResourceAsset($"{IconPath}.Judge.png", 200);
+    public static LoadableAsset<Sprite> DisruptorIcon { get; } = new LoadableResourceAsset($"{IconPath}.Disruptor.png", 200);
 
     //buttons
     public static LoadableAsset<Sprite> ChameleonVent { get; } = new LoadableResourceAsset($"{ButtonPath}.ChameleonVent.png");

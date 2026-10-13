@@ -18,18 +18,8 @@
   <img width="30%" src="./Resources/RoleBanners/inspector.png" alt="Inspector"/>
   <img src="./Resources/Groups/CrewPower.png" alt="Crewmate Power"/>
   <img width="30%" src="./Resources/RoleBanners/magistrate.png" alt="Magistrate"/>
-  <img src="./Resources/Groups/ImpKilling.png" alt="Impostor Killing"/>
-  <img width="30%" src="./Resources/RoleBanners/jinx.png" alt="Jinx"/>
   <img src="./Resources/Groups/ImpPower.png" alt="Impostor Power"/>
-  <img width="30%" src="./Resources/RoleBanners/diplomat.png" alt="Diplomat"/>
-  <img width="30%" src="./Resources/RoleBanners/kidnapper.png" alt="Kidnapper"/>
   <img width="30%" src="./Resources/RoleBanners/disruptor.png" alt="Disruptor"/>
-  <img src="./Resources/Groups/ImpSupport.png" alt="Impostor Support"/>
-  <img width="30%" src="./Resources/RoleBanners/banshee.png" alt="Banshee"/>
-  <img src="./Resources/Groups/NeutEvil.png" alt="Neutral Evil"/>
-  <img width="30%" src="./Resources/RoleBanners/anomaly.png" alt="Anomaly"/>
-  <img width="30%" src="./Resources/RoleBanners/ravager.png" alt="Ravager"/>  
-  <img width="30%" src="./Resources/RoleBanners/cultist.png" alt="Cultist"/>  
   <img src="./Resources/Groups/NeutKilling.png" alt="Neutral Killing"/>
   <img width="30%" src="./Resources/RoleBanners/accumulator.png" alt="Accumulator"/> 
   <img src="./Resources/Groups/ImpMods.png" alt="Impostor modifiers"/>

@@ -150,7 +150,7 @@
     <string name="Vigilante.Role.Jinx.TabDescription">Jinx bodies you kill, making them deadly for a while.</string>
     <string name="Vigilante.Role.Jinx.WikiDescription">The Jinx is an Impostor Killing role whose bodies will kill whoever reports them for a short time. Sparkles on a body are a visual indicator that it is deadly to report. The Jinx can also choose a player to jinx during the meeting, making the first person to interact with that player to die with a jinxed body.</string>
     <string name="Vigilante.Role.Jinx.Jinx">Jinx</string>
-    <string name="Vigilante.Role.Jinx.Exterminate.WikiDescription">Choose a person during the meeting to jinx, killing the first person to interact with them the next round with a jinxed body.</string>
+    <string name="Vigilante.Role.Jinx.Jinx.WikiDescription">Choose a person during the meeting to jinx, killing the first person to interact with them the next round with a jinxed body.</string>
     <!-- Jinx Feedback -->
     <string name="Vigilante.Feedback.Jinx.YouWereJinxed">You were jinxed by the Jinx! The first person to interact with you will die.</string>
     <!-- Jinx Options -->
@@ -158,6 +158,18 @@
     <string name="Vigilante.Options.Jinx.KidnapUses">Inital Jinx Uses</string>
     <string name="Vigilante.Options.Jinx.MoreUsesFromKills">Get More Jinx Uses From Kills</string>
     <string name="Vigilante.Options.Jinx.KillsPerUse">Kills Needed For Jinx Use</string>
+
+    <!-- Jinx - Impostor Power-->
+    <!-- Disruptor Wiki / Abilities -->
+    <string name="Vigilante.Role.Disruptor">Disruptor</string>
+    <string name="Vigilante.Role.Disruptor.IntroBlurb">Watch the map burn!</string>
+    <string name="Vigilante.Role.Disruptor.MedDescription">Every kill you get, a random sabotage is called.</string>
+    <string name="Vigilante.Role.Disruptor.TabDescription">Call sabotages when you kill bodies. Sabotages can stack, and your kill cooldown is faster during sabotages.</string>
+    <string name="Vigilante.Role.Disruptor.WikiDescription">The Disruptor is an Impostor Power role that can kill to call a random sabotage. Sabotages can stack on top of each other. Their kill cooldown is lower during sabotages.</string>
+    <string name="Vigilante.Role.Disruptor.Disruptor">Disruptor</string>
+    <string name="Vigilante.Role.Disruptor.Exterminate.WikiDescription">Choose a person during the meeting to jinx, killing the first person to interact with them the next round with a jinxed body.</string>
+    <!-- Disruptor Options -->
+    <string name="Vigilante.Options.Disruptor.SabotageKillCooldownSpeedMultiplier">KCD Speed Multiplier During Sabotage.</string>
 
 
 
