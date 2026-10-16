@@ -39,6 +39,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
     };
 
     // reworked engineer fix code
+    [HideFromIl2Cpp]
     public static List<SystemTypes> SabotagableSabs()
     {
 
@@ -72,7 +73,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
 
                 break;
             case ExpandedMapNames.MiraHq:
-                var comms2 = ShipStatus.Instance.Systems[SystemTypes.Comms].Cast<HqHudSystemType>();
+                var comms2 = ShipStatus.Instance.Systems[SystemTypes.Comms].Cast<ReactorSystemType>();
                 if (!comms2.IsActive)
                 {
                     availableSabs.Add(SystemTypes.Comms);
@@ -226,6 +227,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
     return availableSabs;
 }
 
+    [HideFromIl2Cpp]
     public static void SabRandom()
     {
         var availableSabs = SabotagableSabs();

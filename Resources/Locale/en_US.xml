@@ -159,7 +159,7 @@
     <string name="Vigilante.Options.Jinx.MoreUsesFromKills">Get More Jinx Uses From Kills</string>
     <string name="Vigilante.Options.Jinx.KillsPerUse">Kills Needed For Jinx Use</string>
 
-    <!-- Jinx - Impostor Power-->
+    <!-- Disruptor - Impostor Power-->
     <!-- Disruptor Wiki / Abilities -->
     <string name="Vigilante.Role.Disruptor">Disruptor</string>
     <string name="Vigilante.Role.Disruptor.IntroBlurb">Watch the map burn!</string>
