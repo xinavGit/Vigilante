@@ -38,7 +38,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOf
         Icon = VigilanteAssets.DisruptorIcon
     };
 
-    // reworked engineer fix code
+    // reworked engineer fix code BROKEN HERE REMEMBER TO FIX
     [HideFromIl2Cpp]
     public static List<SystemTypes> SabotagableSabs()
     {

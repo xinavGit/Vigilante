@@ -87,9 +87,10 @@
     <string name="Vigilante.Feedback.Magistrate.JurorNotify">The Magistrate chose you to be their Juror!</string>
     <string name="Vigilante.Feedback.Magistrate.Juror">Juror</string>
     <string name="Vigilante.Feedback.Magistrate.JurorDescription">The Magistrate chose you to compare your alliance with another player in the next meeting!</string>
-    <string name="Vigilante.Feedback.Magistrate.JudgementsRemaining">Judgements Remaining</string>
+    <string name="Vigilante.Feedback.Magistrate.JudgementsRemaining">Judgements Remaining</string> <!-- remember oracle bless stuff -->
     <string name="Vigilante.Feedback.Magistrate.Judgement">[player] has been judged and executed.</string>
-    <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string>
+    <string name="Vigilante.Feedback.Magistrate.JudgementDefended">[player] was unable to be judged! They are either blessed or are immune.</string>
+    <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string> <!-- implement this -->
     <!-- Magistrate Options -->
     <string name="Vigilante.Options.Magistrate.JudgeUses">Max Judgements</string>
     <string name="Vigilante.Options.Magistrate.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>
@@ -98,7 +99,7 @@
     <string name="Vigilante.Options.Magistrate.EnlistDelay">Enlist Delay (Can Cancel)</string>
     <string name="Vigilante.Options.Magistrate.NotifyJuror">Notify Juror On Enlistment</string>
 
-    <!-- Pacifist - Crewmate Power -->
+    <!-- Pacifist - Crewmate Power FIX TO REWORKED PACIFIST LATER -->
     <!-- Pacifist Wiki / Abilities -->
     <string name="Vigilante.Role.Pacifist">Pacifist</string>
     <string name="Vigilante.Role.Pacifist.IntroBlurb">Protest to victory!</string>
@@ -131,6 +132,21 @@
     <string name="Vigilante.Options.Crusader.SanctifyCooldown">Sanctify Cooldown</string>
     <string name="Vigilante.Options.Crusader.SanctifyDuration">Sanctify Duration</string>
 
+    <!-- Diplomat - Impostor Power might need nerfs but lets see how this plays out-->
+    <!-- Diplomat Wiki / Abilities -->
+    <string name="Vigilante.Role.Diplomat">Diplomat</string>
+    <string name="Vigilante.Role.Diplomat.IntroBlurb">Manipulate votes in your favor!</string>
+    <string name="Vigilante.Role.Diplomat.MedDescription">Manipulate votes and reveal yourself for political immunity.</string>
+    <string name="Vigilante.Role.Diplomat.TabDescription">During the meeting, you can manipulate votes and reveal for voting immunity.</string>
+    <string name="Vigilante.Role.Diplomat.WikiDescription">The Diplomat is an Impostor Power role that can manipulate the meeting. They can choose a player to manipulate, making them vote for the player the player the Diplomat voted for. They can also reveal themselves for political immunity, which also gives the Diplomat the ability to manipulate two players at a time.</string>
+    <string name="Vigilante.Role.Diplomat.Manipulate">Manipulate</string>
+    <string name="Vigilante.Role.Diplomat.Manipulate.WikiDescription">Choose a person during the meeting to manipulate, swapping their vote to what you voted. If you are revealed, you can manipulate two players at a time.</string>
+    <string name="Vigilante.Role.Diplomat.Manipulate">Reveal</string> <!-- decrease vision? decrease speed? maybe vote silence to vote manipulation instead-->
+    <string name="Vigilante.Role.Diplomat.Manipulate.WikiDescription">Reveal yourself to all players, giving you political immunity for the meeting while also increasing your kill cooldown and buffing your manipulation ability.</string>
+    <!-- Diplomat Options -->
+    <string name="Vigilante.Options.Diplomat.KillsRequired">Kills Required To Reveal</string>
+    <string name="Vigilante.Options.Diplomat.PostRevealKCDIncrease">KCD Increase Post-Reveal</string>
+
     <!-- Disruptor - Impostor Power-->
     <!-- Disruptor Wiki / Abilities -->
     <string name="Vigilante.Role.Disruptor">Disruptor</string>
@@ -138,10 +154,9 @@
     <string name="Vigilante.Role.Disruptor.MedDescription">Every kill you get, a random sabotage is called.</string>
     <string name="Vigilante.Role.Disruptor.TabDescription">Call sabotages when you kill bodies. Sabotages can stack, and your kill cooldown is faster during sabotages.</string>
     <string name="Vigilante.Role.Disruptor.WikiDescription">The Disruptor is an Impostor Power role that can kill to call a random sabotage. Sabotages can stack on top of each other. Their kill cooldown is lower during sabotages.</string>
-    <string name="Vigilante.Role.Disruptor.Disruptor">Disruptor</string>
-    <string name="Vigilante.Role.Disruptor.Exterminate.WikiDescription">Choose a person during the meeting to jinx, killing the first person to interact with them the next round with a jinxed body.</string>
     <!-- Disruptor Options -->
-    <string name="Vigilante.Options.Disruptor.SabotageKillCooldownSpeedMultiplier">KCD Speed Multiplier During Sabotage.</string>
+    <string name="Vigilante.Options.Disruptor.CanVent">Can Vent</string>
+    <string name="Vigilante.Options.Disruptor.SabotageKillCooldownSpeedMultiplier">KCD Speed Multiplier During Sabotage</string>
 
     <!-- Kidnapper - Impostor Power maybe mayor doesnt get extra votes if kidnapped? idk-->
     <!-- Kidnapper Wiki / Abilities -->
@@ -160,8 +175,9 @@
     <string name="Vigilante.Feedback.Kidnapper.ExterminatedNoKidnap">[player] was successfully exterminated! You can no longer kidnap players.</string>
     <!-- Kidnapper Options maybe change to uses per kill and make it a decimal value -->
     <string name="Vigilante.Options.Kidnapper.KidnapUses">Inital Kidnap Uses</string>
-    <string name="Vigilante.Options.Kidnapper.MoreUsesFromKills">Get More Uses From Kills</string>
-    <string name="Vigilante.Options.Kidnapper.KillsPerUse">Kills Needed For Ability Use</string>
+    <string name="Vigilante.Options.Kidnapper.KidnapCooldown">Kidnap Cooldown</string>
+    <string name="Vigilante.Options.Kidnapper.MoreKidnapsFromKills">Get More Kidnap Uses From Kills</string>
+    <string name="Vigilante.Options.Kidnapper.KillsPerUse">Kills Needed For Kidnap Use</string>
     <string name="Vigilante.Options.Kidnapper.CanKidnapPostExterminate">Can Kidnap After Exterminating Player</string>
 
     <!-- Jinx - Impostor Killing-->
@@ -179,24 +195,95 @@
     <string name="Vigilante.Options.Jinx.JinxedBodyDuration">Jinx Deadly Body Duration</string>
     <string name="Vigilante.Options.Jinx.JinxUses">Inital Jinx Uses</string>
     <string name="Vigilante.Options.Jinx.NotifyJinxed">Notify Jinxed Player On Jinx</string>
+    <string name="Vigilante.Options.Jinx.CanGetMoreUses">Can Get More Jinx Uses From Kills</string>
     <string name="Vigilante.Options.Jinx.KillsPerUse">Kills Needed For Jinx Use</string>
+
+    <!-- Ritualist - Impostor Killing custom animation for blood rit sacrificed player?-->
+    <!-- Ritualist Wiki / Abilities -->
+    <string name="Vigilante.Role.Ritualist">Ritualist</string>
+    <string name="Vigilante.Role.Ritualist.IntroBlurb">Preform blood rituals to guess!</string>
+    <string name="Vigilante.Role.Ritualist.MedDescription">Use blood rituals to guess players' roles at no cost.</string>
+    <string name="Vigilante.Role.Ritualist.TabDescription">Preform blood rituals to guess roles at no cost to you.</string> <!-- remember oracle bless stuff -->
+    <string name="Vigilante.Role.Ritualist.WikiDescription">The Ritualist is an Impostor Killing role that can attempt to guess the roles of players during the round using blood rituals. The Ritualist will know if they are right or wrong about their guess, and they won't have any punishment on misguessing. If they are right, their role will be visible to all impostors and the Ritualist can eliminate the revealed player during the meeting. Elimnating a player will always use the RHM meeting death animation.</string> 
+    <string name="Vigilante.Role.Ritualist.Ritual">Ritual</string>
+    <string name="Vigilante.Role.Ritualist.Ritual.WikiDescription">Preform a blood ritual, attempting to guess a player's role at no cost to yourself. If you are correct, their role will be visible to all impostors and you can eliminate them.</string>
+    <string name="Vigilante.Role.Ritualist.Eliminate">Eliminate</string>
+    <string name="Vigilante.Role.Ritualist.Eliminate.WikiDescription">Kill a player who was successfully blood-ritualized. Only the Ritualist can do this to a ritualized player.</string>
+    <!-- Ritualist Feedback -->
+    <string name="Vigilante.Feedback.Ritualist.RitualFail">Your ritual failed. [player] does not seem to be the [role]! </string>
+    <string name="Vigilante.Feedback.Ritualist.RitualSuccess">Your ritual succeeded! You can now eliminate the player in the meeting.</string>
+    <string name="Vigilante.Feedback.Ritualist.EliminateSuccess">[player] was eliminated.</string>
+    <string name="Vigilante.Feedback.Ritualist.EliminateFail">[player] could not be eliminated! They must be blessed or immune.</string>
+    <!-- Ritualist Options -->
+    <string name="Vigilante.Options.Ritualist.RitualUses">Inital Ritual Uses</string>
+    <string name="Vigilante.Options.Ritualist.RitualCooldown">Ritual Cooldown</string>
+    <string name="Vigilante.Options.Ritualist.CanGetMoreUses">Can Get More Jinx Uses From Kills</string>
+    <string name="Vigilante.Options.Ritualist.UsesPerKill">Ritual Uses Gained Per Kill</string>
+
+    <!-- Banshee - Impostor Support -->
+    <!-- Banshee Wiki / Abilities -->
+    <string name="Vigilante.Role.Banshee">Banshee</string>
+    <string name="Vigilante.Role.Banshee.IntroBlurb">Cause terror with your screeches.</string>
+    <string name="Vigilante.Role.Banshee.MedDescription">Screech to deafen players near you and debuff them temporarily.</string>
+    <string name="Vigilante.Role.Banshee.TabDescription">Screech to deafen and lower the vision and speed of players nearby. Echo to locate players.</string>
+    <string name="Vigilante.Role.Banshee.WikiDescription">The Banshee is an Impostor Support role that can screech to deafen all unimmune players around them as well as debuff their vision and speed temporarily. They can also use their echo ability to locate where players are.</string> 
+    <string name="Vigilante.Role.Banshee.Screech">Screech</string>
+    <string name="Vigilante.Role.Banshee.Screech.WikiDescription">Deafen and temporarily debuff all players nearby. Deafened players cannot hear/see any messages in chat the next meeting. They will be immune to being deafened again after being deafened.</string> <!-- add symbols, x symbol for immune and stuff-->
+    <string name="Vigilante.Role.Banshee.Echo">Echo</string>
+    <string name="Vigilante.Role.Banshee.Echo.WikiDescription">Locate where people are on the map.</string>
+    <!-- Banshee Feedback -->
+    <string name="Vigilante.Feedback.Banshee.BansheeScreech">A Banshee screeched at you!</string>
+    <string name="Vigilante.Feedback.Banshee.BansheeDeafened">You were deafened by a Banshee and cannot hear/see others messages!</string>
+    <string name="Vigilante.Feedback.Banshee.DeafenImmune">Your ears are now immune to being deafened for [number] round(s).</string>
+    <!-- Banshee Options -->
+    <string name="Vigilante.Options.Banshee.ScreechCooldown">Screech Cooldown</string>
+    <string name="Vigilante.Options.Banshee.ScreechCooldown">Echo Cooldown</string>
+    <string name="Vigilante.Options.Banshee.DeafenImmunityRounds">Rounds Deafen Immunity Lasts</string>
+
+    <!-- accumulator, will do later, maybe make screen flash to everyone on every task complete?  -->
+    <!-- Banshee Wiki / Abilities -->
+    <string name="Vigilante.Role.Banshee">Banshee</string>
+    <string name="Vigilante.Role.Banshee.IntroBlurb">Cause terror with your screeches.</string>
+    <string name="Vigilante.Role.Banshee.MedDescription">Screech to deafen players near you and debuff them temporarily.</string>
+    <string name="Vigilante.Role.Banshee.TabDescription">Screech to deafen and lower the vision and speed of players nearby. Echo to locate players.</string>
+    <string name="Vigilante.Role.Banshee.WikiDescription">The Banshee is an Impostor Support role that can screech to deafen all unimmune players around them as well as debuff their vision and speed temporarily. They can also use their echo ability to locate where players are.</string> 
+    <string name="Vigilante.Role.Banshee.Screech">Screech</string>
+    <string name="Vigilante.Role.Banshee.Screech.WikiDescription">Deafen and temporarily debuff all players nearby. Deafened players cannot hear/see any messages in chat the next meeting. They will be immune to being deafened again after being deafened.</string> <!-- add symbols, x symbol for immune and stuff-->
+    <string name="Vigilante.Role.Banshee.Echo">Echo</string>
+    <string name="Vigilante.Role.Banshee.Echo.WikiDescription">Locate where people are on the map.</string>
+    <!-- Banshee Feedback -->
+    <string name="Vigilante.Feedback.Banshee.BansheeScreech">A Banshee screeched at you!</string>
+    <string name="Vigilante.Feedback.Banshee.BansheeDeafened">You were deafened by a Banshee and cannot hear/see others messages!</string>
+    <string name="Vigilante.Feedback.Banshee.DeafenImmune">Your ears are now immune to being deafened for [number] round(s).</string>
+    <!-- Banshee Options -->
+    <string name="Vigilante.Options.Banshee.ScreechCooldown">Screech Cooldown</string>
+    <string name="Vigilante.Options.Banshee.ScreechCooldown">Echo Cooldown</string>
+    <string name="Vigilante.Options.Banshee.DeafenImmunityRounds">Rounds Deafen Immunity Lasts</string>
     
-    <!-- Starspawn - Neutral Outlier-->
-    <!-- Jinx Wiki / Abilities -->
+    <!-- Starspawn - Neutral Outlier maybe will make it so that it doesnt block abilities later on-->
+    <!-- Starspawn Wiki / Abilities -->
     <string name="Vigilante.Role.Starspawn">Starspawn</string>
-    <string name="Vigilante.Role.Starspawn.IntroBlurb">Starspawn your bodies!</string>
-    <string name="Vigilante.Role.Starspawn.MedDescription">Bodies you kill are Starspawned and deadly for a while.</string>
-    <string name="Vigilante.Role.Starspawn.TabDescription">Starspawn bodies you kill, making them deadly for a while.</string>
-    <string name="Vigilante.Role.Starspawn.WikiDescription">The Starspawn is an Impostor Killing role whose bodies will kill whoever reports them for a short time. Sparkles on a body are a visual indicator that it is deadly to report. The Starspawn can also choose a player to Starspawn during the meeting, making the first person to interact with that player to die with a Starspawned body.</string>
-    <string name="Vigilante.Role.Starspawn.Starspawn">Starspawn</string>
-    <string name="Vigilante.Role.Starspawn.Starspawn.WikiDescription">Choose a person during the meeting to Starspawn, killing the first person to interact with them the next round with a Starspawned body.</string>
+    <string name="Vigilante.Role.Starspawn.IntroBlurb">Starbind players to win!</string>
+    <string name="Vigilante.Role.Starspawn.MedDescription">Starbind players who interact with the person you isolated.</string>
+    <string name="Vigilante.Role.Starspawn.TabDescription">Use your Isolate and Daybreak abilities to starbind players.</string>
+    <string name="Vigilante.Role.Starspawn.WikiDescription">The Starspawn is a Neutral Outlier role that must starbind a certain number of unique roles. They can isolate players to starbind whoever interacts with that player, and they can use use their Daybreak ability to starbind all players who vote for them in the meeting. The Starspawn can see the roles that are starbound.</string>
+    <string name="Vigilante.Role.Starspawn.Isolate">Isolate</string>
+    <string name="Vigilante.Role.Starspawn.Isolate.WikiDescription">Choose a player to isolate, starbinding any player who interacts with your target and canceling any type of interaction.</string>
+    <string name="Vigilante.Role.Starspawn.Daybreak">Daybreak</string> <!--originally gonna starbind players who use meeting abilities but thats like too hard to code manually and not really fun and worth it -->
+    <string name="Vigilante.Role.Starspawn.Daybreak.WikiDescription">Daybreak once a game during the meeting to starbind all players who vote for you.</string> 
     <!-- Starspawn Feedback -->
-    <string name="Vigilante.Feedback.Starspawn.YouWereStarspawned">You were Starspawned by the Starspawn! The first person to interact with you will die.</string>
+    <string name="Vigilante.Feedback.Starspawn.TabStarboundsNeeded">You need [number] unique roles starbounded to win.</string>
+    <string name="Vigilante.Feedback.Starspawn.TabStarbounded">Starbounded Roles:</string>
+    <string name="Vigilante.Feedback.Starspawn.IsolateSelect">You chose to isolate [player] and starbind whoever interacts with them.</string>
+    <string name="Vigilante.Feedback.Starspawn.IsolateStarbindSuccessful">You successfully starbound player(s) who interacted with your target!</string>
+    <string name="Vigilante.Feedback.Starspawn.IsolateStarbindFail">No players were starbound on your target.</string>
+    <string name="Vigilante.Feedback.Starspawn.DaybreakStarbindSuccessful">You successfully starbound player(s) who voted for you!</string>
+    <string name="Vigilante.Feedback.Starspawn.DaybreakStarbindFail">No players were starbound in the meeting.</string>
     <!-- Starspawn Options -->
-    <string name="Vigilante.Options.Starspawn.StarspawnedBodyDuration">Starspawn Deadly Body Duration</string>
-    <string name="Vigilante.Options.Starspawn.KidnapUses">Inital Starspawn Uses</string>
-    <string name="Vigilante.Options.Starspawn.MoreUsesFromKills">Get More Starspawn Uses From Kills</string>
-    <string name="Vigilante.Options.Starspawn.KillsPerUse">Kills Needed For Starspawn Use</string>
+    <string name="Vigilante.Options.Starspawn.StarboundsNeeded">Starbound Roles Needed To Win</string>
+    <string name="Vigilante.Options.Starspawn.IsolateDuration">Isolate Duration</string>
+    <string name="Vigilante.Options.Starspawn.CanIsolateSamePlayer">Can Isolate Same Player Twice In A Row</string>
+    <!-- options for what happens to starbound players? -->
 
 
 
