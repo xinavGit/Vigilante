@@ -161,7 +161,7 @@
 
     <!-- Disruptor - Impostor Power-->
     <!-- Disruptor Wiki / Abilities -->
-    <string name="Vigilante.Role.Disruptor">Disruptor (BROKEN DONT USE)</string>
+    <string name="Vigilante.Role.Disruptor">Disruptor</string>
     <string name="Vigilante.Role.Disruptor.IntroBlurb">Watch the map burn!</string>
     <string name="Vigilante.Role.Disruptor.MedDescription">Every kill you get, a random sabotage is called.</string>
     <string name="Vigilante.Role.Disruptor.TabDescription">Call sabotages when you kill bodies. Sabotages can stack, and your kill cooldown is faster during sabotages.</string>

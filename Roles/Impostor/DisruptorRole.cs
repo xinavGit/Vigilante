@@ -74,7 +74,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
 
                 break;
             case ExpandedMapNames.MiraHq:
-                var comms2 = ShipStatus.Instance.Systems[SystemTypes.Comms].Cast<ReactorSystemType>();
+                var comms2 = ShipStatus.Instance.Systems[SystemTypes.Comms].Cast<HqHudSystemType>();
                 if (!comms2.IsActive)
                 {
                     availableSabs.Add(SystemTypes.Comms);
@@ -235,6 +235,10 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         if (availableSabs.Count <= 0)
         {
             return;
+        }
+        foreach (var sab in availableSabs)
+        {
+            Info(sab);
         }
         var chosenSab = availableSabs[UnityEngine.Random.Range(0, availableSabs.Count)];
         switch (chosenSab)
