@@ -75,7 +75,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                     TouRoleIcons.Prosecutor),
                 new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Judge", "Judge"),
                     MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Judge.WikiDescription"),
-                    TouCrewAssets.CrewSwoopSprite)//btos2 judge sprite here!
+                    VigilanteAssets.MagistrateJudgement)//btos2 judge sprite here!
             ];
         }
     }
@@ -85,6 +85,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.JudgeIcon.LoadAsset(), "Vigilante.Role.Crewmate.Judge", 1.45f),
         Icon = VigilanteAssets.JudgeIcon,
         IntroSound = TouAudio.DetectiveIntroSound,
+        MaxRoleCount = 1
     };
 
     public override void Initialize(PlayerControl player)
@@ -117,16 +118,16 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     [HideFromIl2Cpp]
     public bool IsJudgementExempt(PlayerVoteArea voteArea)
     {
-        Debug.Log($"player is {voteArea.GetPlayer()}, checking exempt...");
+        Info($"player is {voteArea.GetPlayer()}, checking exempt...");
         if (JudgementUsesLeft <= 0)
         {
-            Debug.Log($"judge judgement exempt - judgement all used");
+            Info($"judge judgement exempt - judgement all used");
             return true;
         }
 
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
-            Debug.Log($"null target or target is judge");
+            Info($"null target or target is judge");
             return true;
         }
 
@@ -134,17 +135,17 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
         if (target == null || target.HasDied())// check if target has been successfully inspected again
         {
-            Debug.Log($"target null or has died!");
+            Info($"target null or has died!");
             return true;
         }
 
         if (target.HasModifier<MagistrateJurorModifier>())
         {
-            Debug.Log($"is the juror, exempt");
+            Info($"is the juror, exempt");
             return true;
         }
 
-        Debug.Log($"can be judgemented");
+        Info($"can be judgemented");
         return false;
     }
 
@@ -163,14 +164,14 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
         if (VigilanteUtils.AreFriendly(target, juror))
         {
-            Debug.Log($"target is friendly, judge dies  {target.Data.Role.GetRoleName()}, {juror.Data.Role.GetRoleName()}");
+            Info($"target is friendly, judge dies  {target.Data.Role.GetRoleName()}, {juror.Data.Role.GetRoleName()}");
             juror.RpcMeetingMurder(Player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                 causeOfDeath: "Judge");
             victimName = Player.name;
         }
         else
         {
-            Debug.Log($"judgement successful {target.Data.Role.GetRoleName()}, {juror.Data.Role.GetRoleName()}");
+            Info($"judgement successful {target.Data.Role.GetRoleName()}, {juror.Data.Role.GetRoleName()}");
             Player.RpcMeetingMurder(target, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                 causeOfDeath: "Judge");
             victimName = target.name;

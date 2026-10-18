@@ -68,6 +68,23 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             MiscUtils.AppendOptionsText(GetType());
     }
 
+    [HideFromIl2Cpp]
+    public List<CustomButtonWikiDescription> Abilities
+    {
+        get
+        {
+            return
+            [
+                new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Inspect", "Inspect"),
+                    MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Inspect.WikiDescription"),
+                    VigilanteAssets.InspectorInspect),
+                new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Publish", "Publish"),
+                    MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Publish.WikiDescription"),
+                    TouAssets.RevealButtonSprite)
+            ];
+        }
+    }
+
     public CustomRoleConfiguration Configuration => new(this)
     {
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.InspectorIcon.LoadAsset(), "Vigilante.Role.Crewmate.Inspector", 1.45f),
@@ -253,16 +270,16 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsPublishExempt(PlayerVoteArea voteArea)
     {
-        Debug.Log($"player is {voteArea.GetPlayer()}, checking exempt...");
+        Info($"player is {voteArea.GetPlayer()}, checking exempt...");
         if (playersPublished >= OptionGroupSingleton<InspectorOptions>.Instance.MaxPublishUses.Value)
         {
-            Debug.Log($"inspector publish exempt - publish all used");
+            Info($"inspector publish exempt - publish all used");
             return true;
         }
 
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
-            Debug.Log($"null target or target is inspector");
+            Info($"null target or target is inspector");
             return true;
         }
 
@@ -270,17 +287,17 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         if (target == null || target.HasDied())// check if target has been successfully inspected again
         {
-            Debug.Log($"target null or has died!");
+            Info($"target null or has died!");
             return true;
         }
 
         if (!InspectedPlayers.ContainsKey(target))
         {
-            Debug.Log($"no key found... exempt");
+            Info($"no key found... exempt");
             return true;
         }
 
-        Debug.Log($"chill! can be published, not exempt");
+        Info($"chill! can be published, not exempt");
         return false;
     }
 

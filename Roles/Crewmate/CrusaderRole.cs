@@ -75,7 +75,8 @@ public sealed class CrusaderRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilan
     {
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.CrusaderIcon.LoadAsset(), "Vigilante.Role.Crewmate.Crusader", 1.45f),
         Icon = VigilanteAssets.CrusaderIcon,
-        IntroSound = TouAudio.DetectiveIntroSound
+        IntroSound = TouAudio.DetectiveIntroSound,
+        MaxRoleCount = 1
     };
 
     public static bool IsPowerCrew => true;

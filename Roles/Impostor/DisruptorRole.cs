@@ -11,19 +11,20 @@ using TownOfUs.Roles;
 using TownOfUs.Utilities;
 using UnityEngine;
 using Vigilante.Assets;
+using Vigilante.Interfaces;
 
 namespace Vigilante.Roles.Impostor;
 
-public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), ITownOfUsRole, IWikiDiscoverable, IDoomable
+public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
 {
     public DoomableType DoomHintType => DoomableType.Trickster;
     public string IdPart => "Disruptor";
-    public string RoleMedDescriptionLocale => $"TownOfUsMira.Role.{IdPart}.TabDescription";
+    public string RoleMedDescriptionLocale => $"Vigilante.Role.{IdPart}.TabDescription";
 
     public string GetAdvancedDescription()
     {
         return
-            MiraLocaleManager.Get($"TownOfUsMira.Role.{IdPart}.WikiDescription") +
+            MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.WikiDescription") +
             MiscUtils.AppendOptionsText(GetType());
     }
 

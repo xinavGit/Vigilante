@@ -77,7 +77,7 @@
     <string name="Vigilante.Role.Magistrate.Enlist">Enlist</string>
     <string name="Vigilante.Role.Magistrate.Enlist.WikiDescription">Enlist a player to be your Juror for the next meeting.</string>
     <string name="Vigilante.Role.Magistrate.Judge">Judge</string>
-    <string name="Vigilante.Role.Magistrate.Magistrate.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed.</string>
+    <string name="Vigilante.Role.Magistrate.Judge.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror they will be executed. If they are friends with your Juror, then you will be executed.</string>
     <!-- Magistrate Feedback -->
     <string name="Vigilante.Feedback.Magistrate.Enlisting">Enlisting</string>
     <string name="Vigilante.Feedback.Magistrate.EnlistingPlayer">You decided to enlist [player] for your trial in [seconds] seconds...</string>
@@ -124,10 +124,11 @@
     <string name="Vigilante.Role.Crusader">Crusader</string>
     <string name="Vigilante.Role.Crusader.IntroBlurb">Protect your target at all costs!</string>
     <string name="Vigilante.Role.Crusader.MedDescription">Kill the first person who interacts with the target you sanctified.</string>
-    <string name="Vigilante.Role.Crusader.TabDescription">Choose a target to sanctify. You will kill the next person to interact with them if they are interacted with.</string>
+    <string name="Vigilante.Role.Crusader.TabDescription">Choose a target to sanctify. You will kill the next person
+    to interact with them if they are interacted with.</string>
     <string name="Vigilante.Role.Crusader.WikiDescription">The Crusader is a Crewmate Protective role that can choose a player to sanctify on their menu. The chosen player will be fortified for a certain amount of time, and the Crusader will kill the first person to interact with them if they are interacted with.</string>
     <string name="Vigilante.Role.Crusader.Sanctify">Sanctify</string>
-    <string name="Vigilante.Role.Crusader.Sanctify.WikiDescription">Choose a player to sanctify, killing the next player\nto interact with them while they are sanctified.</string>
+    <string name="Vigilante.Role.Crusader.Sanctify.WikiDescription">Choose a player to sanctify, killing the next playerto interact with them while they are sanctified.</string>
     <!-- Crusader Feedback -->
     <string name="Vigilante.Feedback.Crusader.Sanctifying">Sanctifying</string>
     <string name="Vigilante.Feedback.Crusader.TabProtecting">Protecting:</string>
@@ -148,15 +149,19 @@
     <string name="Vigilante.Role.Diplomat.WikiDescription">The Diplomat is an Impostor Power role that can manipulate the meeting. They can choose a player to manipulate, making them vote for the player the player the Diplomat voted for. They can also reveal themselves for political immunity, which also gives the Diplomat the ability to manipulate two players at a time.</string>
     <string name="Vigilante.Role.Diplomat.Manipulate">Manipulate</string>
     <string name="Vigilante.Role.Diplomat.Manipulate.WikiDescription">Choose a person during the meeting to manipulate, swapping their vote to what you voted. If you are revealed, you can manipulate two players at a time.</string>
-    <string name="Vigilante.Role.Diplomat.Manipulate">Reveal</string> <!-- decrease vision? decrease speed? maybe vote silence to vote manipulation instead-->
-    <string name="Vigilante.Role.Diplomat.Manipulate.WikiDescription">Reveal yourself to all players, giving you political immunity for the meeting while also increasing your kill cooldown and buffing your manipulation ability.</string>
+    <string name="Vigilante.Role.Diplomat.Reveal">Reveal</string> <!-- decrease vision? decrease speed? maybe vote silence to vote manipulation instead-->
+    <string name="Vigilante.Role.Diplomat.Reveal.WikiDescription">Reveal yourself to all players, giving you political immunity for the meeting while also increasing your kill cooldown and buffing your manipulation ability.</string>
+    <!-- Diplomat Feedback -->
+    <string name="Vigilante.Feedback.Diplomat.Revealed">The Diplomat has revealed themself!</string>
     <!-- Diplomat Options -->
     <string name="Vigilante.Options.Diplomat.KillsRequired">Kills Required To Reveal</string>
     <string name="Vigilante.Options.Diplomat.PostRevealKCDIncrease">KCD Increase Post-Reveal</string>
+    <string name="Vigilante.Options.Diplomat.PostRevealVision">Vision Post-Reveal</string>
+    <string name="Vigilante.Options.Diplomat.PostRevealCanVent">Can Vent Post-Reveal</string>
 
     <!-- Disruptor - Impostor Power-->
     <!-- Disruptor Wiki / Abilities -->
-    <string name="Vigilante.Role.Disruptor">Disruptor</string>
+    <string name="Vigilante.Role.Disruptor">Disruptor (BROKEN DONT USE)</string>
     <string name="Vigilante.Role.Disruptor.IntroBlurb">Watch the map burn!</string>
     <string name="Vigilante.Role.Disruptor.MedDescription">Every kill you get, a random sabotage is called.</string>
     <string name="Vigilante.Role.Disruptor.TabDescription">Call sabotages when you kill bodies. Sabotages can stack, and your kill cooldown is faster during sabotages.</string>
