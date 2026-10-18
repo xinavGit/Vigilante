@@ -1,4 +1,6 @@
 using Il2CppInterop.Runtime.Attributes;
+using MiraAPI.GameOptions;
+using MiraAPI.Hud;
 using MiraAPI.Roles;
 using MiraAPI.Translation;
 using MiraAPI.Utilities.Assets;
@@ -12,6 +14,7 @@ using TownOfUs.Utilities;
 using UnityEngine;
 using Vigilante.Assets;
 using Vigilante.Interfaces;
+using Vigilante.Options;
 
 namespace Vigilante.Roles.Impostor;
 
@@ -273,5 +276,26 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
                 ShipStatus.Instance.RpcUpdateSystem(SystemTypes.Electrical, (byte)(num | 128U));
                 break;
         }
+    }
+
+    public void FixedUpdate()
+    {
+        if (!Player || Player.Data.Role is not DisruptorRole || Player.HasDied() || !Player.AmOwner ||
+            MeetingHud.Instance)
+        {
+            return;
+        }
+        
+        var value = OptionGroupSingleton<DisruptorOptions>.Instance.DisruptorSaboCooldownMultiplier - 1;
+        
+        foreach (var ability in CustomButtonManager.Buttons)
+        {
+            if (ability.EffectActive) continue;
+            if (ability.TimerPaused) continue;
+
+            ability.DecreaseTimer(Time.deltaTime * value);
+        }
+
+        Player.killTimer -= Time.deltaTime * value;
     }
 }

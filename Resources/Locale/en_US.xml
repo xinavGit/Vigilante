@@ -140,7 +140,7 @@
     <string name="Vigilante.Options.Crusader.SanctifyDuration">Sanctify Duration</string>
     <string name="Vigilante.Options.Crusader.PreventsKills">Protects Target From Kill</string>
 
-    <!-- Diplomat - Impostor Power might need nerfs but lets see how this plays out-->
+    <!-- Diplomat - Impostor Power might need nerfs but lets see how this plays out... maybe they die after set number meetings after reveal-->
     <!-- Diplomat Wiki / Abilities -->
     <string name="Vigilante.Role.Diplomat">Diplomat</string>
     <string name="Vigilante.Role.Diplomat.IntroBlurb">Manipulate votes in your favor!</string>

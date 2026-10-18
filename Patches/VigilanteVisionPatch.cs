@@ -17,7 +17,7 @@ using Vigilante.Options;
 
 namespace Vigilante.Patches;
 
-[HarmonyPatch(typeof(VisionPatch), nameof(VisionPatch.Postfix))]
+[HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.CalculateLightRadius))]
 public static class VigilanteVisionPatch
 {
     public static void Postfix(ShipStatus __instance, NetworkedPlayerInfo player, ref float __result)

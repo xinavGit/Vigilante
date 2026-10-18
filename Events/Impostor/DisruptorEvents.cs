@@ -12,6 +12,7 @@ using MiraAPI.Utilities;
 using MiraAPI.Events.Vanilla.Player;
 using Il2CppSystem.Runtime.InteropServices;
 using Vigilante.Roles.Impostor;
+using Rewired;
 
 namespace Vigilante.Events.Impostor;
 
@@ -25,6 +26,9 @@ public static class DisruptorEvents
             return;
         }
 
-        DisruptorRole.SabRandom();
+        if (PlayerControl.LocalPlayer.IsHost())
+        {
+            DisruptorRole.SabRandom();
+        }
     }
 }

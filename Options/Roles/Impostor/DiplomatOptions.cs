@@ -14,10 +14,10 @@ public class DiplomatOptions : AbstractOptionGroup<DiplomatRole>
     public override string GroupName => MiraLocaleManager.Get("Vigilante.Role.Diplomat", "Diplomat");
 
     public ModdedNumberOption RevealKCDIncrease { get; } =
-        new($"Vigilante.Options.Diplomat.PostRevealKCDIncrease", 0f, 20f, 30f, 2.5f, MiraNumberSuffixes.Seconds);
+        new($"Vigilante.Options.Diplomat.PostRevealKCDIncrease", 20f, 20f, 30f, 2.5f, MiraNumberSuffixes.Seconds);
 
     public ModdedNumberOption RevealVision { get; } =
-        new($"Vigilante.Options.Diplomat.PostRevealVision", 0.50f, 0.05f, 1.00f, 0.05f, MiraNumberSuffixes.Multiplier);
+        new($"Vigilante.Options.Diplomat.PostRevealVision", 0.50f, 0.05f, 1.00f, 0.05f, MiraNumberSuffixes.Multiplier, "0.0");
 
     public ModdedToggleOption RevealCanVent { get; } =
         new($"Vigilante.Options.Diplomat.PostRevealCanVent", false);
