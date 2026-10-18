@@ -5,5 +5,7 @@ public enum VigilanteRpcs : uint
     DecryptorAlert,
     InspectorPublish,
     MagistrateEnlist,
-    MagistrateJudge
+    MagistrateJudge,
+    CrusaderSanctify,
+    CrusaderClearSanctify
 }

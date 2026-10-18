@@ -1,8 +1,10 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
+using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
 using TownOfUs;
 using TownOfUs.Modules.Components;
+using TownOfUs.Options;
 using TownOfUs.Roles;
 using TownOfUs.Utilities;
 using UnityEngine;
@@ -14,19 +16,30 @@ namespace Vigilante.Patches;
 [HarmonyPatch(typeof(HudManagerHelper), "GetRoleNameText")]
 public static class VigilanteHudPatches
 {
+#pragma warning disable CA1707 // Identifiers should not contain underscores
     public static void Postfix(PlayerControl player, ref (Color PlayerColor, string PlayerName) __result)
+#pragma warning restore CA1707 // Identifiers should not contain underscores
     {
         if (PlayerControl.LocalPlayer == null)
         {
             return;
         }
+        
+        var genOpt = OptionGroupSingleton<GeneralOptions>.Instance;
+        var isDead = PlayerControl.LocalPlayer.HasDied() && genOpt.TheDeadKnow;
 
         var (playerColor, playerName) = __result;
 
         if (player.HasModifier<MagistrateJurorModifier>() &&
              PlayerControl.LocalPlayer.IsRole<MagistrateRole>())
         {
-            playerName += "<color=#cc9900> +</color>";
+            playerName += "<color=#cc9900> ¤</color>";
+        }
+
+        if (player.HasModifier<CrusaderSanctifiedModifier>() &&
+             PlayerControl.LocalPlayer.IsRole<CrusaderRole>())
+        {
+            playerName += "<color=#ed6000> ∧</color>";
         }
 
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)

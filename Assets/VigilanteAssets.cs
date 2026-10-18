@@ -32,6 +32,7 @@ public static class VigilanteAssets
 
     //buttons
     public static LoadableAsset<Sprite> ChameleonVent { get; } = new LoadableResourceAsset($"{ButtonPath}.ChameleonVent.png");
+    public static LoadableAsset<Sprite> CrusaderSanctify { get; } = new LoadableResourceAsset($"{ButtonPath}.Sanctify.png");
 
     // Audio clips (16000hz)
     public static LoadableAsset<AudioClip> InspectorPublish { get; } = new LoadableAudioResourceAsset($"{SoundPath}.InspectorPublish.wav");

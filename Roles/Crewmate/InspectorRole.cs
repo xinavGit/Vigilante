@@ -37,7 +37,9 @@ using Il2CppSystem.IO;
 
 namespace Vigilante.Roles.Crewmate;
 
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
 public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
+#pragma warning restore CA1001 // Types that own disposable fields should be disposable
 {
     private MeetingMenu? inspectMenu;
     private MeetingMenu? publishMenu;

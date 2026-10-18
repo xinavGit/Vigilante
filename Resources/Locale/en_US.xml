@@ -108,6 +108,8 @@
     <string name="Vigilante.Role.Pacifist.WikiDescription">The Pacifist is a Crewmate Power role that can win the game for crewmates by successfully identifying what crewmate roles are in the game during the meeting. Doing so successfully will start a protest, and if you survive until the end of the next meeting, crewmates will win! During the final meeting, only the Pacifist and their enemies may vote.</string>
     <string name="Vigilante.Role.Pacifist.Rally">Rally</string>
     <string name="Vigilante.Role.Pacifist.Rally.WikiDescription">Rally crewmate roles during the meeting. If all roles that you have chosen are in the game, you will start a protest.</string>
+    <string name="Vigilante.Role.Pacifist.Reflect">Reflect</string>
+    <string name="Vigilante.Role.Pacifist.Reflect.WikiDescription">Rally crewmate roles during the meeting. If all roles that you have chosen are in the game, you will start a protest.</string>
     <!-- Pacifist Feedback -->
     <string name="Vigilante.Feedback.Pacifist.ProtestStart">You have successfully started a protest!</string>
     <string name="Vigilante.Feedback.Pacifist.ProtestStartEvils">The Pacifist has started a protest, stop them before the next meeting or else the crewmates will win!</string>
@@ -117,20 +119,25 @@
     <string name="Vigilante.Options.Pacifist.RolesNeeded">Number Of Roles Needed To Protest</string>
     <string name="Vigilante.Options.Pacifist.ShowNumberOfEvilRoles">Show Number Of Roles Failed On Protest Fail</string>
 
-    <!-- Crusader - Crewmate Protective -->
+    <!-- Crusader - Crewmate Protective maybe doesnt defend against kill atempts-->
     <!-- Crusader Wiki / Abilities -->
     <string name="Vigilante.Role.Crusader">Crusader</string>
     <string name="Vigilante.Role.Crusader.IntroBlurb">Protect your target at all costs!</string>
-    <string name="Vigilante.Role.Crusader.MedDescription">Kill the first person who interacts with the target you fortified.</string>
+    <string name="Vigilante.Role.Crusader.MedDescription">Kill the first person who interacts with the target you sanctified.</string>
     <string name="Vigilante.Role.Crusader.TabDescription">Choose a target to sanctify. You will kill the next person to interact with them if they are interacted with.</string>
     <string name="Vigilante.Role.Crusader.WikiDescription">The Crusader is a Crewmate Protective role that can choose a player to sanctify on their menu. The chosen player will be fortified for a certain amount of time, and the Crusader will kill the first person to interact with them if they are interacted with.</string>
     <string name="Vigilante.Role.Crusader.Sanctify">Sanctify</string>
-    <string name="Vigilante.Role.Crusader.Sanctify.WikiDescription">Choose a player to sanctify, killing the next player to interacted with them while they are sanctified.</string>
+    <string name="Vigilante.Role.Crusader.Sanctify.WikiDescription">Choose a player to sanctify, killing the next player\nto interact with them while they are sanctified.</string>
     <!-- Crusader Feedback -->
-    <string name="Vigilante.Feedback.Crusader.TabProtecting">Protecting: [player]</string>
+    <string name="Vigilante.Feedback.Crusader.Sanctifying">Sanctifying</string>
+    <string name="Vigilante.Feedback.Crusader.TabProtecting">Protecting:</string>
+    <string name="Vigilante.Feedback.Crusader.TargetDead">Your target is already dead!</string>
+    <string name="Vigilante.Feedback.Crusader.SanctifySuccessful">You decided to sanctify [player].</string>
+    <string name="Vigilante.Feedback.Crusader.NobodyInteracted">Nobody interacted with [player].</string>
     <!-- Crusader Options -->
     <string name="Vigilante.Options.Crusader.SanctifyCooldown">Sanctify Cooldown</string>
     <string name="Vigilante.Options.Crusader.SanctifyDuration">Sanctify Duration</string>
+    <string name="Vigilante.Options.Crusader.PreventsKills">Protects Target From Kill</string>
 
     <!-- Diplomat - Impostor Power might need nerfs but lets see how this plays out-->
     <!-- Diplomat Wiki / Abilities -->
