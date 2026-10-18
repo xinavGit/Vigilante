@@ -5,10 +5,11 @@ using MiraAPI.Utilities;
 using Vigilante.Roles.Crewmate;
 using TownOfUs.Roles.Crewmate;
 using MiraAPI.Translation;
+using Vigilante.Roles.Impostor;
 
 namespace Vigilante.Options;
 
-public class DiplomatOptions : AbstractOptionGroup<CrusaderRole>
+public class DiplomatOptions : AbstractOptionGroup<DiplomatRole>
 {
     public override string GroupName => MiraLocaleManager.Get("Vigilante.Role.Diplomat", "Diplomat");
 
