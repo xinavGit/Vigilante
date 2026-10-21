@@ -3,6 +3,7 @@
     <string name="DiedToJudge">Judged</string>
     <string name="DiedToKidnapper">Exterminated</string>
     <string name="DiedToJinx">Jinxed</string>
+    <string name="DiedToDiplomatLeave">Expulsion</string>
     
     <!-- Chameleon - Crewmate Investigative -->
     <!-- Chameleon Wiki / Abilities -->
@@ -146,15 +147,19 @@
     <string name="Vigilante.Role.Diplomat.IntroBlurb">Manipulate votes in your favor!</string>
     <string name="Vigilante.Role.Diplomat.MedDescription">Manipulate votes and reveal yourself for political immunity.</string>
     <string name="Vigilante.Role.Diplomat.TabDescription">During the meeting, you can manipulate votes and reveal for voting immunity.</string>
-    <string name="Vigilante.Role.Diplomat.WikiDescription">The Diplomat is an Impostor Power role that can manipulate the meeting. They can choose a player to manipulate, making them vote for the player the player the Diplomat voted for. They can also reveal themselves for political immunity, which also gives the Diplomat the ability to manipulate two players at a time.</string>
+    <string name="Vigilante.Role.Diplomat.WikiDescription">The Diplomat is an Impostor Power role that can manipulate the meeting. They can choose a player to manipulate, making them vote for the player the player the Diplomat voted for. They can also reveal themselves for political immunity, which also gives the Diplomat the ability to manipulate two players at a time. However, they will leave the game after a certain number of meetings after revealing.</string>
     <string name="Vigilante.Role.Diplomat.Manipulate">Manipulate</string>
     <string name="Vigilante.Role.Diplomat.Manipulate.WikiDescription">Choose a person during the meeting to manipulate, swapping their vote to what you voted. If you are revealed, you can manipulate two players at a time.</string>
     <string name="Vigilante.Role.Diplomat.Reveal">Reveal</string> <!-- decrease vision? decrease speed? maybe vote silence to vote manipulation instead-->
-    <string name="Vigilante.Role.Diplomat.Reveal.WikiDescription">Reveal yourself to all players, giving you political immunity for the meeting while also increasing your kill cooldown and buffing your manipulation ability.</string>
+    <string name="Vigilante.Role.Diplomat.Reveal.WikiDescription">Reveal yourself to all players, giving you political immunity for the meeting while also increasing your kill cooldown and buffing your manipulation ability. You will leave a certain number of rounds after you reveal.</string>
     <!-- Diplomat Feedback -->
+    <string name="Vigilante.Feedback.Diplomat.MoreKills">You need to get [required] more kill(s) to reveal!</string>
     <string name="Vigilante.Feedback.Diplomat.Revealed">The Diplomat has revealed themself!</string>
+    <string name="Vigilante.Feedback.Diplomat.WillLeaveSoon">You will leave the game after [meetings] meetings!</string>
+    <string name="Vigilante.Feedback.Diplomat.WillLeaveNow">You will leave the game at the end of this meeting!</string>
     <!-- Diplomat Options -->
     <string name="Vigilante.Options.Diplomat.KillsRequired">Kills Required To Reveal</string>
+    <string name="Vigilante.Options.Diplomat.MeetingsToLeave">Meetings Diplomat Has Before Leaving Post-Reveal</string>
     <string name="Vigilante.Options.Diplomat.PostRevealKCDIncrease">KCD Increase Post-Reveal</string>
     <string name="Vigilante.Options.Diplomat.PostRevealVision">Vision Post-Reveal</string>
     <string name="Vigilante.Options.Diplomat.PostRevealCanVent">Can Vent Post-Reveal</string>

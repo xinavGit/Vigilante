@@ -5,8 +5,13 @@ using MiraAPI.Events.Vanilla.Meeting;
 using MiraAPI.Events.Vanilla.Meeting.Voting;
 using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
+using MiraAPI.Translation;
+using MiraAPI.Utilities;
 using MiraAPI.Voting;
+using TownOfUs.Networking;
 using TownOfUs.Utilities;
+using UnityEngine;
+using Vigilante.Assets;
 using Vigilante.Modifiers.Logic.Impostor;
 using Vigilante.Options;
 using Vigilante.Roles.Impostor;
@@ -19,35 +24,87 @@ public static class DiplomatEvents
     public static void OnProcessVotes(ProcessVotesEvent evt)
     {
         var diplomat = PlayerControl.AllPlayerControls.ToArray()
-            .FirstOrDefault(p => p.Data != null && p.Data.Role is DiplomatRole);
+            .FirstOrDefault(p =>
+                p != null &&
+                p.Data != null &&
+                p.Data.Role is DiplomatRole);
 
-        if (diplomat == null || diplomat.Data.IsDead) return;
-        if (diplomat.Data.Role is not DiplomatRole diplomatRole) return;
-        if (diplomatRole.manipulatedChosen == null || diplomatRole.manipulatedChosen.Count == 0) return;
+        if (diplomat?.Data == null || diplomat.Data.IsDead)
+            return;
 
-        var diplomatVote = evt.Votes.FirstOrDefault(v => v.Voter == diplomat.PlayerId);
+        if (diplomat.Data.Role is not DiplomatRole diplomatRole)
+            return;
 
-        byte diplomatTargetId = diplomatVote.Suspect;
+        if (diplomatRole.manipulatedChosen == null ||
+            diplomatRole.manipulatedChosen.Count == 0)
+            return;
+
+        var diplomatVoteIndex = evt.Votes.FindIndex(
+            v => v.Voter == diplomat.PlayerId);
+
+        if (diplomatVoteIndex < 0)
+            return;
+
+        byte diplomatTargetId = evt.Votes[diplomatVoteIndex].Suspect;
 
         foreach (var targetPlayer in diplomatRole.manipulatedChosen)
         {
-            if (targetPlayer == null || targetPlayer.Data == null || targetPlayer.Data.IsDead) continue;
+            if (targetPlayer?.Data == null || targetPlayer.Data.IsDead)
+                continue;
 
-            var targetVoteIndex = evt.Votes.FindIndex(v => v.Voter == targetPlayer.PlayerId);
-            if (targetVoteIndex < 0) continue;
+            var targetVoteIndex = evt.Votes.FindIndex(
+                v => v.Voter == targetPlayer.PlayerId);
+
+            if (targetVoteIndex < 0)
+                continue;
 
             var targetVote = evt.Votes[targetVoteIndex];
-            evt.Votes[targetVoteIndex] = new CustomVote(targetVote.Voter, diplomatTargetId);
+
+            evt.Votes[targetVoteIndex] = new CustomVote(
+                targetVote.Voter,
+                diplomatTargetId);
         }
     }
 
     [RegisterEvent]
     public static void OnMeetingSelect(MeetingSelectEvent evt)
     {
-        var player = GameData.Instance.GetPlayerById((byte)evt.TargetId)?.Object;
+        if (GameData.Instance == null)
+        return;
+
+        var playerData = GameData.Instance.GetPlayerById((byte)evt.TargetId);
+        var player = playerData?.Object;
+
+        if (player == null || player.Data == null)
+            return;
+
         if (player.HasModifier<DiplomatImmunityModifier>())
         {
             evt.AllowSelect = false;
+        }
+    }
+
+    [RegisterEvent]
+    public static void OnMeetingStart(StartMeetingEvent evt)
+    {
+        Info($"z");
+        if (PlayerControl.LocalPlayer.IsRole<DiplomatRole>() && PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod))
+        {
+            Info($"zz{mod.MeetingsLeft}");
+            if (mod.MeetingsLeft > 0)
+            {
+                Info($"zzz{mod.MeetingsLeft}");
+                mod.MeetingsLeft--;
+                if (mod.MeetingsLeft == 0)
+                {
+                    Info($"zzzz{mod.MeetingsLeft}");
+                    Helpers.CreateAndShowNotification(
+                        $"<b><color=#{hex}>{MiraLocaleManager.Get("DivaniMods.Role.VengefulSoul.Notification.KillerSurvived")}</color></b>",
+                        Color.white,
+                        new Vector3(0f, 1f, -20f),
+                        spr: DivaniAssets.RetributionistIcon.LoadAsset());
+                }
+            }
         }
     }
 
@@ -57,6 +114,18 @@ public static class DiplomatEvents
         foreach (var immune in ModifierUtils.GetPlayersWithModifier<DiplomatImmunityModifier>().ToList())
         {
             immune.RemoveModifier<DiplomatImmunityModifier>();
+        }
+    }
+
+    [RegisterEvent]
+    public static void OnDisplayVotes(PopulateResultsEvent evt)
+    {
+        if (PlayerControl.LocalPlayer.IsRole<DiplomatRole>() && PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod) && mod.MeetingsLeft == 0)
+        {
+            var player = PlayerControl.LocalPlayer;
+
+            player.RpcMeetingMurder(player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
+                causeOfDeath: "DiplomatLeave");
         }
     }
 

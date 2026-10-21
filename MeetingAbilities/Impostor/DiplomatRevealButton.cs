@@ -35,8 +35,15 @@ public class DiplomatRevealButton : MeetingActionButton
 
     public override bool CanUse()
     {
+        if (PlayerControl.LocalPlayer.Data.Role is not DiplomatRole diplomat)
+        {
+            return false;
+        }
+
+        
+
         return base.CanUse() &&
-               MeetingHud.Instance.CurrentState is MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted;
+               MeetingHud.Instance.CurrentState is MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted && diplomat.CanReveal();
     }
 
     protected override void OnClick()

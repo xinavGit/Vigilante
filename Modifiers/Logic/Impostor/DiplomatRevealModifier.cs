@@ -18,4 +18,12 @@ public sealed class DiplomatRevealModifier(RoleBehaviour role)
     public override bool Visible { get; set; } = true;
 
     public override bool? CanVent() => OptionGroupSingleton<DiplomatOptions>.Instance.RevealCanVent.Value;
+
+    public float MeetingsLeft;
+
+    public override void OnActivate()
+    {
+        MeetingsLeft = OptionGroupSingleton<DiplomatOptions>.Instance.MeetingsBeforeLeave.Value;
+        base.OnActivate();
+    }
 }

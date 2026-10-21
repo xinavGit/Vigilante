@@ -13,6 +13,9 @@ public class DiplomatOptions : AbstractOptionGroup<DiplomatRole>
 {
     public override string GroupName => MiraLocaleManager.Get("Vigilante.Role.Diplomat", "Diplomat");
 
+    public ModdedNumberOption RevealKillsRequired { get; } =
+        new($"Vigilante.Options.Diplomat.KillsRequired", 2f, 0f, 5f, 1f, MiraNumberSuffixes.None);
+
     public ModdedNumberOption RevealKCDIncrease { get; } =
         new($"Vigilante.Options.Diplomat.PostRevealKCDIncrease", 20f, 20f, 30f, 2.5f, MiraNumberSuffixes.Seconds);
 
@@ -21,4 +24,7 @@ public class DiplomatOptions : AbstractOptionGroup<DiplomatRole>
 
     public ModdedToggleOption RevealCanVent { get; } =
         new($"Vigilante.Options.Diplomat.PostRevealCanVent", false);
+
+    public ModdedNumberOption MeetingsBeforeLeave { get; } =
+        new($"Vigilante.Options.Diplomat.MeetingsToLeave", 0f, 1f, 5f, 1f, MiraNumberSuffixes.None);
 }

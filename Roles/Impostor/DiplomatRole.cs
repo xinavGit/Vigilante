@@ -1,5 +1,6 @@
 using AmongUs.GameOptions;
 using Il2CppInterop.Runtime.Attributes;
+using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
 using MiraAPI.Patches.Stubs;
 using MiraAPI.Roles;
@@ -20,6 +21,7 @@ using UnityEngine;
 using Vigilante.Assets;
 using Vigilante.Interfaces;
 using Vigilante.Modifiers.Logic.Impostor;
+using Vigilante.Options;
 
 namespace Vigilante.Roles.Impostor;
 
@@ -80,11 +82,13 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
         manipulationMenu = new MeetingMenu(
                 this,
                 Click, // on click
+                MiraLocaleManager.Get("Vigilante.Role.Diplomat.Manipulate"),
                 MeetingAbilityType.Toggle,
                 VigilanteAssets.DiplomatManipulate,
-                VigilanteAssets.MagistrateJudgement,
+                VigilanteAssets.DiplomatManipulate,
                 IsExempt, // who NOT applies to
-                position: new Vector3(-0.40f, 0f, -3f)
+                position: new Vector3(-0.40f, 0f, -3f),
+                activeColor: TownOfUsColors.Impostor
                 );//will break next toum update
     }
 
@@ -93,6 +97,13 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
         var player = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
         if (player == null) return;
         int limit = isRevealed ? 2 : 1;
+
+        if (manipulatedChosen.Contains(player))
+        {
+            manipulatedChosen.Remove(player);
+            manipulationMenu!.Actives[voteArea.PlayerId] = false;
+            return;
+        }
 
         if (manipulatedChosen.Count > (limit-1))
         {
@@ -170,5 +181,30 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
         var notif = Helpers.CreateAndShowNotification("The Diplomat has revealed themself!!!", // replace with proper locale later
             Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Impostor.LoadAsset());
         notif.AdjustNotification();
+    }
+
+    public bool CanReveal()
+    {
+        var opt = OptionGroupSingleton<DiplomatOptions>.Instance;
+        if ((int)opt.RevealKillsRequired > 0)
+        {
+            var killedDiploPlayers = GameHistory.KilledPlayers.Count(x =>
+                x.KillerId == Player.PlayerId && x.VictimId != Player.PlayerId);
+
+            if (killedDiploPlayers < (int)opt.RevealKillsRequired)
+            {
+                /*var text =
+                    MiraLocaleManager.Get("TownOfUsMira.Role.AmbassadorNeedKills")
+                        .Replace("<requiredKills>", $"{(int)opt.RevealKillsRequired}");
+                var notif1 =
+                    Helpers.CreateAndShowNotification(text, Color.white, new Vector3(0f, 1f, -20f),
+                        spr: TouRoleIcons.Ambassador.LoadAsset());
+
+                notif1.AdjustNotification();*/
+                return false;// requirement not met
+            }
+            return true;//requirement met
+        }
+        return true;//no requirement
     }
 }

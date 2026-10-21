@@ -15,6 +15,7 @@ using UnityEngine;
 using Vigilante.Assets;
 using Vigilante.Interfaces;
 using Vigilante.Options;
+using Vigilante.Utilities;
 
 namespace Vigilante.Roles.Impostor;
 
@@ -281,7 +282,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     public void FixedUpdate()
     {
         if (!Player || Player.Data.Role is not DisruptorRole || Player.HasDied() || !Player.AmOwner ||
-            MeetingHud.Instance)
+            MeetingHud.Instance || !VigilanteUtils.IsAnySabotageActive())
         {
             return;
         }
