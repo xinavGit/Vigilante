@@ -97,12 +97,7 @@ public static class DiplomatEvents
                 mod.MeetingsLeft--;
                 if (mod.MeetingsLeft == 0)
                 {
-                    Info($"zzzz{mod.MeetingsLeft}");
-                    Helpers.CreateAndShowNotification(
-                        $"<b><color=#{hex}>{MiraLocaleManager.Get("DivaniMods.Role.VengefulSoul.Notification.KillerSurvived")}</color></b>",
-                        Color.white,
-                        new Vector3(0f, 1f, -20f),
-                        spr: DivaniAssets.RetributionistIcon.LoadAsset());
+                    //notif here but doesnt work
                 }
             }
         }
