@@ -11,7 +11,10 @@ using Reactor.Networking;
 using Reactor.Networking.Attributes;
 using Reactor.Utilities;
 using TownOfUs;
+using PerfectComms;
+using AchievementsAPI;
 using Vigilante.Modules.Localization;
+using TownOfUs.Achievements;
 
 namespace Vigilante;
 
@@ -20,6 +23,8 @@ namespace Vigilante;
 [BepInDependency(ReactorPlugin.Id)]
 [BepInDependency(MiraApiPlugin.Id)]
 [BepInDependency(TownOfUsPlugin.Id)]
+[BepInDependency(AchievementsAPIHelper.PluginGuid, BepInDependency.DependencyFlags.SoftDependency)]
+[BepInDependency("com.edgetel.perfectcomms", BepInDependency.DependencyFlags.SoftDependency)]
 [ReactorModFlags(ModFlags.RequireOnAllClients)]
 public partial class VigilantePlugin : BasePlugin, IMiraPlugin
 {

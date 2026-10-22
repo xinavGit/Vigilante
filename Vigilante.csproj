@@ -30,6 +30,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="AchievementsAPI">
+      <HintPath>libs\AchievementsAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PerfectComms">
+      <HintPath>libs\PerfectComms.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Resources\**\*.*" />
   </ItemGroup>
 
