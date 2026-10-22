@@ -18,18 +18,13 @@
   <img width="30%" src="./Resources/RoleBanners/inspector.png" alt="Inspector"/>
   <img src="./Resources/Groups/CrewPower.png" alt="Crewmate Power"/>
   <img width="30%" src="./Resources/RoleBanners/magistrate.png" alt="Magistrate"/>
-  <img width="30%" src="./Resources/RoleBanners/pacifist.png" alt="Pacifist"/>
   <img src="./Resources/Groups/CrewProtect.png" alt="Crewmate Protective"/>
   <img width="30%" src="./Resources/RoleBanners/crusader.png" alt="Crusader"/>
   <img src="./Resources/Groups/ImpPower.png" alt="Impostor Power"/>
   <img width="30%" src="./Resources/RoleBanners/diplomat.png" alt="Diplomat"/>
   <img width="30%" src="./Resources/RoleBanners/disruptor.png" alt="Disruptor"/>
-  <img width="30%" src="./Resources/RoleBanners/kidnapper.png" alt="Kidnapper"/>
   <img src="./Resources/Groups/ImpKilling.png" alt="Impostor Killing"/>
-  <img width="30%" src="./Resources/RoleBanners/jinx.png" alt="Jinx"/>
   <img width="30%" src="./Resources/RoleBanners/ritualist.png" alt="Ritualist"/>
-  <img src="./Resources/Groups/ImpSupport.png" alt="Impostor Support"/>
-  <img width="30%" src="./Resources/RoleBanners/banshee.png" alt="Banshee"/>
   <img src="./Resources/Groups/NeutKilling.png" alt="Neutral Killing"/>
   <img width="30%" src="./Resources/RoleBanners/accumulator.png" alt="Accumulator"/> 
   <img src="./Resources/Groups/NeutOutlier.png" alt="Neutral Outlier"/>

@@ -15,7 +15,7 @@ using Vigilante.Modules.Localization;
 
 namespace Vigilante;
 
-[BepInAutoPlugin("com.xinav.vigilante", "Vigilante", "0.0.0-dev")]
+[BepInAutoPlugin("com.xinav.vigilante", "Vigilante")]
 [BepInProcess("Among Us.exe")]
 [BepInDependency(ReactorPlugin.Id)]
 [BepInDependency(MiraApiPlugin.Id)]
