@@ -21,7 +21,7 @@ public class DiplomatRevealButton : MeetingActionButton
 
     public override int MaxUses => 0;
 
-    public override LoadableAsset<Sprite> Sprite => TouAssets.MayorRevealSprite;
+    public override LoadableAsset<Sprite> Sprite => TouAssets.RevealCleanSprite;
 
     public override bool HideUponWrapUp => true;
     public override bool DisableUponUse => true;
