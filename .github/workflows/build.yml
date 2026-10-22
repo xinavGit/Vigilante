@@ -1,0 +1,28 @@
+name: Build Mod Artifact
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build Release
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Upload DLL as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: YourMod-Build
+          path: '**/bin/Release/**/*.dll'
