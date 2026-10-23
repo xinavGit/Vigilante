@@ -20,7 +20,7 @@ public sealed class CrusaderSanctifiedModifier(PlayerControl crusader) : BaseShi
     public override LoadableAsset<Sprite>? ModifierIcon => VigilanteAssets.CrusaderIcon;
 
     public PlayerControl Crusader { get; } = crusader;
-    public GameObject MedicShield { get; set; }
+    public GameObject MedicShield { get; set; } = null!;
     public bool ShowShield { get; set; }
 
     public override bool HideOnUi => true;

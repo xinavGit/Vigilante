@@ -11,6 +11,7 @@
     <Version>1.0.0-dev</Version>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <AmongUs>"F:\Users\14089\Desktop\DevUs</AmongUs>
+    <NoWarn>$(NoWarn);MSB3277;CA1707</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

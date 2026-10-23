@@ -31,7 +31,7 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
     public override float EffectDuration => OptionGroupSingleton<MagistrateOptions>.Instance.EnlistDelay.Value;
     public override int MaxUses => 1;
     public override LoadableAsset<Sprite> Sprite => TouCrewAssets.KnightSprite;
-    public PlayerControl? _enlistedTarget;
+    private PlayerControl? _enlistedTarget;
     private bool _isProcessingClick;
 
     //public override bool UsableFirstRound => OptionGroupSingleton<MonarchOptions>.Instance.FirstRoundUse;

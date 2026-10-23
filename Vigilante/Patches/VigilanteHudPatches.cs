@@ -16,9 +16,7 @@ namespace Vigilante.Patches;
 [HarmonyPatch(typeof(HudManagerHelper), "GetRoleNameText")]
 public static class VigilanteHudPatches
 {
-#pragma warning disable CA1707 // Identifiers should not contain underscores
     public static void Postfix(PlayerControl player, ref (Color PlayerColor, string PlayerName) __result)
-#pragma warning restore CA1707 // Identifiers should not contain underscores
     {
         if (PlayerControl.LocalPlayer == null)
         {

@@ -2,3 +2,6 @@ bin/
 obj/
 
 e.md
+.vscode/
+
+Docs/Template.md

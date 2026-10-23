@@ -54,7 +54,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
     public DoomableType DoomHintType => DoomableType.Perception;
 
-    public float JudgementUsesLeft;
+    public float JudgementUsesLeft { get; set; }
 
     public string GetAdvancedDescription()
     {
@@ -154,9 +154,13 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         var target = GameData.Instance.GetPlayerById(voteArea.PlayerId).Object;
         var juror = ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList().FirstOrDefault();
 
-        if (juror == null && Player.AmOwner)
+        if (juror == null)
         {
-            ClearMenu();
+            if (Player.AmOwner)
+            {
+                ClearMenu();
+            }
+
             return;
         }
 

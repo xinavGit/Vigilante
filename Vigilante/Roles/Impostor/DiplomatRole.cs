@@ -25,7 +25,9 @@ using Vigilante.Options;
 
 namespace Vigilante.Roles.Impostor;
 
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
 public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
+#pragma warning restore CA1001 // Types that own disposable fields should be disposable
 {
     private MeetingMenu? manipulationMenu;
     public DoomableType DoomHintType => DoomableType.Trickster;
@@ -44,7 +46,7 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
     public RoleAlignment RoleAlignment => RoleAlignment.ImpostorPower;
 
     [HideFromIl2Cpp] public List<PlayerControl>? manipulatedChosen { get; set; } = new List<PlayerControl>();
-    public bool isRevealed;
+    public bool isRevealed { get; set; }
     
 
     public CustomRoleConfiguration Configuration => new(this)
@@ -97,28 +99,29 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
         var player = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
         if (player == null) return;
         int limit = isRevealed ? 2 : 1;
+        var chosen = manipulatedChosen;
+        if (chosen == null) return;
 
-        if (manipulatedChosen.Contains(player))
+        if (chosen.Remove(player))
         {
-            manipulatedChosen.Remove(player);
             manipulationMenu!.Actives[voteArea.PlayerId] = false;
             return;
         }
 
-        if (manipulatedChosen.Count > (limit-1))
+        if (chosen.Count > (limit-1))
         {
-            manipulationMenu!.Actives[manipulatedChosen[0].PlayerId] = false;
-            manipulatedChosen.RemoveAt(0);
+            manipulationMenu!.Actives[chosen[0].PlayerId] = false;
+            chosen.RemoveAt(0);
         }
-        manipulatedChosen.Add(player);
+        chosen.Add(player);
 
         manipulationMenu!.Actives[voteArea.PlayerId] = true;
     }
 
-    public bool IsExempt(PlayerVoteArea voteArea)
+    public static bool IsExempt(PlayerVoteArea voteArea)
     {
         var player = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
-        if (player.HasDied() || player == null || player.IsImpostor() || player.IsRole<DiplomatRole>()) 
+        if (player == null || player.HasDied() || player.IsImpostor() || player.IsRole<DiplomatRole>()) 
         {
             Info("PLAYER EXEMPT");
             return true;
@@ -130,7 +133,7 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
     public override void OnMeetingStart()
     {
         RoleBehaviourStubs.OnMeetingStart(this);
-        manipulatedChosen.Clear();
+        manipulatedChosen?.Clear();
 
         var meeting = MeetingHud.Instance;
         if (Player.AmOwner && meeting != null && !Player.HasDied())
