@@ -13,6 +13,7 @@ using TownOfUs.Modifiers;
 using Vigilante.Options;
 using Vigilante.Buttons.Crewmate;
 using MiraAPI.Translation;
+using Vigilante.Roles.Crewmate;
 
 namespace Vigilante.Modifiers.Logic.Crewmate;
 
@@ -27,7 +28,8 @@ public sealed class ChameleonCamouflageModifier : ConcealedModifier, IVisualAppe
 
     public VisualAppearance GetVisualAppearance()
     {
-        var playerColor = (PlayerControl.LocalPlayer.AmOwner || (PlayerControl.LocalPlayer.DiedOtherRound() &&
+        // will make ALL CHAMELEONS see each other
+        var playerColor = (PlayerControl.LocalPlayer.IsRole<ChameleonRole>() || (PlayerControl.LocalPlayer.DiedOtherRound() &&
                                                                       OptionGroupSingleton<GeneralOptions>
                                                                           .Instance.TheDeadKnow))
             ? new Color(0f, 0f, 0f, 0.1f)
