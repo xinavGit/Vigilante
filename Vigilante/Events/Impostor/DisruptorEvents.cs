@@ -26,6 +26,8 @@ public static class DisruptorEvents
             return;
         }
 
+        if (MeetingHud.Instance) return;
+
         if (PlayerControl.LocalPlayer.IsHost())
         {
             DisruptorRole.SabRandom();
