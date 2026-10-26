@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./Resources/VigilanteBanner.png" alt="Vigilante"/>
+  <img src="./Images/VigilanteBanner.png" alt="Vigilante"/>
   <p>Vigilante</p>
 </div>
 
@@ -12,17 +12,17 @@
 
 
 <p align="center">
-  <img src="./Resources/Groups/CrewInvest.png" alt="Crewmate Investigative"/>
-  <img width="30%" src="./Resources/RoleBanners/chameleon.png" alt="Chameleon"/>
-  <img width="30%" src="./Resources/RoleBanners/decryptor.png" alt="Decryptor"/>
-  <img width="30%" src="./Resources/RoleBanners/inspector.png" alt="Inspector"/>
-  <img src="./Resources/Groups/CrewPower.png" alt="Crewmate Power"/>
-  <img width="30%" src="./Resources/RoleBanners/magistrate.png" alt="Magistrate"/>
-  <img src="./Resources/Groups/CrewProtect.png" alt="Crewmate Protective"/>
-  <img width="30%" src="./Resources/RoleBanners/crusader.png" alt="Crusader"/>
-  <img src="./Resources/Groups/ImpPower.png" alt="Impostor Power"/>
-  <img width="30%" src="./Resources/RoleBanners/diplomat.png" alt="Diplomat"/>
-  <img width="30%" src="./Resources/RoleBanners/disruptor.png" alt="Disruptor"/>
+  <img src="./Images/Groups/CrewInvest.png" alt="Crewmate Investigative"/>
+  <img width="30%" src="./Images/RoleBanners/chameleon.png" alt="Chameleon"/>
+  <img width="30%" src="./Images/RoleBanners/decryptor.png" alt="Decryptor"/>
+  <img width="30%" src="./Images/RoleBanners/inspector.png" alt="Inspector"/>
+  <img src="./Images/Groups/CrewPower.png" alt="Crewmate Power"/>
+  <img width="30%" src="./Images/RoleBanners/magistrate.png" alt="Magistrate"/>
+  <img src="./Images/Groups/CrewProtect.png" alt="Crewmate Protective"/>
+  <img width="30%" src="./Images/RoleBanners/crusader.png" alt="Crusader"/>
+  <img src="./Images/Groups/ImpPower.png" alt="Impostor Power"/>
+  <img width="30%" src="./Images/RoleBanners/diplomat.png" alt="Diplomat"/>
+  <img width="30%" src="./Images/RoleBanners/disruptor.png" alt="Disruptor"/>
 </p>
 
 
