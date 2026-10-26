@@ -138,6 +138,8 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             inspectMenu?.GenButtons(meeting, true);
             publishMenu?.GenButtons(meeting, true);
         }
+
+        RefreshButtons();
     }
 
     [HideFromIl2Cpp]
