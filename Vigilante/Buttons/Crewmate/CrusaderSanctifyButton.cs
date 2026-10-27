@@ -122,11 +122,11 @@ public sealed class CrusaderSanctifyButton : TownOfUsRoleButton<CrusaderRole>, I
         {
             if (Role.Protected != null && Role.Protected.HasDied())
             {
-                return; // indirect attack death
+                //indirect
             }
             else if (Role.Protected != null && !Role.Protected.HasDied())
             {
-                return;
+                text = MiraLocaleManager.Get("Vigilante.Feedback.Crusader.NobodyInteracted");
             }
 
             if (text.Contains("<player>") && Role.Protected != null)
