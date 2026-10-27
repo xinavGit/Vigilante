@@ -12,8 +12,8 @@
     <string name="Vigilante.Role.Chameleon.MedDescription">Camouflage to sneakily get around and gather info!</string>
     <string name="Vigilante.Role.Chameleon.TabDescription">Use your Camouflage ability to turn invisible and gather information.</string>
     <string name="Vigilante.Role.Chameleon.WikiDescription">The Chameleon is a Crewmate Investigative role that can use their ability to temporarily turn invisible to all other players. During the time that they are invisible, the Chameleon will get a speed boost, and if settings allow, the ability to vent. Idea by mystic_haze2</string>
-    <string name="Vigilante.Role.ChameleonCamouflage">Camouflage</string>
-    <string name="Vigilante.Role.ChameleonCamoflauge.WikiDescription">Camouflage to turn invisible. While invisible, you gain a speed boost and will be able to vent if settings allow.</string>
+    <string name="Vigilante.Role.Chameleon.Camouflage">Camouflage</string>
+    <string name="Vigilante.Role.Chameleon.Camoflauge.WikiDescription">Camouflage to turn invisible. While invisible, you gain a speed boost and will be able to vent if settings allow.</string>
     <!-- Chameleon Feedback -->
     <string name="Vigilante.Feedback.ChameleonUncamouflage">Uncamouflage</string>
     <string name="Vigilante.Feedback.ChameleonCamouflaged">Camouflaged</string>
