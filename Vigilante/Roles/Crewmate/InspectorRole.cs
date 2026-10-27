@@ -306,6 +306,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [MethodRpc((uint)VigilanteRpcs.InspectorPublish)]
     public static void RpcInspectorPublish(PlayerControl inspected, ushort publishRole)
     {
+        if (Minigame.Instance)
+        {
+            Minigame.Instance.Close();
+        }
+
         Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Inspector));
         TouAudio.PlaySound(VigilanteAssets.InspectorPublish);
 
