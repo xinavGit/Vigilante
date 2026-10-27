@@ -126,16 +126,11 @@ public static class DiplomatEvents
             {
                 if (PlayerControl.LocalPlayer.IsHost())
                 {
-                    diplomat.Player.RpcCustomMurder(diplomat.Player, resetKillTimer: false, createDeadBody: false, teleportMurderer: false,
-                        showKillAnim: false, playKillSound: false);
+                    diplomat.Player.RpcMeetingMurder(diplomat.Player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
+                        causeOfDeath: "DiplomatLeave");
 
                     Info("killing diplomat!");
                 }
-
-                //update player death data like how lovers does it
-                GameHistory.UpdatePlayerDeathData(diplomat.Player, MiraLocaleManager.Get("DiedToDiplomatLeave"), 0, HudManagerHelper.Instance.CurrentRound,
-                        DeathHandlerOverride.SetTrue,
-                        lockInfo: DeathHandlerOverride.SetTrue, playerState: StoredPlayerState.Dead);
             }
             
         }
