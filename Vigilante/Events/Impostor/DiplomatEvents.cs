@@ -5,9 +5,13 @@ using MiraAPI.Events.Vanilla.Meeting;
 using MiraAPI.Events.Vanilla.Meeting.Voting;
 using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
+using MiraAPI.Networking;
+using MiraAPI.Roles;
 using MiraAPI.Translation;
 using MiraAPI.Utilities;
 using MiraAPI.Voting;
+using TownOfUs.Modules;
+using TownOfUs.Modules.Components;
 using TownOfUs.Networking;
 using TownOfUs.Utilities;
 using UnityEngine;
@@ -104,15 +108,40 @@ public static class DiplomatEvents
     }
 
     [RegisterEvent]
-    public static void OnMeetingEnd(EndMeetingEvent evt)
+    public static void OnVotingComplete(VotingCompleteEvent evt)
     {
         foreach (var immune in ModifierUtils.GetPlayersWithModifier<DiplomatImmunityModifier>().ToList())
         {
             immune.RemoveModifier<DiplomatImmunityModifier>();
         }
+
+        foreach (var diplomat in CustomRoleUtils.GetActiveRolesOfType<DiplomatRole>())
+        {
+            if (diplomat.Player.HasDied())
+            {
+                return;
+            }
+
+            if (PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod) && mod.MeetingsLeft == 0)
+            {
+                if (PlayerControl.LocalPlayer.IsHost())
+                {
+                    diplomat.Player.RpcCustomMurder(diplomat.Player, resetKillTimer: false, createDeadBody: false, teleportMurderer: false,
+                        showKillAnim: false, playKillSound: false);
+
+                    Info("killing diplomat!");
+                }
+
+                //update player death data like how lovers does it
+                GameHistory.UpdatePlayerDeathData(diplomat.Player, MiraLocaleManager.Get("DiedToDiplomatLeave"), 0, HudManagerHelper.Instance.CurrentRound,
+                        DeathHandlerOverride.SetTrue,
+                        lockInfo: DeathHandlerOverride.SetTrue, playerState: StoredPlayerState.Dead);
+            }
+            
+        }
     }
 
-    [RegisterEvent]
+    /*[RegisterEvent]
     public static void OnDisplayVotes(PopulateResultsEvent evt)
     {
         if (PlayerControl.LocalPlayer.IsRole<DiplomatRole>() && PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod) && mod.MeetingsLeft == 0)
@@ -122,7 +151,7 @@ public static class DiplomatEvents
             player.RpcMeetingMurder(player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                 causeOfDeath: "DiplomatLeave");
         }
-    }
+    }*/
 
     [RegisterEvent]
     public static void AfterMurder(AfterMurderEvent evt)
