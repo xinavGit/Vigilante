@@ -43,7 +43,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         Icon = VigilanteAssets.DisruptorIcon
     };
 
-    // reworked engineer fix code BROKEN HERE REMEMBER TO FIX
+    // reworked engineer fix code only broken on freeplay some maps
     [HideFromIl2Cpp]
     public static List<SystemTypes> SabotagableSabs()
     {
