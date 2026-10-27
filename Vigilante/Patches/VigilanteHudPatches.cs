@@ -45,6 +45,9 @@ public static class VigilanteHudPatches
             if (player.Data.IsDead)
                 return;
 
+            if (player == PlayerControl.LocalPlayer)
+                return;
+
 
             playerName += "\n";
 
