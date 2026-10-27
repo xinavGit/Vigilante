@@ -121,12 +121,10 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
     public static bool IsExempt(PlayerVoteArea voteArea)
     {
         var player = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
-        if (player == null || player.HasDied() || player.IsImpostor() || player.IsRole<DiplomatRole>()) 
+        if (player == null || player.HasDied() || player.IsRole<DiplomatRole>()) 
         {
-            Info("PLAYER EXEMPT");
             return true;
         }
-        Info("NOT EXEMPT");
         return false;
     }
 
