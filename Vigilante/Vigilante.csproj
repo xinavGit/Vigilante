@@ -8,9 +8,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyName>Vigilante</AssemblyName>
     <RootNamespace>Vigilante</RootNamespace>
-    <Version>2.0.0</Version>
+    <Version>2.0.0-dev</Version>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
     <AmongUs>"F:\Users\14089\Desktop\DevUs</AmongUs>
     <NoWarn>$(NoWarn);MSB3277;CA1707</NoWarn>
   </PropertyGroup>
