@@ -36,6 +36,9 @@ public class InspectorOptions : AbstractOptionGroup<InspectorRole>
         typeof(InspectorInspectableRoles),
         ["Vigilante.Options.Inspector.InspectableRolesEnumCrewmate", "Vigilante.Options.Inspector.InspectableRolesEnumNonCrewmate", "Vigilante.Options.Inspector.InspectableRolesEnumAll"]);
 
+    public ModdedToggleOption CrewVariantsInspectable { get; } =
+        new("Vigilante.Options.Inspector.CrewVariantsAreCorrect", false);
+
     /*public ModdedToggleOption PublishAllianceMods { get; } =
         new("Vigilante.Options.Inspector.PublishAllianceMods", true);*/
 }

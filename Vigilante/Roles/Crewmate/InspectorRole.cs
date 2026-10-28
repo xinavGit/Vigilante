@@ -352,7 +352,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public void InspectPlayer(PlayerControl inspected, RoleBehaviour inspectRole) //not static because of the GenButtons line
     {
-        if (inspected.Data.Role.Role == inspectRole.Role)
+        if (inspected.Data.Role.Role == inspectRole.Role || (OptionGroupSingleton<InspectorOptions>.Instance.CrewVariantsInspectable.Value && inspected.Data.Role is ICrewVariant variant && variant.CrewVariant.Role == inspectRole.Role))
         {
             Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Doomsayer));
 

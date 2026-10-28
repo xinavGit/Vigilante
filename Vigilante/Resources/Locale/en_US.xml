@@ -67,6 +67,7 @@
     <string name="Vigilante.Options.Inspector.InspectableRolesEnumNonCrewmate">Non-Crew Roles</string>
     <string name="Vigilante.Options.Inspector.InspectableRolesEnumAll">All Roles</string>
     <string name="Vigilante.Options.Inspector.PublishAllianceMods">Publish Shows Alliance Modifiers</string>
+    <string name="Vigilante.Options.Inspector.CrewVariantsAreCorrect">Crew Variants Of Evil Roles Are Publishable</string>
 
     <!-- Magistrate now renamed from Judge - Crewmate Power -->
     <!-- Magistrate Wiki / Abilities -->
