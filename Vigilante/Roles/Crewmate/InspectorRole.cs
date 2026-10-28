@@ -108,7 +108,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 VigilanteAssets.InspectorInspect,
                 null!,
                 IsInspectExempt,
-                hoverColor: VigilanteColors.Inspector);//will break next toum update
+                hoverColor: VigilanteColors.Inspector);
         
         publishMenu = new MeetingMenu(
                 this,
@@ -118,7 +118,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 TouAssets.RevealCleanSprite,
                 null!,
                 IsPublishExempt,
-                position: new Vector3(-0.35f, 0f, -3f));//this too
+                position: new Vector3(-0.35f, 0f, -3f));
     }
     public override void OnMeetingStart()
     {
@@ -239,6 +239,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsInspectExempt(PlayerVoteArea voteArea)
     {
+        if (Player.HasModifier<JailedModifier>())
+        {
+            return true;
+        }
+
         if (RoundInspects >= OptionGroupSingleton<InspectorOptions>.Instance.InspectsPerMeeting.Value)
         {
             return true;
@@ -249,9 +254,21 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             return true;
         }
 
+        var votePlayer = voteArea.GetPlayer();
+
+        if (votePlayer == null)
+        {
+            return true;
+        }
+
+        if (votePlayer.HasModifier<JailedModifier>() || votePlayer.IsRevealed())
+        {
+            return true;
+        }
+
         var target = voteArea.GetPlayer();
 
-        if (target == null || target.HasDied())// check if target has been successfully inspected
+        if (target == null || target.HasDied())
         {
             return true;
         }
@@ -272,34 +289,33 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsPublishExempt(PlayerVoteArea voteArea)
     {
-        Info($"player is {voteArea.GetPlayer()}, checking exempt...");
+        if (Player.HasModifier<JailedModifier>())
+        {
+            return true;
+        }
+
         if (playersPublished >= OptionGroupSingleton<InspectorOptions>.Instance.MaxPublishUses.Value)
         {
-            Info($"inspector publish exempt - publish all used");
             return true;
         }
 
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
-            Info($"null target or target is inspector");
             return true;
         }
 
         var target = voteArea.GetPlayer();
 
-        if (target == null || target.HasDied())// check if target has been successfully inspected again
+        if (target == null || target.HasDied())
         {
-            Info($"target null or has died!");
             return true;
         }
 
         if (!InspectedPlayers.ContainsKey(target))
         {
-            Info($"no key found... exempt");
             return true;
         }
 
-        Info($"chill! can be published, not exempt");
         return false;
     }
 
@@ -336,13 +352,6 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public void InspectPlayer(PlayerControl inspected, RoleBehaviour inspectRole) //not static because of the GenButtons line
     {
-        //test
-        /*var notiftest = Helpers.CreateAndShowNotification(
-                $"<b>{inspected.Data.Role} compared with {inspectRole}!!!</b>",
-                Color.white, new Vector3(0f, 1f, -20f), spr: TouModifierIcons.DoubleShot.LoadAsset());
-
-            notiftest.AdjustNotification();*/
-        
         if (inspected.Data.Role.Role == inspectRole.Role)
         {
             Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Doomsayer));
