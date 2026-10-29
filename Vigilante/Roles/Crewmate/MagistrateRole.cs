@@ -34,6 +34,7 @@ using Vigilante.Utilities;
 using TownOfUs.Networking;
 using Reactor.Utilities.Extensions;
 using Reactor.Utilities;
+using TownOfUs.Modifiers.Game;
 
 namespace Vigilante.Roles.Crewmate;
 //using TOUM monarch role code for enlist rpc
@@ -55,6 +56,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     public DoomableType DoomHintType => DoomableType.Perception;
 
     public float JudgementUsesLeft { get; set; }
+    public bool PoorJudgement { get; set; }
 
     public string GetAdvancedDescription()
     {
@@ -92,7 +94,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     {
         RoleBehaviourStubs.Initialize(this, player);
         JudgementUsesLeft = OptionGroupSingleton<MagistrateOptions>.Instance.JudgementUses.Value;
-
+        PoorJudgement = false;
         judgeMenu = new MeetingMenu(
                 this,
                 ClickJudge,
@@ -121,13 +123,11 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         Info($"player is {voteArea.GetPlayer()}, checking exempt...");
         if (JudgementUsesLeft <= 0)
         {
-            Info($"judge judgement exempt - judgement all used");
             return true;
         }
 
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
-            Info($"null target or target is judge");
             return true;
         }
 
@@ -135,17 +135,14 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
         if (target == null || target.HasDied())// check if target has been successfully inspected again
         {
-            Info($"target null or has died!");
             return true;
         }
 
         if (target.HasModifier<MagistrateJurorModifier>())
         {
-            Info($"is the juror, exempt");
             return true;
         }
 
-        Info($"can be judgemented");
         return false;
     }
 
@@ -164,6 +161,16 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             return;
         }
 
+        if (juror == null)
+        {
+            return;
+        }
+
+        if (JudgementUsesLeft <= 0)
+        {
+            return;
+        }
+
         var victimName = "";
 
         if (VigilanteUtils.AreFriendly(target, juror))
@@ -179,6 +186,11 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             Player.RpcMeetingMurder(target, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                 causeOfDeath: "Judge");
             victimName = target.name;
+
+            if (OptionGroupSingleton<MagistrateOptions>.Instance.LeavesInShame.Value && target.IsCrewmate())
+            {
+                // LEFT OFF HERE alliance mod checks
+            }
         }
 
         var msg = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.Judgement").Replace("<player>", $"{victimName}");
@@ -196,34 +208,38 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         }
     }
 
-    /*[MethodRpc((uint)VigilanteRpcs.MagistrateJudge)]
-    public static void RpcJudge(PlayerControl player, PlayerControl target, PlayerControl juror)
+    public static bool AreFriendly(PlayerControl p1, PlayerControl p2)
     {
-        if (LobbyBehaviour.Instance)
-        {
-            MiscUtils.RunAnticheatWarning(player);
-            return;
-        }
-        if (player.Data.Role is not MagistrateRole magi)
-        {
-            return;
-        }
-        var targetName = target.CachedPlayerData.PlayerName;
-        var magiName = player.CachedPlayerData.PlayerName;
-        var icon = VigilanteAssets.JudgeIcon.LoadAsset();
+        //if (p1 == null || p2 == null) return true;
 
-        if (VigilanteUtils.AreFriendly(juror, target))
-        {
-            // Even though Deputy doesn't use the nameplate normally, it should grab it anyways incase Deputy isn't meant to reveal themselves
-            Player.RpcMeetingMurder(target, MeetingAnimation.RoleSpecific, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
-                causeOfDeath: "Judge");
-        }
-        else
-        {
-            Player.RpcMeetingMurder(target, MeetingAnimation.RoleSpecific, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
-                causeOfDeath: "Judge");
-        }
-    }*/
+        //if (p1.Data?.Role == null || p2.Data?.Role == null) return true;
+
+        if ((p1.Is(RoleAlignment.NeutralBenign) || p2.Is(RoleAlignment.NeutralBenign)) && OptionGroupSingleton<MagistrateOptions>.Instance.BenignFriendly.Value) return true;
+
+        if ((p1.Is(RoleAlignment.NeutralEvil) || p2.Is(RoleAlignment.NeutralEvil)) && OptionGroupSingleton<MagistrateOptions>.Instance.EvilFriendly.Value) return true;
+
+        if ((p1.Is(RoleAlignment.NeutralOutlier) || p2.Is(RoleAlignment.NeutralOutlier)) && OptionGroupSingleton<MagistrateOptions>.Instance.OutlierFriendly.Value) return true;
+
+
+        if (p1.IsCrewmate() && p2.IsCrewmate()) return true;
+
+        if (p1.IsImpostor() && p2.IsImpostor()) return true;
+
+        if (p1.Data.Role.Role == p2.Data.Role.Role) return true; // Two Cursed Soul are friendly to one another
+
+        if (p1.Is(RoleAlignment.NeutralBenign) && p2.Is(RoleAlignment.NeutralBenign)) return true;
+
+        if (p1.Is(RoleAlignment.NeutralEvil) && p2.Is(RoleAlignment.NeutralEvil)) return true;
+
+        if (p1.Is(RoleAlignment.NeutralOutlier) && p2.Is(RoleAlignment.NeutralOutlier)) return true;
+
+        if (p1.IsLover() && p2.IsLover()) return true;
+
+
+        // You sense that Atony and werewolves appear to be enemies!
+        return false;
+    }
+
     public void ClearMenu()
     {
         judgeMenu?.HideButtons();

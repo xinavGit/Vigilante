@@ -93,6 +93,7 @@
     <string name="Vigilante.Feedback.Magistrate.Judgement">[player] has been judged and executed.</string>
     <string name="Vigilante.Feedback.Magistrate.JudgementDefended">[player] was unable to be judged! They are either blessed or are immune.</string>
     <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string> <!-- implement this -->
+    <string name="Vigilante.Feedback.Magistrate.YouWereJudged">The Magistrate has left the town for their poor judgment.</string>
     <!-- Magistrate Options -->
     <string name="Vigilante.Options.Magistrate.JudgeUses">Max Judgements</string>
     <string name="Vigilante.Options.Magistrate.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>
@@ -100,6 +101,10 @@
     <string name="Vigilante.Options.Magistrate.EnlistCooldown">Enlist Cooldown</string>
     <string name="Vigilante.Options.Magistrate.EnlistDelay">Enlist Delay (Can Cancel)</string>
     <string name="Vigilante.Options.Magistrate.NotifyJuror">Notify Juror On Enlistment</string>
+    <string name="Vigilante.Options.Magistrate.BenignFriendly">Neutral Benign Are Friendly To All</string>
+    <string name="Vigilante.Options.Magistrate.EvilFriendly">Neutral Evil Are Friendly To All</string>
+    <string name="Vigilante.Options.Magistrate.OutlierFriendly">Neutral Outlier Are Friendly To All</string>
+    <string name="Vigilante.Options.Magistrate.LeavesInShame">Leaves In Shame</string>
 
     <!-- Pacifist - Crewmate Power FIX TO REWORKED PACIFIST LATER -->
     <!-- Pacifist Wiki / Abilities -->

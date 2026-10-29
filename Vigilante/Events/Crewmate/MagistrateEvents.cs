@@ -14,6 +14,7 @@ using Il2CppSystem.Runtime.InteropServices;
 using MiraAPI.Roles;
 using MiraAPI.Hud;
 using Vigilante.Buttons.Crewmate;
+using MiraAPI.Events.Vanilla.Meeting;
 
 namespace Vigilante.Events.Crewmate;
 
@@ -47,6 +48,54 @@ public static class MagistrateEvents
             foreach (var magi in CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>())
             {
                 magi.ClearMenu();
+            }
+        }
+    }
+
+    [RegisterEvent(400)]
+    public static void WrapUpEvent(EjectionEvent @event)
+    {
+        var player = @event.ExileController.initData.networkedPlayer?.Object;
+
+        foreach (var pros in CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>())
+        {
+            var hasProsecuted = pros.HasProsecuted;
+            pros.Cleanup();
+
+            if (player == null)
+            {
+                continue;
+            }
+
+            if (hasProsecuted)
+            {
+                ProsecutorRole.HasProsecutedBefore = true;
+                GameHistory.UpdatePlayerDeathData(player.PlayerId, MiraLocaleManager.Get("DiedToProsecutor"), 0,
+                    HudManagerHelper.Instance.CurrentRound, DeathHandlerOverride.SetFalse,
+                    MiraLocaleManager.Get("DiedByStringBasic").Replace("<player>", pros.Player.Data.PlayerName),
+                    lockInfo: DeathHandlerOverride.SetTrue, playerState: StoredPlayerState.Dead);
+
+                if (IsBadJudgement(pros.Player, player) && player != pros.Player)
+                {
+                    ProsToAnnounceNext = pros.Player;
+                    if ((BadProsecuteResult)OptionGroupSingleton<ProsecutorOptions>.Instance.WrongfulProsecutionResult.Value is BadProsecuteResult.EjectProsAndEjectTarget)
+                    {
+                        if (pros.Player.TryGetModifier<CelebrityModifier>(out var celeb))
+                        {
+                            celeb.Announced = true;
+                        }
+                        GameHistory.UpdatePlayerDeathData(pros.Player.PlayerId, MiraLocaleManager.Get("DiedToPunishment"), 0,
+                            HudManagerHelper.Instance.CurrentRound, DeathHandlerOverride.SetFalse,
+                            lockInfo: DeathHandlerOverride.SetTrue, playerState: StoredPlayerState.Dead);
+
+                        pros.Player.Exiled();
+                    }
+                    else
+                    {
+                        pros.ProsecutionsCompleted =
+                            (int)OptionGroupSingleton<ProsecutorOptions>.Instance.MaxProsecutions;
+                    }
+                }
             }
         }
     }

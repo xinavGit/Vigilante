@@ -23,5 +23,17 @@ public class MagistrateOptions : AbstractOptionGroup<MagistrateRole>
     
     public ModdedToggleOption NotifyJuror { get; } =
         new("Vigilante.Options.Magistrate.NotifyJuror", false);
+
+    public ModdedToggleOption BenignFriendly { get; } =
+        new("Vigilante.Options.Magistrate.BenignFriendly", true);
+
+    public ModdedToggleOption EvilFriendly { get; } =
+        new("Vigilante.Options.Magistrate.EvilFriendly", true);
+    
+    public ModdedToggleOption OutlierFriendly { get; } =
+        new("Vigilante.Options.Magistrate.OutlierFriendly", true);
+
+    public ModdedToggleOption LeavesInShame { get; } =
+        new("Vigilante.Options.Magistrate.LeavesInShame", true);
     
 }
