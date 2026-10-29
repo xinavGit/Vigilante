@@ -35,11 +35,6 @@ public static class MeetingHudTimerPatch
                     $"\n{insp.RoundInspects} / {(int)OptionGroupSingleton<InspectorOptions>.Instance.InspectsPerMeeting} {MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InspectsRemaining")}";
 
                 break;
-            case MagistrateRole magi:
-                newText =
-                    $"\n{magi.JudgementUsesLeft} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementsRemaining")}";
-
-                break;
         }
 
         if (newText != string.Empty)

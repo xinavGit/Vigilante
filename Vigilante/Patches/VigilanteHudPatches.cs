@@ -28,12 +28,6 @@ public static class VigilanteHudPatches
 
         var (playerColor, playerName) = __result;
 
-        if (player.HasModifier<MagistrateJurorModifier>() &&
-             PlayerControl.LocalPlayer.IsRole<MagistrateRole>())
-        {
-            playerName += "<color=#cc9900> ¤</color>";
-        }
-
         if (player.HasModifier<CrusaderSanctifiedModifier>() &&
              PlayerControl.LocalPlayer.IsRole<CrusaderRole>())
         {
