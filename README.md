@@ -16,8 +16,6 @@
   <img width="30%" src="./Images/RoleBanners/chameleon.png" alt="Chameleon"/>
   <img width="30%" src="./Images/RoleBanners/decryptor.png" alt="Decryptor"/>
   <img width="30%" src="./Images/RoleBanners/inspector.png" alt="Inspector"/>
-  <img src="./Images/Groups/CrewPower.png" alt="Crewmate Power"/>
-  <img width="30%" src="./Images/RoleBanners/magistrate.png" alt="Magistrate"/>
   <img src="./Images/Groups/CrewProtect.png" alt="Crewmate Protective"/>
   <img width="30%" src="./Images/RoleBanners/crusader.png" alt="Crusader"/>
   <img src="./Images/Groups/ImpPower.png" alt="Impostor Power"/>
@@ -30,8 +28,7 @@
 
 
 
-## Known Bugs
-- Venting right when Chameleon camouflage ends causes the user to be stuck in the vents... so don't do that
+
 
 ## Contributions & Credits
 
@@ -41,7 +38,9 @@
 [BepInEx](https://github.com/BepInEx) - For hooking game functions\
 [Divani Mods](https://github.com/DivaniNL/TownOfUsMiraDivaniModsAddOn) - Code reference\
 [TOU-Mira](https://github.com/AU-Avengers/TOU-Mira) - Code reference, mod framework, assets
+
 BTOS2/TOS2 - Button art assets
+
 espeon3 - Chameleon Role
 
 ## License
