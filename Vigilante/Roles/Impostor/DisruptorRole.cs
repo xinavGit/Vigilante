@@ -240,10 +240,6 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         {
             return;
         }
-        foreach (var sab in availableSabs)
-        {
-            Info(sab);
-        }
         var chosenSab = availableSabs[UnityEngine.Random.Range(0, availableSabs.Count)];
         switch (chosenSab)
         {

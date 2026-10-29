@@ -137,7 +137,6 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
         if (Player.AmOwner && meeting != null && !Player.HasDied())
         {
             manipulationMenu?.GenButtons(meeting, true);
-            Info("PRINTING MENUUU");
         }
     }
 

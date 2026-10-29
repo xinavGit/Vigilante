@@ -91,13 +91,10 @@ public static class DiplomatEvents
     [RegisterEvent]
     public static void OnMeetingStart(StartMeetingEvent evt)
     {
-        Info($"z");
         if (PlayerControl.LocalPlayer.IsRole<DiplomatRole>() && PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod))
         {
-            Info($"zz{mod.MeetingsLeft}");
             if (mod.MeetingsLeft > 0)
             {
-                Info($"zzz{mod.MeetingsLeft}");
                 mod.MeetingsLeft--;
                 if (mod.MeetingsLeft == 0)
                 {
@@ -128,8 +125,6 @@ public static class DiplomatEvents
                 {
                     diplomat.Player.RpcMeetingMurder(diplomat.Player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
                         causeOfDeath: "DiplomatLeave");
-
-                    Info("killing diplomat!");
                 }
             }
             
