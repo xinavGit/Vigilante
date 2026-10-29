@@ -38,7 +38,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
 
     public CustomRoleConfiguration Configuration => new(this)
     {
-        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DisruptorIcon.LoadAsset(), "Vigilante.Role.Impostor.Power", 1.45f),
+        IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DisruptorIcon.LoadAsset(), "Vigilante.Role.Impostor.Disruptor", 1.45f),
         OptionsScreenshot = TouBanners.ImpostorRoleBanner,
         Icon = VigilanteAssets.DisruptorIcon
     };

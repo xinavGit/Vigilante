@@ -33,6 +33,7 @@ public static class VigilanteAssets
     //buttons
     public static LoadableAsset<Sprite> ChameleonVent { get; } = new LoadableResourceAsset($"{ButtonPath}.ChameleonVent.png");
     public static LoadableAsset<Sprite> CrusaderSanctify { get; } = new LoadableResourceAsset($"{ButtonPath}.Sanctify.png");
+    public static LoadableAsset<Sprite> RitualistRitual { get; } = new LoadableResourceAsset($"{ButtonPath}.Sanctify.png");
 
     // Audio clips (16000hz)
     public static LoadableAsset<AudioClip> InspectorPublish { get; } = new LoadableAudioResourceAsset($"{SoundPath}.InspectorPublish.wav");
@@ -41,4 +42,5 @@ public static class VigilanteAssets
     public static LoadableAsset<Sprite> InspectorInspect { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f);
     public static LoadableAsset<Sprite> MagistrateJudgement { get; } = new LoadableResourceAsset($"{ButtonPath}.Judgement.png", 300f); // button from BTOS2
     public static LoadableAsset<Sprite> DiplomatManipulate { get; } = new LoadableResourceAsset($"{ButtonPath}.Manipulate.png", 300f);
+    public static LoadableAsset<Sprite> RitualistEliminate { get; } = new LoadableResourceAsset($"{ButtonPath}.Eliminate.png", 300f);
 }
