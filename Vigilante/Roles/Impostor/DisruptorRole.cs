@@ -293,6 +293,9 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
             ability.DecreaseTimer(Time.deltaTime * value);
         }
 
-        Player.killTimer -= Time.deltaTime * value;
+        if (!Player.inVent)
+        {
+            Player.killTimer -= Time.deltaTime * value;
+        }
     }
 }

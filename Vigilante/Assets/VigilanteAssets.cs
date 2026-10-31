@@ -33,10 +33,11 @@ public static class VigilanteAssets
     //buttons
     public static LoadableAsset<Sprite> ChameleonVent { get; } = new LoadableResourceAsset($"{ButtonPath}.ChameleonVent.png");
     public static LoadableAsset<Sprite> CrusaderSanctify { get; } = new LoadableResourceAsset($"{ButtonPath}.Sanctify.png");
-    public static LoadableAsset<Sprite> RitualistRitual { get; } = new LoadableResourceAsset($"{ButtonPath}.Sanctify.png");
+    public static LoadableAsset<Sprite> RitualistRitual { get; } = new LoadableResourceAsset($"{ButtonPath}.Ritual.png");
 
     // Audio clips (16000hz)
     public static LoadableAsset<AudioClip> InspectorPublish { get; } = new LoadableAudioResourceAsset($"{SoundPath}.InspectorPublish.wav");
+    public static LoadableAsset<AudioClip> RitualistRit { get; } = new LoadableAudioResourceAsset($"{SoundPath}.Ritted.wav");
 
     // Meeting nameplate toggles:
     public static LoadableAsset<Sprite> InspectorInspect { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f);

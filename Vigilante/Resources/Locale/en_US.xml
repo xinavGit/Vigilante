@@ -3,7 +3,8 @@
     <string name="DiedToJudge">Judged</string>
     <string name="DiedToKidnapper">Exterminated</string>
     <string name="DiedToJinx">Jinxed</string>
-    <string name="DiedToDiplomatLeave">Expelled</string>
+    <string name="DiedToDiplomatLeave">Banished</string>
+    <string name="DiedToRitualistRitualized">Ritualized</string>
     
     <!-- Chameleon - Crewmate Investigative -->
     <!-- Chameleon Wiki / Abilities -->
@@ -226,22 +227,26 @@
     <string name="Vigilante.Role.Ritualist">Ritualist</string>
     <string name="Vigilante.Role.Ritualist.IntroBlurb">Preform blood rituals to guess!</string>
     <string name="Vigilante.Role.Ritualist.MedDescription">Use blood rituals to guess players' roles at no cost.</string>
-    <string name="Vigilante.Role.Ritualist.TabDescription">Preform blood rituals to guess roles at no cost to you.</string> <!-- remember oracle bless stuff -->
-    <string name="Vigilante.Role.Ritualist.WikiDescription">The Ritualist is an Impostor Killing role that can attempt to guess the roles of players during the round using blood rituals. The Ritualist will know if they are right or wrong about their guess, and they won't have any punishment on misguessing. If they are right, their role will be visible to all impostors and the Ritualist can eliminate the revealed player during the meeting. Elimnating a player will always use the RHM meeting death animation.</string> 
+    <string name="Vigilante.Role.Ritualist.TabDescription">Preform blood rituals to guess roles without dying on misguess.</string> <!-- remember oracle bless stuff -->
+    <string name="Vigilante.Role.Ritualist.WikiDescription">The Ritualist is an Impostor Killing role that can attempt to guess the roles of players during the round using blood rituals. The Ritualist will know if they are right or wrong about their guess. If they are wrong, their cooldowns will be slower. If they are right, their role will be visible to all impostors and the Ritualist can eliminate the revealed player during the meeting. The Ritualist's cooldowns will also be faster. It will be publicly announced that a Ritualist has eliminated a player.</string>
     <string name="Vigilante.Role.Ritualist.Ritual">Ritual</string>
-    <string name="Vigilante.Role.Ritualist.Ritual.WikiDescription">Preform a blood ritual, attempting to guess a player's role at no cost to yourself. If you are correct, their role will be visible to all impostors and you can eliminate them.</string>
+    <string name="Vigilante.Role.Ritualist.Ritual.WikiDescription">Preform a blood ritual, attempting to guess a player's role. If you are correct, their role will be visible to all impostors and you can eliminate them. Your cooldowns will also be faster. Being incorrect makes your cooldowns slower.</string>
     <string name="Vigilante.Role.Ritualist.Eliminate">Eliminate</string>
-    <string name="Vigilante.Role.Ritualist.Eliminate.WikiDescription">Kill a player who was successfully blood-ritualized. Only the Ritualist can do this to a ritualized player.</string>
+    <string name="Vigilante.Role.Ritualist.Eliminate.WikiDescription">Kill a player who was successfully blood-ritualized. Only the Ritualist can do this to a ritualized player. It will be publicly announced that a Ritualist killed the player. Does not work on blessed players.</string>
     <!-- Ritualist Feedback -->
     <string name="Vigilante.Feedback.Ritualist.RitualFail">Your ritual failed. [player] does not seem to be the [role]! </string>
-    <string name="Vigilante.Feedback.Ritualist.RitualSuccess">Your ritual succeeded! You can now eliminate the player in the meeting.</string>
+    <string name="Vigilante.Feedback.Ritualist.BloodSlows">You feel your blood slow down.</string>
+    <string name="Vigilante.Feedback.Ritualist.RitualSuccess">Your ritual succeeded! You can now eliminate [player] in the meeting.</string>
+    <string name="Vigilante.Feedback.Ritualist.BloodSurges">You feel your blood surging!</string>
     <string name="Vigilante.Feedback.Ritualist.EliminateSuccess">[player] was eliminated.</string>
     <string name="Vigilante.Feedback.Ritualist.EliminateFail">[player] could not be eliminated! They must be blessed or immune.</string>
+    <string name="Vigilante.Feedback.Ritualist.Elimination">The Ritualist saw to the end of [player].</string>
     <!-- Ritualist Options -->
     <string name="Vigilante.Options.Ritualist.RitualUses">Inital Ritual Uses</string>
     <string name="Vigilante.Options.Ritualist.RitualCooldown">Ritual Cooldown</string>
-    <string name="Vigilante.Options.Ritualist.CanGetMoreUses">Can Get More Jinx Uses From Kills</string>
+    <string name="Vigilante.Options.Ritualist.CanGetMoreUses">Can Get More Ritual Uses From Kills</string>
     <string name="Vigilante.Options.Ritualist.UsesPerKill">Ritual Uses Gained Per Kill</string>
+    <string name="Vigilante.Options.Ritualist.CanRitCI">Ritualist Can Eliminate Crew Investigatives</string>
 
     <!-- Banshee - Impostor Support -->
     <!-- Banshee Wiki / Abilities -->
