@@ -256,28 +256,4 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
 
         return false;
     }
-
-    public void FixedUpdate()
-    {
-        if (!Player || Player.Data.Role is not RitualistRole || Player.HasDied() || !Player.AmOwner ||
-            MeetingHud.Instance)
-        {
-            return;
-        }
-        
-        var value = OptionGroupSingleton<RitualistOptions>.Instance.CooldownIncrease - 1;
-        
-        foreach (var ability in CustomButtonManager.Buttons)
-        {
-            if (ability.EffectActive) continue;
-            if (ability.TimerPaused) continue;
-
-            ability.DecreaseTimer(Time.deltaTime * value);
-        }
-
-        if (Player.inVent)
-        {
-            Player.killTimer -= Time.deltaTime * value;
-        }
-    }
 }

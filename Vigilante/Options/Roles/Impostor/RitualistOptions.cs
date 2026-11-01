@@ -16,14 +16,6 @@ public class RitualistOptions : AbstractOptionGroup<RitualistRole>
     public ModdedNumberOption RitualCooldown { get; } =
         new($"Vigilante.Options.Ritualist.RitualCooldown", 25f, 5f, 60f, 2.5f, MiraNumberSuffixes.Seconds);
 
-    public ModdedNumberOption CooldownIncrease { get; set; } =
-        new("Successful Ritual Cooldown Speed Increase", 1.25f, 1.1f, 3f, 0.05f,
-            MiraNumberSuffixes.Multiplier, "0.00");
-    
-    public ModdedNumberOption CooldownDecrease { get; set; } =
-        new("Failed Ritual Cooldown Speed Decrease", 0.8f, 0.1f, 0.95f, 0.05f,
-            MiraNumberSuffixes.Multiplier, "0.00");
-
     public ModdedToggleOption EliminateCI { get; } =
         new($"Vigilante.Options.Ritualist.CanRitCI", false);
 }
