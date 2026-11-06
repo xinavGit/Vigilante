@@ -28,12 +28,6 @@ public sealed class MagistrateCourtImmunityModifier() : BaseModifier
         SetUpOverlay();
     }
 
-    public override void OnMeetingStart()
-    {
-        base.OnMeetingStart();
-        SetUpOverlay();
-    }
-
     public void SetUpOverlay()
     {
         var meetingInstance = MeetingHud.Instance;
@@ -50,10 +44,6 @@ public sealed class MagistrateCourtImmunityModifier() : BaseModifier
         BmOverlay.sprite = VigilanteAssets.CourtOverlay;
         BmOverlay.gameObject.SetActive(true);
         VoteArea.ColorBlindName.gameObject.SetActive(false);
-    }
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
     }
 
     public override void OnDeath(DeathReason reason)

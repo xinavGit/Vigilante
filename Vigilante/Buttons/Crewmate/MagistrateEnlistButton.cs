@@ -160,7 +160,7 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
 
     public override void OnEffectEnd()
     {
-        OverrideName(MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.Enlist"));
+        OverrideName(MiraLocaleManager.Get("Vigilante.Role.Magistrate.Enlist"));
 
         if (_enlistedTarget == null) return;
 

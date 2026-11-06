@@ -33,9 +33,16 @@ public static class MagistrateEvents
             juror.RemoveModifier<MagistrateJurorModifier>();
         }
 
+        foreach (var immune in ModifierUtils.GetPlayersWithModifier<MagistrateCourtImmunityModifier>().ToList())
+        {
+            immune.RemoveModifier<MagistrateCourtImmunityModifier>();
+        }
+
         var button = CustomButtonSingleton<MagistrateEnlistButton>.Instance;
         ++button.UsesLeft;
         button.SetUses(button.UsesLeft);
+
+        MagistrateRole.CourtActive = false;
     }
 
     [RegisterEvent]
