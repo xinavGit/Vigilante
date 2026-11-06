@@ -38,10 +38,14 @@ public static class VigilanteAssets
     // Audio clips (16000hz)
     public static LoadableAsset<AudioClip> InspectorPublish { get; } = new LoadableAudioResourceAsset($"{SoundPath}.InspectorPublish.wav");
     public static LoadableAsset<AudioClip> RitualistRit { get; } = new LoadableAudioResourceAsset($"{SoundPath}.Ritted.wav");
+    public static LoadableAsset<AudioClip> CourtGavel { get; } = new LoadableAudioResourceAsset($"{SoundPath}.CourtGavel.wav");
 
     // Meeting nameplate toggles:
     public static LoadableAsset<Sprite> InspectorInspect { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f);
     public static LoadableAsset<Sprite> MagistrateJudgement { get; } = new LoadableResourceAsset($"{ButtonPath}.Judgement.png", 300f); // button from BTOS2
     public static LoadableAsset<Sprite> DiplomatManipulate { get; } = new LoadableResourceAsset($"{ButtonPath}.Manipulate.png", 300f);
     public static LoadableAsset<Sprite> RitualistEliminate { get; } = new LoadableResourceAsset($"{ButtonPath}.Eliminate.png", 300f);
+
+
+    public static LoadableAsset<Sprite> CourtOverlay { get; } = new LoadableResourceAsset($"Vigilante.Resources.CourtOverlay.png");
 }

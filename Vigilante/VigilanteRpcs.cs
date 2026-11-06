@@ -8,4 +8,6 @@ public enum VigilanteRpcs : uint
     CrusaderClearSanctify,
     DiplomatReveal,
     RitualistEliminate,
+    MagistrateEnlist,
+    MagistrateCourt
 }
