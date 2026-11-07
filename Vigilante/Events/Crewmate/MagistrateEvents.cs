@@ -28,21 +28,10 @@ public static class MagistrateEvents
             return;
         }
 
-        foreach (var juror in ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList())
+        if (PlayerControl.LocalPlayer.IsHost())
         {
-            juror.RemoveModifier<MagistrateJurorModifier>();
+            MagistrateRole.RpcEndCourt();
         }
-
-        foreach (var immune in ModifierUtils.GetPlayersWithModifier<MagistrateCourtImmunityModifier>().ToList())
-        {
-            immune.RemoveModifier<MagistrateCourtImmunityModifier>();
-        }
-
-        var button = CustomButtonSingleton<MagistrateEnlistButton>.Instance;
-        ++button.UsesLeft;
-        button.SetUses(button.UsesLeft);
-
-        MagistrateRole.CourtActive = false;
     }
 
     [RegisterEvent]
@@ -56,6 +45,11 @@ public static class MagistrateEvents
             {
                 magi.ClearMenu();
             }
+        }
+
+        if ((victim == MagistrateRole.CourtTarget || victim == MagistrateRole.CourtJuror || victim.IsRole<MagistrateRole>()) && MagistrateRole.CourtActive && MagistrateRole.EnemiesCourt)
+        {
+            MagistrateRole.RpcEndCourt(true);
         }
     }
 

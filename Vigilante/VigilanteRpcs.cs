@@ -9,5 +9,6 @@ public enum VigilanteRpcs : uint
     DiplomatReveal,
     RitualistEliminate,
     MagistrateEnlist,
-    MagistrateCourt
+    MagistrateCourt,
+    MagistrateEndCourt
 }

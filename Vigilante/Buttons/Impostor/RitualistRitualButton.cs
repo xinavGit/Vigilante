@@ -23,11 +23,6 @@ public sealed class RitualistRitualButton : TownOfUsRoleButton<RitualistRole>
 
     protected override void OnClick()
     {
-        var ritualist = PlayerControl.LocalPlayer.GetRole<RitualistRole>();
-
-        if (ritualist != null)
-        {
-            ritualist.OpenPlayerMenu();
-        }
+        Role.OpenPlayerMenu();
     }
 }

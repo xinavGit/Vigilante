@@ -35,6 +35,26 @@ public static class MeetingHudTimerPatch
                     $"\n{insp.RoundInspects} / {(int)OptionGroupSingleton<InspectorOptions>.Instance.InspectsPerMeeting} {MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InspectsRemaining")}";
 
                 break;
+            case MagistrateRole magi:
+                if (MagistrateRole.CourtActive)
+                {
+                    newText =
+                        $"\n{MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.CourtActive")}";
+                }
+                else
+                {
+                    if (magi.JudgementUsesLeft == 1)
+                    {
+                        newText =
+                            $"\n{magi.JudgementUsesLeft} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementRemaining")}";
+                    }
+                    else
+                    {
+                        newText =
+                            $"\n{magi.JudgementUsesLeft} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementsRemaining")}";
+                    }
+                }
+                break;
         }
 
         if (newText != string.Empty)

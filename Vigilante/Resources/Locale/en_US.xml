@@ -90,7 +90,8 @@
     <string name="Vigilante.Feedback.Magistrate.JurorNotify">The Magistrate chose you to be their Juror!</string>
     <string name="Vigilante.Feedback.Magistrate.Juror">Juror</string>
     <string name="Vigilante.Feedback.Magistrate.JurorDescription">The Magistrate chose you to compare your alliance with another player in the next meeting!</string>
-    <string name="Vigilante.Feedback.Magistrate.JudgementsRemaining">Judgements Remaining</string> <!-- remember oracle bless stuff -->
+    <string name="Vigilante.Feedback.Magistrate.JudgementsRemaining">Courts Remaining</string> <!-- remember oracle bless stuff -->
+    <string name="Vigilante.Feedback.Magistrate.JudgementRemaining">Court Remaining</string>
     <string name="Vigilante.Feedback.Magistrate.Judgement">[player] has been judged and executed.</string>
     <string name="Vigilante.Feedback.Magistrate.JudgementDefended">[player] was unable to be judged! They are either blessed or are immune.</string>
     <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string> <!-- implement this -->
@@ -99,6 +100,8 @@
     <string name="Vigilante.Feedback.Magistrate.CourtStart">The Magistrate has called court!</string>
     <string name="Vigilante.Feedback.Magistrate.CourtEnemies">Enemies [player1] and [player2] have been put on trial.</string>
     <string name="Vigilante.Feedback.Magistrate.CourtFriends">Friends [player1] and [player2] are now immune to vote.</string>
+    <string name="Vigilante.Feedback.Magistrate.CourtActive">Court In Session</string>
+    <string name="Vigilante.Feedback.Magistrate.CourtEarlyEnd">The Court has ended early.</string>
     <!-- Magistrate Options -->
     <string name="Vigilante.Options.Magistrate.JudgeUses">Max Judgements</string>
     <string name="Vigilante.Options.Magistrate.MoreJudgeUsesFromTasks">Get More Judgement Uses From Tasks</string>

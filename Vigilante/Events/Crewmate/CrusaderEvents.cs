@@ -49,7 +49,11 @@ public static class CrusaderEvents
             
             var crusader = PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x => x.IsRole<CrusaderRole>());
             if (crusader == null) return;
-            crusader.RpcCustomMurder(source);
+
+            if (TutorialManager.InstanceExists || source.AmOwner) 
+            {
+                crusader.RpcCustomMurder(source);
+            }
         }
     }
 

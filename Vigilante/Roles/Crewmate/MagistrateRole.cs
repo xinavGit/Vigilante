@@ -35,6 +35,7 @@ using TownOfUs.Networking;
 using Reactor.Utilities.Extensions;
 using Reactor.Utilities;
 using MiraAPI.Voting;
+using Vigilante.Buttons.Crewmate;
 
 namespace Vigilante.Roles.Crewmate;
 //using TOUM monarch role code for enlist rpc
@@ -58,6 +59,11 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     public float JudgementUsesLeft { get; set; }
 
     public static bool CourtActive { get; set; }
+    public static bool EnemiesCourt { get; set; }
+
+    [HideFromIl2Cpp] public static PlayerControl? CourtJuror { get; set; }
+    [HideFromIl2Cpp] public static PlayerControl? CourtTarget { get; set; }
+
 
     public string GetAdvancedDescription()
     {
@@ -97,6 +103,10 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         CourtActive = false;
         JudgementUsesLeft = OptionGroupSingleton<MagistrateOptions>.Instance.JudgementUses.Value;
 
+        CourtJuror = null;
+        CourtTarget = null;
+        EnemiesCourt = false;
+
         judgeMenu = new MeetingMenu(
                 this,
                 ClickJudge,
@@ -123,16 +133,13 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     [HideFromIl2Cpp]
     public bool IsJudgementExempt(PlayerVoteArea voteArea)
     {
-        Info($"player is {voteArea.GetPlayer()}, checking exempt...");
         if (JudgementUsesLeft <= 0)
         {
-            Info($"judge judgement exempt - judgement all used");
             return true;
         }
 
         if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
         {
-            Info($"null target or target is judge");
             return true;
         }
 
@@ -140,17 +147,14 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
         if (target == null || target.HasDied())// check if target has been successfully inspected again
         {
-            Info($"target null or has died!");
             return true;
         }
 
         if (target.HasModifier<MagistrateJurorModifier>())
         {
-            Info($"is the juror, exempt");
             return true;
         }
 
-        Info($"can be judgemented");
         return false;
     }
 
@@ -177,12 +181,49 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             ClearMenu();
         }
     }
+    
+    [MethodRpc((uint)VigilanteRpcs.MagistrateEndCourt)]
+    public static void RpcEndCourt(bool early = false)
+    {
+        foreach (var jurorPlayer in ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList())
+        {
+            jurorPlayer.RemoveModifier<MagistrateJurorModifier>();
+        }
+
+        foreach (var immunePlayer in ModifierUtils.GetPlayersWithModifier<MagistrateCourtImmunityModifier>().ToList())
+        {
+            immunePlayer.RemoveModifier<MagistrateCourtImmunityModifier>();
+        }
+
+        var button = CustomButtonSingleton<MagistrateEnlistButton>.Instance;
+        ++button.UsesLeft;
+        button.SetUses(button.UsesLeft);
+
+        CourtJuror = null;
+        CourtTarget = null;
+
+        EnemiesCourt = false;
+
+        CourtActive = false;
+
+        if (early)
+        {
+            var msg = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.CourtEarlyEnd");
+            var notif1 = Helpers.CreateAndShowNotification(
+                $"<b>{VigilanteColors.Magistrate.ToTextColor()}{msg}</b></color>",
+                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
+            notif1.AdjustNotification();
+        }
+    }
 
     [MethodRpc((uint)VigilanteRpcs.MagistrateCourt)]
     public static void RpcCourt(PlayerControl target, PlayerControl juror)
     {
         var targetName = target.CachedPlayerData.PlayerName;
         var jurorName = juror.CachedPlayerData.PlayerName;
+
+        CourtJuror = juror;
+        CourtTarget = target;
 
         Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Magistrate));
         TouAudio.PlaySound(VigilanteAssets.CourtGavel);
@@ -216,6 +257,8 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                 $"<b>{msg2b}</b></color>",
                 Color.red, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
             notif2b.AdjustNotification();
+
+            EnemiesCourt = true;
 
             if (PlayerControl.LocalPlayer.IsHost())
             {
