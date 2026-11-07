@@ -33,7 +33,10 @@ public static class DiplomatEvents
                 p.Data != null &&
                 p.Data.Role is DiplomatRole);
 
-        if (diplomat?.Data == null || diplomat.Data.IsDead)
+        if (diplomat == null)
+            return;
+
+        if (diplomat.Data.IsDead)
             return;
 
         if (diplomat.Data.Role is not DiplomatRole diplomatRole)
