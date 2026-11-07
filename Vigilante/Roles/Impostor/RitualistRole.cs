@@ -137,7 +137,7 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         RpcRitualistEliminate(PlayerControl.LocalPlayer, player);
     }
 
-    [MethodRpc((uint)VigilanteRpcs.InspectorPublish)]
+    [MethodRpc((uint)VigilanteRpcs.RitualistEliminate)]
     public static void RpcRitualistEliminate(PlayerControl ritualist, PlayerControl victim)
     {
         if (ritualist == null || victim == null) return;

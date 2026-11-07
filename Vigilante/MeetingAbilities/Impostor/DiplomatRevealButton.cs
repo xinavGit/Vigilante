@@ -9,7 +9,7 @@ using TownOfUs.Roles.Crewmate;
 using UnityEngine;
 using Vigilante.Roles.Impostor;
 
-namespace Vigilante.MeetingAbilities.Crewmate;
+namespace Vigilante.MeetingAbilities.Impostor;
 
 public class DiplomatRevealButton : MeetingActionButton
 {

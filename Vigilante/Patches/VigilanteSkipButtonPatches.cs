@@ -15,13 +15,9 @@ public static class VigilanteSkipButtonPatches
         var genOpt = OptionGroupSingleton<MagistrateOptions>.Instance.DisableSkip;
         var court = MagistrateRole.CourtActive;
 
-        if (genOpt || court)
+        if (genOpt && court)
         {
             __instance.SkipVoteButton.gameObject.SetActive(false);
-        }
-        if (!genOpt && !court)
-        {
-            __instance.SkipVoteButton.gameObject.SetActive(true);
         }
     }
 }

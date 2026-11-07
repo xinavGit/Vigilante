@@ -88,7 +88,7 @@ public static class DiplomatEvents
         }
     }
 
-    [RegisterEvent]
+    /*[RegisterEvent]
     public static void OnMeetingStart(StartMeetingEvent evt)
     {
         if (PlayerControl.LocalPlayer.IsRole<DiplomatRole>() && PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod))
@@ -102,7 +102,7 @@ public static class DiplomatEvents
                 }
             }
         }
-    }
+    }*/
 
     [RegisterEvent]
     public static void OnVotingComplete(VotingCompleteEvent evt)
