@@ -19,5 +19,9 @@ public static class VigilanteSkipButtonPatches
         {
             __instance.SkipVoteButton.gameObject.SetActive(false);
         }
+        if (!genOpt && !court)
+        {
+            __instance.SkipVoteButton.gameObject.SetActive(true);
+        }
     }
 }

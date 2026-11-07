@@ -163,6 +163,11 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         var target = GameData.Instance.GetPlayerById(voteArea.PlayerId).Object;
         var juror = ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList().FirstOrDefault();
 
+        if (__.state == MeetingHud.MeetingStates.Discussion)
+        {
+            return;
+        }
+
         if (juror == null)
         {
             if (Player.AmOwner)

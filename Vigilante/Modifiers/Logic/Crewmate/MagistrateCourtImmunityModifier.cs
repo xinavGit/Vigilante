@@ -46,6 +46,19 @@ public sealed class MagistrateCourtImmunityModifier() : BaseModifier
         VoteArea.ColorBlindName.gameObject.SetActive(false);
     }
 
+    public override void OnDeactivate()
+    {
+        base.OnDeactivate();
+        if (BmOverlay)
+        {
+            Object.Destroy(BmOverlay.gameObject);
+        }
+        if (VoteArea)
+        {
+            VoteArea.ColorBlindName.gameObject.SetActive(true);
+        }
+    }
+
     public override void OnDeath(DeathReason reason)
     {
         RemoveSelf();
