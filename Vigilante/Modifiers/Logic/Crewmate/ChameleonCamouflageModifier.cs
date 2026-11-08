@@ -28,8 +28,7 @@ public sealed class ChameleonCamouflageModifier : ConcealedModifier, IVisualAppe
 
     public VisualAppearance GetVisualAppearance()
     {
-        // will make ALL CHAMELEONS see each other
-        var playerColor = (PlayerControl.LocalPlayer.IsRole<ChameleonRole>() || (PlayerControl.LocalPlayer.DiedOtherRound() &&
+        var playerColor = (PlayerControl.LocalPlayer == Player || (PlayerControl.LocalPlayer.DiedOtherRound() &&
                                                                       OptionGroupSingleton<GeneralOptions>
                                                                           .Instance.TheDeadKnow))
             ? new Color(0f, 0f, 0f, 0.1f)
