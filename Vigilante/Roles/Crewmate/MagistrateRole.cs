@@ -82,8 +82,8 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                 new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Enlist", "Enlist"),
                     MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Enlist.WikiDescription"),
                     TouRoleIcons.Prosecutor),
-                new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Judge", "Judge"),
-                    MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Judge.WikiDescription"),
+                new(MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Court", "Court"),
+                    MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.Court.WikiDescription"),
                     VigilanteAssets.MagistrateJudgement)//btos2 judge sprite here!
             ];
         }
@@ -110,6 +110,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         judgeMenu = new MeetingMenu(
                 this,
                 ClickJudge,
+                MiraLocaleManager.Get("Vigilante.Role.Magistrate.Court"),
                 MeetingAbilityType.Click,
                 VigilanteAssets.MagistrateJudgement,
                 null!,
@@ -199,10 +200,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         {
             immunePlayer.RemoveModifier<MagistrateCourtImmunityModifier>();
         }
-
-        var button = CustomButtonSingleton<MagistrateEnlistButton>.Instance;
-        ++button.UsesLeft;
-        button.SetUses(button.UsesLeft);
 
         CourtJuror = null;
         CourtTarget = null;
@@ -350,12 +347,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         {
             ShowNotification(MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.EnlistingSuccess").Replace("<player>", targetName));
         }
-
-        if (target.AmOwner && OptionGroupSingleton<MagistrateOptions>.Instance.NotifyJuror)
-        {
-            ShowNotification(MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JurorNotify"));
-        }
-
 
         void ShowNotification(string message)
         {

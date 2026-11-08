@@ -56,6 +56,7 @@
     <string name="Vigilante.Feedback.Inspector.InspectsRemaining">inspections used this round.</string>
     <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
+    <string name="Vigilante.Feedback.Inspector.PublishedWithIcon"> ([icon]Published)</string>
     <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
     <string name="Vigilante.Feedback.Inspector.InformationWasPublished">Information has been published about [player].</string>
     <!-- Inspector Options -->
@@ -79,8 +80,8 @@
     <string name="Vigilante.Role.Magistrate.WikiDescription">The Magistrate is a Crewmate Power role that can recruit a juror. During the next meeting, they can call court on another player. If the player is a friend of the juror, both the target and juror get voting immunity. Otherwise, only the target and juror can be voted in the meeting.</string>
     <string name="Vigilante.Role.Magistrate.Enlist">Enlist</string>
     <string name="Vigilante.Role.Magistrate.Enlist.WikiDescription">Enlist a player to be your Juror for the next meeting.</string>
-    <string name="Vigilante.Role.Magistrate.Judge">Judge</string>
-    <string name="Vigilante.Role.Magistrate.Judge.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror, all other players will have voting immunity and only the juror and target can be voted. If they are friends with your Juror, then both them and the juror will have voting immunity.</string>
+    <string name="Vigilante.Role.Magistrate.Court">Court</string>
+    <string name="Vigilante.Role.Magistrate.Court.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror, all other players will have voting immunity and only the juror and target can be voted. If they are friends with your Juror, then both them and the juror will have voting immunity.</string>
     <!-- Magistrate Feedback -->
     <string name="Vigilante.Feedback.Magistrate.Enlisting">Enlisting</string>
     <string name="Vigilante.Feedback.Magistrate.EnlistingPlayer">You decided to enlist [player] for your trial in [seconds] seconds...</string>
@@ -234,12 +235,12 @@
     <!-- Ritualist Wiki / Abilities -->
     <string name="Vigilante.Role.Ritualist">Ritualist</string>
     <string name="Vigilante.Role.Ritualist.IntroBlurb">Preform blood rituals to guess!</string>
-    <string name="Vigilante.Role.Ritualist.MedDescription">Use blood rituals to guess players' roles at no cost.</string>
+    <string name="Vigilante.Role.Ritualist.MedDescription">Use blood rituals to guess players' roles.</string>
     <string name="Vigilante.Role.Ritualist.TabDescription">Preform blood rituals to guess roles without dying on misguess.</string> <!-- remember oracle bless stuff -->
-    <string name="Vigilante.Role.Ritualist.WikiDescription">The Ritualist is an Impostor Killing role that can attempt to guess the roles of players during the round using blood rituals. The Ritualist will know if they are right or wrong about their guess. If they are right, their role will be visible to all impostors and the Ritualist can eliminate the revealed player during the meeting. It will be publicly announced that a Ritualist has eliminated a player.</string>
+    <string name="Vigilante.Role.Ritualist.WikiDescription">The Ritualist is an Impostor Killing role that can attempt to guess the roles of players during the round using blood rituals. The Ritualist will know if they are right or wrong about their guess. If they are right, their role will be visible to all impostors and the Ritualist can strike down the revealed player during the meeting. It will be publicly announced that a Ritualist has striked a player.</string>
     <string name="Vigilante.Role.Ritualist.Ritual">Ritual</string>
-    <string name="Vigilante.Role.Ritualist.Ritual.WikiDescription">Preform a blood ritual, attempting to guess a player's role. If you are correct, their role will be visible to all impostors and you can eliminate them.</string>
-    <string name="Vigilante.Role.Ritualist.Eliminate">Eliminate</string>
+    <string name="Vigilante.Role.Ritualist.Ritual.WikiDescription">Preform a blood ritual, attempting to guess a player's role. If you are correct, their role will be visible to all impostors and you can strike them down in the meeting. Being wrong will increase your ritual cooldown.</string>
+    <string name="Vigilante.Role.Ritualist.Eliminate">Strike</string>
     <string name="Vigilante.Role.Ritualist.Eliminate.WikiDescription">Kill a player who was successfully blood-ritualized. Only the Ritualist can do this to a ritualized player. It will be publicly announced that a Ritualist killed the player. Does not work on blessed players.</string>
     <!-- Ritualist Feedback -->
     <string name="Vigilante.Feedback.Ritualist.RitualFail">Your ritual failed. [player] does not seem to be the [role]! </string>
@@ -250,11 +251,12 @@
     <string name="Vigilante.Feedback.Ritualist.EliminateFail">[player] could not be eliminated! They must be blessed or immune.</string>
     <string name="Vigilante.Feedback.Ritualist.Elimination">The Ritualist saw to the end of [player].</string>
     <!-- Ritualist Options -->
-    <string name="Vigilante.Options.Ritualist.RitualUses">Inital Ritual Uses</string>
+    <string name="Vigilante.Options.Ritualist.MaxEliminations">Max Strikes</string>
     <string name="Vigilante.Options.Ritualist.RitualCooldown">Ritual Cooldown</string>
-    <string name="Vigilante.Options.Ritualist.CanGetMoreUses">Can Get More Ritual Uses From Kills</string>
-    <string name="Vigilante.Options.Ritualist.UsesPerKill">Ritual Uses Gained Per Kill</string>
-    <string name="Vigilante.Options.Ritualist.CanRitCI">Ritualist Can Eliminate Crew Investigatives</string>
+    <string name="Vigilante.Options.Ritualist.CooldownIncrease">Cooldown Increase Per Failed Ritual</string>
+    <string name="Vigilante.Options.Ritualist.NotifyVictim">Notify Victim On Ritual</string>
+    <string name="Vigilante.Options.Ritualist.CanRitCI">Ritualist Can Strike Crew Investigatives</string>
+
 
     <!-- Banshee - Impostor Support -->
     <!-- Banshee Wiki / Abilities -->

@@ -167,9 +167,7 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         var playerMenu = CustomPlayerMenu.Create();
 
         playerMenu.Begin(
-            plr => (!plr.HasDied() || !plr.HasModifier<RitualistRitualizedModifier>() ||
-                    MiscUtils.GetFakePlayer(plr)
-                        ?.body) && !plr.AmOwner,
+            plr => !plr.HasDied() && !plr.HasModifier<RitualistRitualizedModifier>() && !plr.AmOwner,
             plr =>
             {
                 playerMenu.ForceClose();
@@ -202,12 +200,6 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
                     Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.RitualistIcon.LoadAsset());
 
                 notif1.AdjustNotification();
-
-                var notif2 = Helpers.CreateAndShowNotification(
-                    $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Ritualist.BloodSurges")}</b>",
-                    Color.green, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.RitualistIcon.LoadAsset());
-
-                notif2.AdjustNotification();
 
                 player.RpcAddModifier<RitualistRitualizedModifier>(role);
             }

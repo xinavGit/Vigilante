@@ -14,7 +14,7 @@ namespace Vigilante.Modifiers.Logic.Crewmate;
 public sealed class MagistrateJurorModifier : BaseModifier
 {
     public override string ModifierName => MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.Juror");
-    public override bool HideOnUi => !OptionGroupSingleton<MagistrateOptions>.Instance.NotifyJuror;
+    public override bool HideOnUi => true;
     public override LoadableAsset<Sprite>? ModifierIcon => VigilanteAssets.JudgeIcon;
     public override bool Unique => false;
 
