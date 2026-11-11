@@ -36,12 +36,6 @@ public static class VigilanteHudPatches
             playerName += "<color=#cc9900> ¤</color>";
         }
 
-        if (player.HasModifier<CrusaderSanctifiedModifier>() &&
-             PlayerControl.LocalPlayer.IsRole<CrusaderRole>())
-        {
-            playerName += "<color=#ed6000> ∧</color>";
-        }
-
         if (player.HasModifier<RitualistRitualizedModifier>() &&
              PlayerControl.LocalPlayer.IsImpostorAligned())
         {
