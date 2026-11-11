@@ -40,7 +40,9 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     {
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DisruptorIcon.LoadAsset(), "Vigilante.Role.Impostor.Disruptor", 1.45f),
         OptionsScreenshot = TouBanners.ImpostorRoleBanner,
-        Icon = VigilanteAssets.DisruptorIcon
+        Icon = VigilanteAssets.DisruptorIcon,
+        CanUseVent = OptionGroupSingleton<DisruptorOptions>.Instance.CanVent,
+        CanUseSabotage = OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage
     };
 
     // reworked engineer fix code only broken on freeplay some maps

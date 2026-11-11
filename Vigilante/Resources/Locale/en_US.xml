@@ -194,6 +194,7 @@
     <string name="Vigilante.Role.Disruptor.WikiDescription">The Disruptor is an Impostor Power role that can kill to call a random sabotage. Sabotages can stack on top of each other. Their kill cooldown is lower during sabotages.</string>
     <!-- Disruptor Options -->
     <string name="Vigilante.Options.Disruptor.CanVent">Can Vent</string>
+    <string name="Vigilante.Options.Disruptor.CanSabotage">Can Sabotage Normally</string>
     <string name="Vigilante.Options.Disruptor.SabotageKillCooldownSpeedMultiplier">KCD Speed Multiplier During Sabotage</string>
 
     <!-- Kidnapper - Impostor Power maybe mayor doesnt get extra votes if kidnapped? idk-->

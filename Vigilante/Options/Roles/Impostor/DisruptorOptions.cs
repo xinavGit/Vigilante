@@ -16,4 +16,10 @@ public class DisruptorOptions : AbstractOptionGroup<DisruptorRole>
     public ModdedNumberOption DisruptorSaboCooldownMultiplier { get; set; } =
         new("KCD Cooldown Speed Multiplier During Sabo", 2f, 1.1f, 3f, 0.1f,
             MiraNumberSuffixes.Multiplier, "0.00"); // from overclocker
+
+    public ModdedToggleOption CanVent { get; } =
+        new("Vigilante.Options.Disruptor.CanVent", true);
+
+    public ModdedToggleOption CanSabotage { get; } =
+        new("Vigilante.Options.Disruptor.CanSabotage", true);
 }
