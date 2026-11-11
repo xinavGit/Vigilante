@@ -26,4 +26,7 @@ public class ChameleonOptions : AbstractOptionGroup<ChameleonRole>
 
     public ModdedToggleOption CanVent { get; } =
         new("Vigilante.Options.ChameleonCanVent", true);
+
+    public ModdedToggleOption TaskUses { get; } =
+        new("Vigilante.Options.ChameleonTaskUses", true);
 }

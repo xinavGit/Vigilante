@@ -24,6 +24,7 @@
     <string name="Vigilante.Options.ChameleonDuration">Camouflage Duration</string>
     <string name="Vigilante.Options.ChameleonSpeedBoost">Camouflage Speed Boost</string>
     <string name="Vigilante.Options.ChameleonCanVent">Can Vent While Camouflaged</string>
+    <string name="Vigilante.Options.ChameleonTaskUses">Get More Camouflages From Tasks</string>
 
     <!-- Decryptor - Crewmate Investigative -->
     <!-- Decryptor Wiki / Abilities -->
