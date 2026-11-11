@@ -1,6 +1,7 @@
 using AmongUs.GameOptions;
 using MiraAPI.Roles;
 using MiraAPI.Translation;
+using MiraAPI.Utilities;
 using TownOfUs.Modifiers;
 using TownOfUs.Roles.Crewmate;
 using TownOfUs.Utilities;
@@ -16,22 +17,15 @@ public sealed class InspectorPublishedModifier(RoleBehaviour role)
     public override bool RevealRole { get; set; } = true;
     public override bool Visible { get; set; } = true;
 
-    public override void FixedUpdate()
+    public override void OnActivate()
     {
-        base.FixedUpdate();
+        base.OnActivate();
 
         if (ShownRole == null)
         {
             return;
         }
 
-        if (PlayerControl.LocalPlayer.Data.IsDead)
-        {
-            SetNewInfo(true, roleTxt: $"{role.NameColor.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.PublishedWithIcon").Replace("<icon>", MiscUtils.GetRoleTmpIcon(role))}</color>", role2: Player.Data.Role);
-        }
-        else
-        {
-            SetNewInfo(true, roleTxt: $"{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.Published")}", role2: ShownRole);
-        }
+        SetNewInfo(false, roleTxt: $"{VigilanteColors.Inspector.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.NewPublishFull").Replace("<icon>", MiscUtils.GetRoleTmpIcon(role)).Replace("<role>", $"{role.NameColor.ToTextColor()}{role.GetRoleName()}</color>")}</color>");
     }
 }

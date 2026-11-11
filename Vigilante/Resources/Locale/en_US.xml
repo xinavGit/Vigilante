@@ -58,7 +58,8 @@
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
     <string name="Vigilante.Feedback.Inspector.PublishedWithIcon"> ([icon]Published)</string>
     <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
-    <string name="Vigilante.Feedback.Inspector.NewPublish">〘[icon][role]〙</string>
+    <string name="Vigilante.Feedback.Inspector.NewPublishFull">〘[icon][role]〙</string>
+    <string name="Vigilante.Feedback.Inspector.NewPublishIcon">〘[icon]〙</string>
     <string name="Vigilante.Feedback.Inspector.InformationWasPublished">Information has been published about [player].</string>
     <!-- Inspector Options -->
     <string name="Vigilante.Options.Inspector.InspectUsesPerMeeting">Inspect Uses Per Meeting</string>
