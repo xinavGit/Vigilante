@@ -5,6 +5,7 @@ using MiraAPI.Utilities;
 using TownOfUs.Modifiers;
 using TownOfUs.Roles.Crewmate;
 using TownOfUs.Utilities;
+using Vigilante.Roles.Crewmate;
 
 namespace Vigilante.Modifiers.Logic.Crewmate;
 
@@ -26,6 +27,6 @@ public sealed class InspectorPublishedModifier(RoleBehaviour role)
             return;
         }
 
-        SetNewInfo(false, roleTxt: $"{VigilanteColors.Inspector.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.NewPublishFull").Replace("<icon>", MiscUtils.GetRoleTmpIcon(role)).Replace("<role>", $"{role.NameColor.ToTextColor()}{role.GetRoleName()}</color>")}</color>");
+        SetNewInfo(true, roleTxt: $"{VigilanteColors.Inspector.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.PublishedWithInspectorIcon").Replace("<insp>", MiscUtils.GetRoleTmpIcon(RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<InspectorRole>())))}</color>", role2: role);
     }
 }
