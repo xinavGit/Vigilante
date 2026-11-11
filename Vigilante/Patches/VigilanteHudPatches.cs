@@ -61,7 +61,7 @@ public static class VigilanteHudPatches
 
             foreach (var letter in customText)
             {
-                playerName += $"<size=60%><color=#FFFFFF>{letter}</color></size>";
+                playerName += $"<size=80%>{VigilanteColors.Decryptor.ToTextColor()} -<color=#FFFFFF>{letter}</color>- </color></size>";
             }
         }
 
