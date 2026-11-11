@@ -9,7 +9,9 @@ using TownOfUs.Roles;
 using TownOfUs.Utilities;
 using UnityEngine;
 using Vigilante.Modifiers.Logic.Crewmate;
+using Vigilante.Modifiers.Logic.Impostor;
 using Vigilante.Roles.Crewmate;
+using Vigilante.Roles.Impostor;
 
 namespace Vigilante.Patches;
 
@@ -38,6 +40,12 @@ public static class VigilanteHudPatches
              PlayerControl.LocalPlayer.IsRole<CrusaderRole>())
         {
             playerName += "<color=#ed6000> ∧</color>";
+        }
+
+        if (player.HasModifier<RitualistRitualizedModifier>() &&
+             PlayerControl.LocalPlayer.IsImpostorAligned())
+        {
+            playerName += $"{TownOfUsColors.Impostor.ToTextColor()} #</color>";
         }
 
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)

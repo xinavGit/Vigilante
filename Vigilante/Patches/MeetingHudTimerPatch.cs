@@ -11,6 +11,7 @@ using UnityEngine;
 using Vigilante.Modifiers.Logic.Crewmate;
 using Vigilante.Options;
 using Vigilante.Roles.Crewmate;
+using Vigilante.Roles.Impostor;
 
 namespace Vigilante.Patches;
 //using TOUM MeetingHudTimerPatch code
@@ -46,14 +47,19 @@ public static class MeetingHudTimerPatch
                     if (magi.JudgementUsesLeft == 1)
                     {
                         newText =
-                            $"\n{magi.JudgementUsesLeft} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementRemaining")}";
+                            $"\n{magi.JudgementUsesLeft} / {(int)OptionGroupSingleton<MagistrateOptions>.Instance.JudgementUses} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementRemaining")}";
                     }
                     else
                     {
                         newText =
-                            $"\n{magi.JudgementUsesLeft} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementsRemaining")}";
+                            $"\n{magi.JudgementUsesLeft} / {(int)OptionGroupSingleton<MagistrateOptions>.Instance.JudgementUses} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementsRemaining")}";
                     }
                 }
+                break;
+            case RitualistRole rit:
+                newText =
+                    $"\n{rit.StrikesLeft} / {(int)OptionGroupSingleton<RitualistOptions>.Instance.MaxEliminations} {MiraLocaleManager.Get("Vigilante.Feedback.Ritualist.EliminationsRemaining")}";
+
                 break;
         }
 

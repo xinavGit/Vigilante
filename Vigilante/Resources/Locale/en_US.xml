@@ -58,6 +58,7 @@
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
     <string name="Vigilante.Feedback.Inspector.PublishedWithIcon"> ([icon]Published)</string>
     <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
+    <string name="Vigilante.Feedback.Inspector.NewPublish">〘[icon][role]〙</string>
     <string name="Vigilante.Feedback.Inspector.InformationWasPublished">Information has been published about [player].</string>
     <!-- Inspector Options -->
     <string name="Vigilante.Options.Inspector.InspectUsesPerMeeting">Inspect Uses Per Meeting</string>
@@ -250,6 +251,7 @@
     <string name="Vigilante.Feedback.Ritualist.EliminateSuccess">[player] was eliminated.</string>
     <string name="Vigilante.Feedback.Ritualist.EliminateFail">[player] could not be eliminated! They must be blessed or immune.</string>
     <string name="Vigilante.Feedback.Ritualist.Elimination">The Ritualist saw to the end of [player].</string>
+    <string name="Vigilante.Feedback.Ritualist.EliminationsRemaining">Strikes Remaining</string>
     <!-- Ritualist Options -->
     <string name="Vigilante.Options.Ritualist.MaxEliminations">Max Strikes</string>
     <string name="Vigilante.Options.Ritualist.RitualCooldown">Ritual Cooldown</string>

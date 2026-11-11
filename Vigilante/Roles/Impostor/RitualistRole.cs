@@ -52,6 +52,10 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     public ModdedRoleTeams Team => ModdedRoleTeams.Impostor;
     public RoleAlignment RoleAlignment => RoleAlignment.ImpostorKilling;
 
+    public float StrikesLeft { get; set; }
+
+    public float IncorrectRituals { get; set; }
+
     public CustomRoleConfiguration Configuration => new(this)
     {
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.RitualistIcon.LoadAsset(), "Vigilante.Role.Impostor.Ritualist", 1.45f),
@@ -62,6 +66,9 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     public override void Initialize(PlayerControl player)
     {
         RoleBehaviourStubs.Initialize(this, player);
+        StrikesLeft = OptionGroupSingleton<RitualistOptions>.Instance.MaxEliminations.Value;
+        IncorrectRituals = 0;
+        
         
         eliminateMenu = new MeetingMenu(
                 this,
@@ -88,6 +95,11 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public bool IsExempt(PlayerVoteArea voteArea)
     {
+        if (StrikesLeft <= 0)
+        {
+            return true;
+        }
+
         if (Player.HasModifier<JailedModifier>())
         {
             return true;
@@ -116,6 +128,12 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     [HideFromIl2Cpp]
     public static void CheckElimination(PlayerVoteArea voteArea, MeetingHud meeting)
     {
+        var ritualist = PlayerControl.LocalPlayer;
+        var ritualistRole = ritualist.GetRole<RitualistRole>();
+        if (ritualistRole == null) return;
+
+        if (ritualistRole.StrikesLeft <= 0) return;
+        
         if (voteArea == null) return;
 
         var player = voteArea.GetPlayer();
@@ -123,6 +141,8 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         if (player == null) return;
 
         if (meeting.state == MeetingHud.MeetingStates.Discussion) return;
+
+        if (ritualistRole.IsExempt(voteArea)) return;
 
         if (!player.HasModifier<RitualistRitualizedModifier>()) return;
 
@@ -134,7 +154,12 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
             return;
         }
 
+        ritualistRole.StrikesLeft--;
+        
+
         RpcRitualistEliminate(PlayerControl.LocalPlayer, player);
+
+        ritualistRole.eliminateMenu?.GenButtons(meeting, true);
     }
 
     [MethodRpc((uint)VigilanteRpcs.RitualistEliminate)]
@@ -220,6 +245,9 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
                     Color.red, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.RitualistIcon.LoadAsset());
 
                 notif2.AdjustNotification();
+                IncorrectRituals++;
+
+
             }
         }
     }
