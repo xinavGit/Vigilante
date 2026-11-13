@@ -36,6 +36,7 @@ using Reactor.Utilities.Extensions;
 using Reactor.Utilities;
 using MiraAPI.Voting;
 using Vigilante.Buttons.Crewmate;
+using HarmonyLib;
 
 namespace Vigilante.Roles.Crewmate;
 //using TOUM monarch role code for enlist rpc
@@ -191,14 +192,10 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     [MethodRpc((uint)VigilanteRpcs.MagistrateEndCourt)]
     public static void RpcEndCourt(bool early = false)
     {
-        foreach (var jurorPlayer in ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList())
+        if (PlayerControl.LocalPlayer.IsHost())
         {
-            jurorPlayer.RemoveModifier<MagistrateJurorModifier>();
-        }
-
-        foreach (var immunePlayer in ModifierUtils.GetPlayersWithModifier<MagistrateCourtImmunityModifier>().ToList())
-        {
-            immunePlayer.RemoveModifier<MagistrateCourtImmunityModifier>();
+            ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().Do(x => x.RpcRemoveModifier<MagistrateJurorModifier>());
+            ModifierUtils.GetPlayersWithModifier<MagistrateCourtImmunityModifier>().Do(x => x.RpcRemoveModifier<MagistrateCourtImmunityModifier>());
         }
 
         CourtJuror = null;
