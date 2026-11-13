@@ -246,11 +246,8 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                 Color.green, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
             notif2a.AdjustNotification();
 
-            if (PlayerControl.LocalPlayer.IsHost())
-            {
-                target.AddModifier<MagistrateCourtImmunityModifier>();
-                juror.AddModifier<MagistrateCourtImmunityModifier>();
-            }
+            target.AddModifier<MagistrateCourtImmunityModifier>();
+            juror.AddModifier<MagistrateCourtImmunityModifier>();
         }
         else
         {
@@ -262,17 +259,14 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
             EnemiesCourt = true;
 
-            if (PlayerControl.LocalPlayer.IsHost())
+            foreach (var player in PlayerControl.AllPlayerControls.ToArray())
             {
-                foreach (var player in PlayerControl.AllPlayerControls.ToArray())
+                if (player.PlayerId == target.PlayerId || player.PlayerId == juror.PlayerId)
                 {
-                    if (player.PlayerId == target.PlayerId || player.PlayerId == juror.PlayerId)
-                    {
-                        continue;
-                    }
-
-                    player.AddModifier<MagistrateCourtImmunityModifier>();
+                    continue;
                 }
+
+                player.AddModifier<MagistrateCourtImmunityModifier>();
             }
         }
 
