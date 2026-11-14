@@ -269,6 +269,11 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
             return OptionGroupSingleton<RitualistOptions>.Instance.EliminateCI.Value;
         }
 
+        if (role is MayorRole)
+        {
+            return true;
+        }
+
         if (role.GetRoleAlignment() is RoleAlignment.CrewmateInvestigative || role.GetRoleAlignment() is RoleAlignment.CrewmateKilling || role.GetRoleAlignment() is RoleAlignment.CrewmatePower || role.GetRoleAlignment() is RoleAlignment.CrewmateProtective || role.GetRoleAlignment() is RoleAlignment.CrewmateSupport || role.GetRoleAlignment() is RoleAlignment.NeutralBenign || role.GetRoleAlignment() is RoleAlignment.NeutralEvil || role.GetRoleAlignment() is RoleAlignment.NeutralKilling || role.GetRoleAlignment() is RoleAlignment.NeutralOutlier)
         {
             return true;
