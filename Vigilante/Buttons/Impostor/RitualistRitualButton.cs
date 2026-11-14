@@ -23,8 +23,27 @@ public sealed class RitualistRitualButton : TownOfUsRoleButton<RitualistRole>
     public override ButtonLocation Location => ButtonLocation.BottomRight;
     public override bool ShouldPauseInVent => true;
 
+    public bool MenuOpen { get; set; }
+
     protected override void OnClick()
     {
         Role.OpenPlayerMenu();
+        MenuOpen = true;
+    }
+
+    public override void FixedUpdateHandler(PlayerControl playerControl)
+    {
+        if (MenuOpen && !Minigame.Instance)
+        {
+            MenuOpen = false;
+        }
+
+        TimerPaused = false;
+        if (MenuOpen)
+        {
+            TimerPaused = true;
+        }
+
+        base.FixedUpdateHandler(playerControl);
     }
 }

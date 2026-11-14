@@ -212,7 +212,7 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         void ClickRoleHandle(RoleBehaviour role)
         {
             playerMenu.Close();
-            CustomButtonSingleton<RitualistRitualButton>.Instance.SetTimer(OptionGroupSingleton<RitualistOptions>.Instance.RitualCooldown.Value);
+            CustomButtonSingleton<RitualistRitualButton>.Instance.MenuOpen = false;
 
             if (player.Data.Role.Role == role.Role)
             {
