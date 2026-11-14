@@ -147,6 +147,17 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Egotist));
             }
         }
+
+        if (PlayerControl.LocalPlayer.IsCrewmate() && decryptor.HasModifier<EgotistModifier>())
+        {
+            var notif = Helpers.CreateAndShowNotification(
+                    $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.CrewAlertEgo")}</b>",
+                    Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
+
+                    notif.AdjustNotification();
+                
+            Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Egotist));
+        }
     }
 
     public static void RevealLetter()
