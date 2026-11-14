@@ -337,6 +337,18 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         notif.AdjustNotification();
 
+        var publishRoleBehaviour = RoleManager.Instance.GetRole((RoleTypes)publishRole);
+
+        if (PlayerControl.LocalPlayer = inspected)
+        {
+            MiscUtils.AddFakeChat(
+                    PlayerControl.LocalPlayer.Data,
+                    $"{VigilanteColors.Inspector.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.ChatFeedbackTitle")}</color>",
+                    $"{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.ChatFeedbackMessage").Replace("<icon>", MiscUtils.GetRoleTmpIcon(publishRoleBehaviour)).Replace("<role>", publishRoleBehaviour.GetRoleName())}",
+                    false,
+                    true);
+        }
+
         InspectedPlayers.Remove(inspected);
         if (PlayerControl.LocalPlayer.Data.Role is InspectorRole insp)
         {

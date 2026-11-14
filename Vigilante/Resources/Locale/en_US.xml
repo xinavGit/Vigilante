@@ -62,6 +62,8 @@
     <string name="Vigilante.Feedback.Inspector.InspectTrue">[player] appears to be the [role]! You can now publish your results about them.</string>
     <string name="Vigilante.Feedback.Inspector.PublishedWithIcon"> ([icon]Published)</string>
     <string name="Vigilante.Feedback.Inspector.Published"> (Published)</string>
+    <string name="Vigilante.Feedback.Inspector.ChatFeedbackTitle">Inspected Feedback</string>
+    <string name="Vigilante.Feedback.Inspector.ChatFeedbackMessage">The Inspector revealed your role to be the [icon][role]!</string>
     <string name="Vigilante.Feedback.Inspector.PublishedWithInspectorIcon"> ([insp]Published)</string>
     <string name="Vigilante.Feedback.Inspector.NewPublishFull">〘[icon][role]〙</string>
     <string name="Vigilante.Feedback.Inspector.NewPublishIcon">〘[icon]〙</string>
