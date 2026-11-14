@@ -34,6 +34,7 @@ using Vigilante.Interfaces;
 using Rewired;
 using HarmonyLib;
 using Il2CppSystem.IO;
+using TownOfUs.Modifiers.Game;
 
 namespace Vigilante.Roles.Crewmate;
 
@@ -43,6 +44,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 {
     private MeetingMenu? inspectMenu;
     private MeetingMenu? publishMenu;
+    //private MeetingMenu? forgeMenu;
     private GuesserMenu? inspectGuesserMenu;
 
     public string IdPart => "Inspector";
@@ -344,7 +346,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             MiscUtils.AddFakeChat(
                     PlayerControl.LocalPlayer.Data,
                     $"{VigilanteColors.Inspector.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.ChatFeedbackTitle")}</color>",
-                    $"{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.ChatFeedbackMessage").Replace("<icon>", MiscUtils.GetRoleTmpIcon(publishRoleBehaviour)).Replace("<role>", publishRoleBehaviour.GetRoleName())}",
+                    $"{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.ChatFeedbackMessage").Replace("<icon>", MiscUtils.GetRoleTmpIcon(publishRoleBehaviour)).Replace("<role>", $"{publishRoleBehaviour.NameColor.ToTextColor()}{publishRoleBehaviour.GetRoleName()}</color>")}",
                     false,
                     true);
         }
