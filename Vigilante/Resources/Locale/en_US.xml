@@ -218,6 +218,7 @@
     <!-- Kidnapper Options maybe change to uses per kill and make it a decimal value -->
     <string name="Vigilante.Options.Kidnapper.KidnapUses">Inital Kidnap Uses</string>
     <string name="Vigilante.Options.Kidnapper.KidnapCooldown">Kidnap Cooldown</string>
+    <string name="Vigilante.Options.Kidnapper.KidnapDelay">Meetings Till Kidnapper Can Execute</string>
     <string name="Vigilante.Options.Kidnapper.MoreKidnapsFromKills">Get More Kidnap Uses From Kills</string>
     <string name="Vigilante.Options.Kidnapper.KillsPerUse">Kills Needed For Kidnap Use</string>
     <string name="Vigilante.Options.Kidnapper.CanKidnapPostExterminate">Can Kidnap After Exterminating Player</string>

@@ -27,6 +27,6 @@ public sealed class InspectorPublishedModifier(RoleBehaviour role)
             return;
         }
 
-        SetNewInfo(true, roleTxt: $"{VigilanteColors.Inspector.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.PublishedWithInspectorIcon").Replace("<insp>", MiscUtils.GetRoleTmpIcon(RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<InspectorRole>())))}</color>", role2: role);
+        SetNewInfo(true, roleTxt: $"{MiraLocaleManager.Get("Vigilante.Feedback.Inspector.Published")}</color>", role2: role);
     }
 }

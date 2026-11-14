@@ -1,4 +1,4 @@
-using HarmonyLib;
+/*using HarmonyLib;
 using MiraAPI.GameOptions;
 using MiraAPI.Roles;
 using TownOfUs.Options;
@@ -24,4 +24,4 @@ public static class VigilanteSkipButtonPatches
         }
 
     }
-}
+}*/
