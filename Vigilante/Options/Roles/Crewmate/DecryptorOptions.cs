@@ -15,12 +15,16 @@ public class DecryptorOptions : AbstractOptionGroup<DecryptorRole>
     public ModdedNumberOption TasksPerLetter { get; } = new(
         "Vigilante.Options.Decryptor.TasksPerLetter", 1f, 1f, 3f, 1f, MiraNumberSuffixes.None);
 
-    public ModdedToggleOption AlertEvils { get; } =
-        new("Vigilante.Options.Decryptor.AlertEvils", true);
+    public ModdedToggleOption AlertImpostors { get; } =
+        new("Vigilante.Options.Decryptor.AlertImpostors", true);
+
+    public ModdedToggleOption AlertNeutrals { get; } =
+        new("Vigilante.Options.Decryptor.AlertNeutrals", true);
 
     public ModdedNumberOption LettersForAlert { get; } = new(
         "Vigilante.Options.Decryptor.LettersForAlert", 3f, 1f, 10f, 1f, MiraNumberSuffixes.None)
     {
-        Visible = () => OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils
+        Visible = () => OptionGroupSingleton<DecryptorOptions>.Instance.AlertImpostors ||
+            OptionGroupSingleton<DecryptorOptions>.Instance.AlertNeutrals
     };
 }

@@ -1,6 +1,8 @@
 using HarmonyLib;
 using MiraAPI.GameOptions;
+using MiraAPI.Roles;
 using TownOfUs.Options;
+using TownOfUs.Patches;
 using Vigilante.Options;
 using Vigilante.Roles.Crewmate;
 
@@ -9,13 +11,17 @@ namespace Vigilante.Patches;
 [HarmonyPatch]
 public static class VigilanteSkipButtonPatches
 {
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
-    public static void Postfix(MeetingHud __instance)
+    [HarmonyPatch(typeof(SkipButtonPatches), nameof(SkipButtonPatches.Postfix))]
+    public static void Prefix(MeetingHud __instance)
     {
         var genOpt = OptionGroupSingleton<MagistrateOptions>.Instance.DisableSkip;
         var court = MagistrateRole.CourtActive;
-        
-        __instance.SkipVoteButton.gameObject.SetActive(!(genOpt && court));
+        var magi = CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>();
+
+        if (magi != null && genOpt && court)
+        {
+            __instance.SkipVoteButton.gameObject.SetActive(false);
+        }
 
     }
 }

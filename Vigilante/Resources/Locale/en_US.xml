@@ -36,10 +36,12 @@
     <!-- Decryptor Feedback -->
     <string name="Vigilante.Feedback.Decryptor.RevealedLetter">You have revealed a letter of everyone's role!</string>
     <string name="Vigilante.Feedback.Decryptor.EvilsAlert">The Decryptor is finding out your true identity, stop them!</string>
+    <string name="Vigilante.Feedback.Decryptor.EvilsAlertEgo">The [icon][egotist] Decryptor is finding out about everyone's identities, help them overthrow the crew!</string>
     <string name="Vigilante.Feedback.Decryptor.ExposedAlert">Evils now know of your presence!</string>
     <!-- Decryptor Options -->
     <string name="Vigilante.Options.Decryptor.TasksPerLetter">Number Of Tasks For Letter Reveal</string>
-    <string name="Vigilante.Options.Decryptor.AlertEvils">Alert Evils Of Decryptor</string>
+    <string name="Vigilante.Options.Decryptor.AlertImpostors">Alert Impostors Of Decryptor</string>
+    <string name="Vigilante.Options.Decryptor.AlertNeutrals">Alert Neutrals Of Decryptor</string>
     <string name="Vigilante.Options.Decryptor.LettersForAlert">Number Of Letters Revealed For Evil Alert</string>
 
     <!-- Inspector - Crewmate Investigative what if the magnifiying glass was black and white like assassin ui lol -->

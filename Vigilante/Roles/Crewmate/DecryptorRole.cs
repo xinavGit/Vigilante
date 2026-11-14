@@ -31,6 +31,7 @@ using TownOfUs.Buttons;
 using Reactor.Utilities;
 using System.Globalization;
 using Vigilante.Interfaces;
+using TownOfUs.Modifiers.Game.Alliance;
 
 namespace Vigilante.Roles.Crewmate;
 
@@ -111,7 +112,7 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     [MethodRpc((uint)VigilanteRpcs.DecryptorAlert)]
     public static void RpcDecryptorAlert(PlayerControl decryptor)
     {
-        if (decryptor.AmOwner && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
+        if (decryptor.AmOwner && (OptionGroupSingleton<DecryptorOptions>.Instance.AlertImpostors || OptionGroupSingleton<DecryptorOptions>.Instance.AlertNeutrals))
         {
             var notif = Helpers.CreateAndShowNotification(
                 $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.ExposedAlert")}</b>",
@@ -122,15 +123,29 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Decryptor));
         }
 
-        if (PlayerControl.LocalPlayer.IsImpostorAligned() && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
+        if (PlayerControl.LocalPlayer.IsImpostorAligned() && OptionGroupSingleton<DecryptorOptions>.Instance.AlertImpostors ||
+            PlayerControl.LocalPlayer.IsNeutral() && OptionGroupSingleton<DecryptorOptions>.Instance.AlertNeutrals)
         {
-            var notif = Helpers.CreateAndShowNotification(
-                $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.EvilsAlert")}</b>",
-                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
+            if (!decryptor.HasModifier<EgotistModifier>())
+            {
+                var notif = Helpers.CreateAndShowNotification(
+                    $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.EvilsAlert")}</b>",
+                    Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
 
-                notif.AdjustNotification();
-            
-            Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Decryptor));
+                    notif.AdjustNotification();
+                
+                Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Decryptor));
+            }
+            else
+            {
+                var notif = Helpers.CreateAndShowNotification(
+                    $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Decryptor.EvilsAlertEgo")}</b>",
+                    Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DecryptorIcon.LoadAsset());
+
+                    notif.AdjustNotification();
+                
+                Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Egotist));
+            }
         }
     }
 
@@ -156,7 +171,7 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         LettersRevealed++;
 
-        if (LettersRevealed == (int)OptionGroupSingleton<DecryptorOptions>.Instance.LettersForAlert.Value && OptionGroupSingleton<DecryptorOptions>.Instance.AlertEvils)
+        if (LettersRevealed == (int)OptionGroupSingleton<DecryptorOptions>.Instance.LettersForAlert.Value && (OptionGroupSingleton<DecryptorOptions>.Instance.AlertImpostors || OptionGroupSingleton<DecryptorOptions>.Instance.AlertNeutrals))
         {
             RpcDecryptorAlert(PlayerControl.LocalPlayer);
         }
