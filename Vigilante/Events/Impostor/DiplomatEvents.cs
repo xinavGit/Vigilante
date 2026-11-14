@@ -91,7 +91,7 @@ public static class DiplomatEvents
         }
     }
 
-    /*[RegisterEvent]
+    [RegisterEvent]
     public static void OnMeetingStart(StartMeetingEvent evt)
     {
         if (PlayerControl.LocalPlayer.IsRole<DiplomatRole>() && PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod))
@@ -101,14 +101,26 @@ public static class DiplomatEvents
                 mod.MeetingsLeft--;
                 if (mod.MeetingsLeft == 0)
                 {
-                    //notif here but doesnt work
+                    var notif = Helpers.CreateAndShowNotification(
+                        MiraLocaleManager.Get("Vigilante.Feedback.Diplomat.WillLeaveNow"),
+                        Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DiplomatIcon);
+
+                    notif.AdjustNotification();
+                }
+                else
+                {
+                    var notif = Helpers.CreateAndShowNotification(
+                        MiraLocaleManager.Get("Vigilante.Feedback.Diplomat.WillLeaveSoon").Replace("<meetings>", $"{mod.MeetingsLeft}"),
+                        Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DiplomatIcon);
+
+                    notif.AdjustNotification();
                 }
             }
         }
-    }*/
+    }
 
     [RegisterEvent]
-    public static void OnVotingComplete(VotingCompleteEvent evt)
+    public static void OnRoundStart(RoundStartEvent evt)
     {
         foreach (var immune in ModifierUtils.GetPlayersWithModifier<DiplomatImmunityModifier>().ToList())
         {
@@ -119,16 +131,33 @@ public static class DiplomatEvents
         {
             if (diplomat.Player.HasDied())
             {
-                return;
+                continue;
             }
 
-            if (PlayerControl.LocalPlayer.TryGetModifier<DiplomatRevealModifier>(out var mod) && mod.MeetingsLeft == 0)
+            if (diplomat.Player.TryGetModifier<DiplomatRevealModifier>(out var mod) && mod.MeetingsLeft == 0)
             {
-                if (PlayerControl.LocalPlayer.IsHost())
-                {
-                    diplomat.Player.RpcMeetingMurder(diplomat.Player, MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
-                        causeOfDeath: "DiplomatLeave");
-                }
+                    var showAnim = !ExileController.Instance;
+                    var murderResultFlags2 = MurderResultFlags.DecisionByHost | MurderResultFlags.Succeeded;
+
+                    GameHistory.UpdatePlayerDeathData(diplomat.Player, MiraLocaleManager.Get("DiplomatLeave"), 0, HudManagerHelper.Instance.CurrentRound,
+                        showAnim
+                            ? DeathHandlerOverride.SetTrue
+                            : DeathHandlerOverride.SetFalse,
+                        lockInfo: DeathHandlerOverride.SetTrue, playerState: StoredPlayerState.Dead);
+                    diplomat.Player.CustomMurder(
+                        diplomat.Player,
+                        murderResultFlags2,
+                        false,
+                        showAnim,
+                        false,
+                        showAnim,
+                        false);
+                    
+                var notif1 = Helpers.CreateAndShowNotification(
+                MiraLocaleManager.Get("Vigilante.Feedback.Diplomat.HasLeft"),
+                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DiplomatIcon);
+
+                notif1.AdjustNotification();
             }
             
         }

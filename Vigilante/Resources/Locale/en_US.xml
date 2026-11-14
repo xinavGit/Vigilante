@@ -181,9 +181,10 @@
     <string name="Vigilante.Role.Diplomat.Reveal.WikiDescription">Reveal yourself to all players, giving you political immunity for the meeting while also increasing your kill cooldown and buffing your manipulation ability. You will leave a certain number of rounds after you reveal.</string>
     <!-- Diplomat Feedback -->
     <string name="Vigilante.Feedback.Diplomat.MoreKills">You need to get [required] more kill(s) to reveal!</string>
-    <string name="Vigilante.Feedback.Diplomat.Revealed">The Diplomat has revealed themself!</string>
-    <string name="Vigilante.Feedback.Diplomat.WillLeaveSoon">You will leave the game after [meetings] meetings!</string>
-    <string name="Vigilante.Feedback.Diplomat.WillLeaveNow">You will leave the game at the end of this meeting!</string>
+    <string name="Vigilante.Feedback.Diplomat.Revealed">The Diplomat has revealed themself! They are now immune to vote.</string>
+    <string name="Vigilante.Feedback.Diplomat.WillLeaveSoon">You will leave the town after [meetings] meeting(s)!</string>
+    <string name="Vigilante.Feedback.Diplomat.WillLeaveNow">You will leave the town at the end of this meeting!</string>
+    <string name="Vigilante.Feedback.Diplomat.HasLeft">The Diplomat has been banished from the town.</string>
     <!-- Diplomat Options -->
     <string name="Vigilante.Options.Diplomat.KillsRequired">Kills Required To Reveal</string>
     <string name="Vigilante.Options.Diplomat.MeetingsToLeave">Meetings Diplomat Has Before Leaving Post-Reveal</string>
