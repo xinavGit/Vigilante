@@ -31,8 +31,7 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
     public override Color TextOutlineColor => VigilanteColors.Magistrate;
     public override float Cooldown => OptionGroupSingleton<MagistrateOptions>.Instance.EnlistCooldown.Value + MapCooldown;
     public override LoadableAsset<Sprite> Sprite => TouCrewAssets.KnightSprite;
-
-    //public override bool UsableFirstRound => OptionGroupSingleton<MonarchOptions>.Instance.FirstRoundUse;
+    public override bool UsableFirstRound => OptionGroupSingleton<MagistrateOptions>.Instance.CanCourtFirstRound.Value;
 
     public override PlayerControl? GetTarget()
     {

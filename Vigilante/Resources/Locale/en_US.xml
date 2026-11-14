@@ -125,6 +125,7 @@
     <string name="Vigilante.Options.Magistrate.OutlierFriendly">Neutral Outlier Are Friendly To All</string>
     <string name="Vigilante.Options.Magistrate.LeavesInShame">Leaves In Shame</string>
     <string name="Vigilante.Options.Magistrate.DisableSkip">Disable Skip During Court</string>
+    <string name="Vigilante.Options.Magistrate.CanCourtFirstRound">Can Court First Round</string>
 
     <!-- Pacifist - Crewmate Power FIX TO REWORKED PACIFIST LATER -->
     <!-- Pacifist Wiki / Abilities -->

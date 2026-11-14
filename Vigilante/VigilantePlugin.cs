@@ -35,6 +35,8 @@ public partial class VigilantePlugin : BasePlugin, IMiraPlugin
 
     public Harmony Harmony { get; } = new(Id);
 
+    public string GetAbbreviatedModName() => "VIGI";
+
     public override void Load()
     {
         ReactorCredits.Register("Vigilante", Version, IsDevBuild, ReactorCredits.AlwaysShow);

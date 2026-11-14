@@ -15,6 +15,7 @@ using MiraAPI.Roles;
 using MiraAPI.Hud;
 using Vigilante.Buttons.Crewmate;
 using MiraAPI.Events.Vanilla.Meeting.Voting;
+using TownOfUs.Modules;
 
 namespace Vigilante.Events.Crewmate;
 
@@ -47,7 +48,7 @@ public static class MagistrateEvents
             }
         }
 
-        if ((victim == MagistrateRole.CourtTarget || victim == MagistrateRole.CourtJuror || victim.IsRole<MagistrateRole>()) && MagistrateRole.CourtActive && MagistrateRole.EnemiesCourt)
+        if ((victim == MagistrateRole.CourtTarget || victim == MagistrateRole.CourtJuror || victim.GetRoleWhenAlive() is MagistrateRole || victim.Data.Role is MagistrateRole) && MagistrateRole.CourtActive && MagistrateRole.EnemiesCourt)
         {
             MagistrateRole.RpcEndCourt(true);
         }

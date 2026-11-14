@@ -44,7 +44,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 {
     private MeetingMenu? inspectMenu;
     private MeetingMenu? publishMenu;
-    //private MeetingMenu? forgeMenu;
+    private MeetingMenu? forgeMenu;
     private GuesserMenu? inspectGuesserMenu;
 
     public string IdPart => "Inspector";
@@ -121,6 +121,16 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 null!,
                 IsPublishExempt,
                 position: new Vector3(-0.35f, 0f, -3f));
+        
+        forgeMenu = new MeetingMenu(
+                this,
+                CheckPublish,
+                MiraLocaleManager.Get("Vigilante.Role.Inspector.Publish"),
+                MeetingAbilityType.Click,
+                TouAssets.HysteriaCleanSprite,
+                null!,
+                IsInspectExempt,
+                position: new Vector3(-0.75f, 0f, -3f));
     }
     public override void OnMeetingStart()
     {
@@ -139,6 +149,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         {
             inspectMenu?.GenButtons(meeting, true);
             publishMenu?.GenButtons(meeting, true);
+            forgeMenu?.GenButtons(meeting, true);
         }
 
         RefreshButtons();
@@ -427,6 +438,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         publishMenu?.GenButtons(meeting, true);
         inspectMenu?.GenButtons(meeting, true);
+        forgeMenu?.GenButtons(meeting, true);
     }
 
 

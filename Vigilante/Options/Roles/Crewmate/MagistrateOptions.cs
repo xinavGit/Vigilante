@@ -18,6 +18,9 @@ public class MagistrateOptions : AbstractOptionGroup<MagistrateRole>
     /*public ModdedToggleOption DisableSkip { get; } =
         new("Vigilante.Options.Magistrate.DisableSkip", true);*/
     
+    public ModdedToggleOption CanCourtFirstRound { get; } =
+        new("Vigilante.Options.Magistrate.CanCourtFirstRound", false);
+    
     public ModdedNumberOption EnlistCooldown { get; } = new(
         "Vigilante.Options.Magistrate.EnlistCooldown", 2f, 1f, 5f, 1f, MiraNumberSuffixes.Seconds);
 }
