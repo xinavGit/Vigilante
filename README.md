@@ -18,6 +18,8 @@
   <img width="30%" src="./Images/RoleBanners/inspector.png" alt="Inspector"/>
   <img src="./Images/Groups/CrewPower.png" alt="Crewmate Power"/>
   <img width="30%" src="./Images/RoleBanners/magistrate.png" alt="Magistrate"/>
+  <img src="./Images/Groups/ImpKilling.png" alt="Impostor Killing"/>
+  <img width="30%" src="./Images/RoleBanners/ritualist.png" alt="Ritualist"/>
   <img src="./Images/Groups/ImpPower.png" alt="Impostor Power"/>
   <img width="30%" src="./Images/RoleBanners/diplomat.png" alt="Diplomat"/>
   <img width="30%" src="./Images/RoleBanners/disruptor.png" alt="Disruptor"/>
