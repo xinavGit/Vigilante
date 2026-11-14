@@ -122,7 +122,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 IsPublishExempt,
                 position: new Vector3(-0.35f, 0f, -3f));
         
-        forgeMenu = new MeetingMenu(
+        /*forgeMenu = new MeetingMenu(
                 this,
                 CheckPublish,
                 MiraLocaleManager.Get("Vigilante.Role.Inspector.Publish"),
@@ -130,7 +130,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 TouAssets.HysteriaCleanSprite,
                 null!,
                 IsInspectExempt,
-                position: new Vector3(-0.75f, 0f, -3f));
+                position: new Vector3(-0.75f, 0f, -3f));*/
     }
     public override void OnMeetingStart()
     {
@@ -149,7 +149,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         {
             inspectMenu?.GenButtons(meeting, true);
             publishMenu?.GenButtons(meeting, true);
-            forgeMenu?.GenButtons(meeting, true);
+            //forgeMenu?.GenButtons(meeting, true);
         }
 
         RefreshButtons();
@@ -438,7 +438,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         publishMenu?.GenButtons(meeting, true);
         inspectMenu?.GenButtons(meeting, true);
-        forgeMenu?.GenButtons(meeting, true);
+        //forgeMenu?.GenButtons(meeting, true);
     }
 
 
