@@ -29,8 +29,9 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
     public override string Name => MiraLocaleManager.Get("Vigilante.Role.Magistrate.Enlist");
     public override BaseKeybind Keybind => Keybinds.PrimaryAction;
     public override Color TextOutlineColor => VigilanteColors.Magistrate;
-    public override float Cooldown => OptionGroupSingleton<MagistrateOptions>.Instance.EnlistCooldown.Value + MapCooldown;
+    public override float Cooldown => 1f;
     public override LoadableAsset<Sprite> Sprite => TouCrewAssets.KnightSprite;
+    public override int MaxUses => (int)OptionGroupSingleton<MagistrateOptions>.Instance.SummonsNeeded.Value;
     public override bool UsableFirstRound => OptionGroupSingleton<MagistrateOptions>.Instance.CanCourtFirstRound.Value;
 
     public override PlayerControl? GetTarget()
@@ -45,8 +46,6 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
         {
             return;
         }
-
-        ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().Do(x => x.RpcRemoveModifier<MagistrateJurorModifier>());
 
         MagistrateRole.RpcEnlist(PlayerControl.LocalPlayer, Target);
     }

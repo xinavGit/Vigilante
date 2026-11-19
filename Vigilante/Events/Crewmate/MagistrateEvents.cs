@@ -33,6 +33,9 @@ public static class MagistrateEvents
         {
             MagistrateRole.RpcEndCourt();
         }
+
+        var button = CustomButtonSingleton<MagistrateEnlistButton>.Instance;
+        button.SetUses((int)OptionGroupSingleton<MagistrateOptions>.Instance.SummonsNeeded.Value);
     }
 
     [RegisterEvent]
@@ -48,7 +51,7 @@ public static class MagistrateEvents
             }
         }
 
-        if ((victim == MagistrateRole.CourtTarget || victim == MagistrateRole.CourtJuror || victim.GetRoleWhenAlive() is MagistrateRole || victim.Data.Role is MagistrateRole) && MagistrateRole.CourtActive && MagistrateRole.EnemiesCourt)
+        if ((victim.HasModifier<MagistrateJurorModifier>() || victim.GetRoleWhenAlive() is MagistrateRole || victim.Data.Role is MagistrateRole) && MagistrateRole.CourtActive)
         {
             MagistrateRole.RpcEndCourt(true);
         }

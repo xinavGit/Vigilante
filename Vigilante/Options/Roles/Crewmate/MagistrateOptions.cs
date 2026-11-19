@@ -13,14 +13,18 @@ public class MagistrateOptions : AbstractOptionGroup<MagistrateRole>
     public override string GroupName => MiraLocaleManager.Get("Vigilante.Role.Magistrate", "Magistrate");
 
     public ModdedNumberOption JudgementUses { get; } = new(
-        "Vigilante.Options.Magistrate.JudgeUses", 2f, 1f, 5f, 1f, MiraNumberSuffixes.None);
+        "Vigilante.Options.Magistrate.JudgeUses", 2, 1, 5, 1, MiraNumberSuffixes.None);
+
+    public ModdedNumberOption SummonsNeeded { get; } = new(
+        "Vigilante.Options.Magistrate.SummonsNeeded", 3, 2, 5, 1, MiraNumberSuffixes.None);
 
     /*public ModdedToggleOption DisableSkip { get; } =
         new("Vigilante.Options.Magistrate.DisableSkip", true);*/
     
     public ModdedToggleOption CanCourtFirstRound { get; } =
         new("Vigilante.Options.Magistrate.CanCourtFirstRound", false);
-    
-    public ModdedNumberOption EnlistCooldown { get; } = new(
-        "Vigilante.Options.Magistrate.EnlistCooldown", 2f, 1f, 5f, 1f, MiraNumberSuffixes.Seconds);
+
+    public ModdedToggleOption NonKillingEvils { get; } =
+        new("Vigilante.Options.Magistrate.NonKillingEvils", false);
+
 }

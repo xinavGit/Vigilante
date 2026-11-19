@@ -55,15 +55,11 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     public string RoleDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.IntroBlurb");
     public string RoleLongDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.TabDescription");
 
-    public DoomableType DoomHintType => DoomableType.Perception;
+    public DoomableType DoomHintType => DoomableType.Fearmonger;
 
     public float JudgementUsesLeft { get; set; }
 
     public static bool CourtActive { get; set; }
-    public static bool EnemiesCourt { get; set; }
-
-    [HideFromIl2Cpp] public static PlayerControl? CourtJuror { get; set; }
-    [HideFromIl2Cpp] public static PlayerControl? CourtTarget { get; set; }
 
 
     public string GetAdvancedDescription()
@@ -103,10 +99,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         RoleBehaviourStubs.Initialize(this, player);
         CourtActive = false;
         JudgementUsesLeft = OptionGroupSingleton<MagistrateOptions>.Instance.JudgementUses.Value;
-
-        CourtJuror = null;
-        CourtTarget = null;
-        EnemiesCourt = false;
 
         judgeMenu = new MeetingMenu(
                 this,
@@ -162,15 +154,14 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
     public void ClickJudge(PlayerVoteArea voteArea, MeetingHud __)
     {
-        var target = GameData.Instance.GetPlayerById(voteArea.PlayerId).Object;
-        var juror = ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList().FirstOrDefault();
+        var summoned = ModifierUtils.GetPlayersWithModifier<MagistrateJurorModifier>().ToList();
 
         if (__.state == MeetingHud.MeetingStates.Discussion)
         {
             return;
         }
 
-        if (juror == null)
+        if (summoned.Count <= OptionGroupSingleton<MagistrateOptions>.Instance.SummonsNeeded.Value)
         {
             if (Player.AmOwner)
             {
@@ -180,7 +171,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             return;
         }
 
-        RpcCourt(target, juror);
+        RpcCourt(summoned);
 
         if (Player.AmOwner)
         {
@@ -198,11 +189,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             ModifierUtils.GetPlayersWithModifier<MagistrateCourtImmunityModifier>().Do(x => x.RpcRemoveModifier<MagistrateCourtImmunityModifier>());
         }
 
-        CourtJuror = null;
-        CourtTarget = null;
-
-        EnemiesCourt = false;
-
         CourtActive = false;
 
         if (early)
@@ -216,58 +202,50 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
     }
 
     [MethodRpc((uint)VigilanteRpcs.MagistrateCourt)]
-    public static void RpcCourt(PlayerControl target, PlayerControl juror)
+    public static void RpcCourt(List<PlayerControl> summoned)
     {
-        var targetName = target.CachedPlayerData.PlayerName;
-        var jurorName = juror.CachedPlayerData.PlayerName;
 
-        CourtJuror = juror;
-        CourtTarget = target;
+        var magistrate = CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>().FirstOrDefault();
 
-        Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Magistrate));
-        TouAudio.PlaySound(VigilanteAssets.CourtGavel);
+
 
         CourtActive = true;
-        
-        var msg = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.CourtStart");
-        var notif1 = Helpers.CreateAndShowNotification(
-            $"<b>{VigilanteColors.Magistrate.ToTextColor()}{msg}</b></color>",
-            Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
-        notif1.AdjustNotification();
 
-        if (VigilanteUtils.AreFriendly(juror, target))
+        if (!EnemySummoned(summoned))
         {
-            var msg2a = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.CourtFriends").Replace("<player1>", $"{targetName}").Replace("<player2>", $"{jurorName}");
+            if (PlayerControl.LocalPlayer == magistrate?.Player)
+            {
+                var msg2a = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.FailedCourt");
             var notif2a = Helpers.CreateAndShowNotification(
                 $"<b>{msg2a}</b></color>",
-                Color.green, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
+                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
             notif2a.AdjustNotification();
 
-            target.AddModifier<MagistrateCourtImmunityModifier>();
-            juror.AddModifier<MagistrateCourtImmunityModifier>();
+                MiscUtils.AddFakeChat(magistrate.Player.Data, MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.MagistrateFeedback"), MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.FailedCourt"), false, true);
+            }
         }
         else
         {
-            var msg2b = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.CourtEnemies").Replace("<player1>", $"{targetName}").Replace("<player2>", $"{jurorName}");
+            Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Magistrate));
+            TouAudio.PlaySound(VigilanteAssets.CourtGavel);
+
+            var msg2b = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.CalledCourt");
             var notif2b = Helpers.CreateAndShowNotification(
                 $"<b>{msg2b}</b></color>",
-                Color.red, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
+                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
             notif2b.AdjustNotification();
-
-            EnemiesCourt = true;
 
             foreach (var player in PlayerControl.AllPlayerControls.ToArray())
             {
-                if (player.PlayerId == target.PlayerId || player.PlayerId == juror.PlayerId)
+                if (summoned.Contains(player))
                 {
                     continue;
                 }
 
                 player.AddModifier<MagistrateCourtImmunityModifier>();
             }
-        }
 
-        if (PlayerControl.LocalPlayer.IsHost())
+            if (PlayerControl.LocalPlayer.IsHost())
         {
             foreach (var voter in Helpers.GetAlivePlayers())
             {
@@ -292,6 +270,7 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
                 }
             }
         }
+        }
     }
 
     public void ClearMenu()
@@ -306,6 +285,27 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         {
             
         }
+    }
+
+    [HideFromIl2Cpp]
+    public static bool EnemySummoned(List<PlayerControl> summoned)
+    {
+        foreach (var summonedPlayer in summoned)
+        {
+            if (summonedPlayer.IsImpostor() || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralKilling)
+            {
+                return true;
+            }
+
+            if ((summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralKilling || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralEvil || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralBenign || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralOutlier) && OptionGroupSingleton<MagistrateOptions>.Instance.NonKillingEvils.Value)
+            {
+                return true;
+            }
+
+            continue;
+        }
+
+        return false;
     }
 
     [MethodRpc((uint)VigilanteRpcs.MagistrateEnlist)]

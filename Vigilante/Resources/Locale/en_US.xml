@@ -88,8 +88,8 @@
     <string name="Vigilante.Role.Magistrate.MedDescription">Put players you believe may be enemies on trial.</string>
     <string name="Vigilante.Role.Magistrate.TabDescription">Bend the meeting to your will by calling court.</string>
     <string name="Vigilante.Role.Magistrate.WikiDescription">The Magistrate is a Crewmate Power role that can recruit a juror. During the next meeting, they can call court on another player. If the player is a friend of the juror, both the target and juror get voting immunity. Otherwise, only the target and juror can be voted in the meeting.</string>
-    <string name="Vigilante.Role.Magistrate.Enlist">Enlist</string>
-    <string name="Vigilante.Role.Magistrate.Enlist.WikiDescription">Enlist a player to be your Juror for the next meeting.</string>
+    <string name="Vigilante.Role.Magistrate.Enlist">Summon</string>
+    <string name="Vigilante.Role.Magistrate.Enlist.WikiDescription">Summon a player to your next court.</string>
     <string name="Vigilante.Role.Magistrate.Court">Court</string>
     <string name="Vigilante.Role.Magistrate.Court.WikiDescription">Judge a player in the meeting, if they are enemies with your Juror, all other players will have voting immunity and only the juror and target can be voted. If they are friends with your Juror, then both them and the juror will have voting immunity.</string>
     <!-- Magistrate Feedback -->
@@ -107,6 +107,9 @@
     <string name="Vigilante.Feedback.Magistrate.JudgementDefended">[player] was unable to be judged! They are either blessed or are immune.</string>
     <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string> <!-- implement this -->
     <string name="Vigilante.Feedback.Magistrate.YouWereJudged">The Magistrate has left the town for their poor judgment.</string>
+    <string name="Vigilante.Feedback.Magistrate.CalledCourt">The Magistrate has called court! An evil lies among the summoned.</string>
+    <string name="Vigilante.Feedback.Magistrate.MagistrateFeedback">Magistrate Feedback</string>
+    <string name="Vigilante.Feedback.Magistrate.FailedCourt">Your court failed! An evil player could not be found among the summoned.</string>
     <!--MAGISTRATE COURT REWORK-->
     <string name="Vigilante.Feedback.Magistrate.CourtStart">The Magistrate has called court!</string>
     <string name="Vigilante.Feedback.Magistrate.CourtEnemies">Enemies [player1] and [player2] have been put on trial.</string>
@@ -126,6 +129,8 @@
     <string name="Vigilante.Options.Magistrate.LeavesInShame">Leaves In Shame</string>
     <string name="Vigilante.Options.Magistrate.DisableSkip">Disable Skip During Court</string>
     <string name="Vigilante.Options.Magistrate.CanCourtFirstRound">Can Court First Round</string>
+    <string name="Vigilante.Options.Magistrate.NonKillingEvils">Non-Killing Neutrals Are Evil</string>
+    <string name="Vigilante.Options.Magistrate.SummonsNeeded">Summons Needed For Court</string>
 
     <!-- Pacifist - Crewmate Power FIX TO REWORKED PACIFIST LATER -->
     <!-- Pacifist Wiki / Abilities -->
