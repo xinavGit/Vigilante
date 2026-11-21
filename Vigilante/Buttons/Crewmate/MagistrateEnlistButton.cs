@@ -1,4 +1,4 @@
-using HarmonyLib;
+/*using HarmonyLib;
 using MiraAPI.GameOptions;
 using MiraAPI.Keybinds;
 using MiraAPI.LocalSettings;
@@ -51,3 +51,4 @@ public sealed class MagistrateEnlistButton : TownOfUsRoleButton<MagistrateRole, 
     }
 
 }
+*/

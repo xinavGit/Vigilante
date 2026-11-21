@@ -1,4 +1,4 @@
-using System.Linq;
+/*using System.Linq;
 using MiraAPI.Events;
 using MiraAPI.Events.Vanilla.Gameplay;
 using MiraAPI.GameOptions;
@@ -74,4 +74,4 @@ public static class MagistrateEvents
             evt.AllowSelect = false;
         }
     }
-}
+}*/

@@ -1,4 +1,4 @@
-using MiraAPI.GameOptions;
+/*using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.Attributes;
 using MiraAPI.GameOptions.OptionTypes;
 using MiraAPI.Utilities;
@@ -19,7 +19,7 @@ public class MagistrateOptions : AbstractOptionGroup<MagistrateRole>
         "Vigilante.Options.Magistrate.SummonsNeeded", 3, 2, 5, 1, MiraNumberSuffixes.None);
 
     /*public ModdedToggleOption DisableSkip { get; } =
-        new("Vigilante.Options.Magistrate.DisableSkip", true);*/
+        new("Vigilante.Options.Magistrate.DisableSkip", true);
     
     public ModdedToggleOption CanCourtFirstRound { get; } =
         new("Vigilante.Options.Magistrate.CanCourtFirstRound", false);
@@ -27,4 +27,4 @@ public class MagistrateOptions : AbstractOptionGroup<MagistrateRole>
     public ModdedToggleOption NonKillingEvils { get; } =
         new("Vigilante.Options.Magistrate.NonKillingEvils", false);
 
-}
+}*/

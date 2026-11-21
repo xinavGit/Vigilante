@@ -1,4 +1,4 @@
-using AmongUs.GameOptions;
+/*using AmongUs.GameOptions;
 using System.Linq;
 using Vigilante.Assets;
 using Vigilante.Modifiers.Logic.Crewmate;
@@ -208,9 +208,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
         var magistrate = CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>().FirstOrDefault();
 
 
-
-        CourtActive = true;
-
         if (!EnemySummoned(summoned))
         {
             if (PlayerControl.LocalPlayer == magistrate?.Player)
@@ -244,6 +241,8 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
 
                 player.AddModifier<MagistrateCourtImmunityModifier>();
             }
+
+            CourtActive = true;
 
             if (PlayerControl.LocalPlayer.IsHost())
         {
@@ -345,4 +344,4 @@ public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigil
             notif.Text.SetOutlineThickness(0.35f);
         }
     }
-}
+}*/
