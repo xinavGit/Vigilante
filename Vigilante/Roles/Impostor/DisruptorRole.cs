@@ -42,7 +42,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
         OptionsScreenshot = TouBanners.ImpostorRoleBanner,
         Icon = VigilanteAssets.DisruptorIcon,
         CanUseVent = OptionGroupSingleton<DisruptorOptions>.Instance.CanVent,
-        CanUseSabotage = OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage
+        //CanUseSabotage = OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage
     };
 
     // reworked engineer fix code only broken on freeplay some maps

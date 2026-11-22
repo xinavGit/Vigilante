@@ -208,6 +208,9 @@
     <!-- Disruptor Options -->
     <string name="Vigilante.Options.Disruptor.CanVent">Can Vent</string>
     <string name="Vigilante.Options.Disruptor.CanSabotage">Can Sabotage Normally</string>
+    <string name="Vigilante.Options.Disruptor.SabEnumAlways">Always</string>
+    <string name="Vigilante.Options.Disruptor.SabEnumNever">Never</string>
+    <string name="Vigilante.Options.Disruptor.SabEnumWhenSolo">When Solo</string>
     <string name="Vigilante.Options.Disruptor.SabotageKillCooldownSpeedMultiplier">KCD Speed Multiplier During Sabotage</string>
 
     <!-- Kidnapper - Impostor Power maybe mayor doesnt get extra votes if kidnapped? idk-->

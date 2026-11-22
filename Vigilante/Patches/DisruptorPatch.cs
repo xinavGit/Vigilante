@@ -16,7 +16,7 @@ public static class DisruptorPatch
     {
         var localPlayer = PlayerControl.LocalPlayer;
         if (localPlayer.IsRole<DisruptorRole>() &&
-            !OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage)
+            ((DisruptorCanSabotage)OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage.Value == DisruptorCanSabotage.Never || ((DisruptorCanSabotage)OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage.Value == DisruptorCanSabotage.WhenSolo && MiscUtils.ImpAliveCount > 1)))
         {
             return false;
         }

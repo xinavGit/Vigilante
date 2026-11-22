@@ -9,6 +9,13 @@ using Vigilante.Roles.Impostor;
 
 namespace Vigilante.Options;
 
+public enum DisruptorCanSabotage
+{
+    Always,
+    Never,
+    WhenSolo,
+}
+
 public class DisruptorOptions : AbstractOptionGroup<DisruptorRole>
 {
     public override string GroupName => MiraLocaleManager.Get("TownOfUsMira.Role.Disruptor", "Disruptor");
@@ -20,6 +27,8 @@ public class DisruptorOptions : AbstractOptionGroup<DisruptorRole>
     public ModdedToggleOption CanVent { get; } =
         new("Vigilante.Options.Disruptor.CanVent", true);
 
-    public ModdedToggleOption CanSabotage { get; } =
-        new("Vigilante.Options.Disruptor.CanSabotage", true);
+    public ModdedEnumOption CanSabotage { get; } = new(
+        "Vigilante.Options.Disruptor.CanSabotage", (int)DisruptorCanSabotage.WhenSolo,
+        typeof(DisruptorCanSabotage),
+        ["Vigilante.Options.Disruptor.SabEnumAlways", "Vigilante.Options.Disruptor.SabEnumNever", "Vigilante.Options.Disruptor.SabEnumWhenSolo"]);
 }
