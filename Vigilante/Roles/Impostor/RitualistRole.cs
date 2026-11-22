@@ -249,6 +249,8 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
 
 
             }
+
+            CustomButtonSingleton<RitualistRitualButton>.Instance.ResetCooldownAndOrEffect();
         }
     }
 
