@@ -194,7 +194,7 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
             if (killedDiploPlayers < (int)opt.RevealKillsRequired)
             {
                 /*var text =
-                    MiraLocaleManager.Get("TownOfUsMira.Role.AmbassadorNeedKills")
+                    MiraLocaleManager.Get("Vigilante.Role.AmbassadorNeedKills")
                         .Replace("<requiredKills>", $"{(int)opt.RevealKillsRequired}");
                 var notif1 =
                     Helpers.CreateAndShowNotification(text, Color.white, new Vector3(0f, 1f, -20f),

@@ -19,7 +19,7 @@ namespace Vigilante.Modifiers.Logic.Crewmate;
 
 public sealed class ChameleonCamouflageModifier : ConcealedModifier, IVisualAppearance
 {
-    public override string ModifierName => MiraLocaleManager.Get("TownOfUsMira.Role.ChameleonCamouflaged", "Camoflauged");
+    public override string ModifierName => MiraLocaleManager.Get("Vigilante.Role.ChameleonCamouflaged", "Camoflauged");
     public override float Duration => OptionGroupSingleton<ChameleonOptions>.Instance.CamouflageDuration.Value;
     public override bool HideOnUi => true;
     public override bool AutoStart => true;
@@ -64,7 +64,7 @@ public sealed class ChameleonCamouflageModifier : ConcealedModifier, IVisualAppe
             TouAudio.PlaySound(TouAudio.SwooperActivateSound);
 
             var button = CustomButtonSingleton<ChameleonCamouflageButton>.Instance;
-            button.OverrideName(MiraLocaleManager.Get("TownOfUsMira.Role.ChameleonUncamouflage", "Camoflauge"));
+            button.OverrideName(MiraLocaleManager.Get("Vigilante.Role.ChameleonUncamouflage", "Camoflauge"));
         }
 
         Player.RawSetAppearance(this);
@@ -93,7 +93,7 @@ public sealed class ChameleonCamouflageModifier : ConcealedModifier, IVisualAppe
         if (Player.AmOwner)
         {
             var button = CustomButtonSingleton<ChameleonCamouflageButton>.Instance;
-            button.OverrideName(MiraLocaleManager.Get("TownOfUsMira.Role.ChameleonCamouflage", "Camoflauge"));
+            button.OverrideName(MiraLocaleManager.Get("Vigilante.Role.ChameleonCamouflage", "Camoflauge"));
             if (!MeetingHud.Instance)
             {
                 TouAudio.PlaySound(TouAudio.SwooperDeactivateSound);

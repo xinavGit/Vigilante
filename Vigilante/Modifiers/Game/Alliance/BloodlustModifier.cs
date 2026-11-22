@@ -17,7 +17,7 @@ public sealed class BloodlustModifier : AllianceGameModifier, IWikiDiscoverable,
         TmpSpriteUtils.CreateSpriteAsset(TouModifierIcons.Egotist.LoadAsset(),
             "TouMira.Modifier.Alliance.Egotist", 1.45f));
     
-    public override string ModifierName => MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}");
-    public string ShortName => MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}ShortName");
-    public override string IntroInfo => MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}.IntroBlurb");
+    public override string ModifierName => MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}");
+    public string ShortName => MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}ShortName");
+    public override string IntroInfo => MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}.IntroBlurb");
 }*/

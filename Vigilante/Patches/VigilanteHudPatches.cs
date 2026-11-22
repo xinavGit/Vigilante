@@ -10,8 +10,10 @@ using TownOfUs.Utilities;
 using UnityEngine;
 using Vigilante.Modifiers.Logic.Crewmate;
 using Vigilante.Modifiers.Logic.Impostor;
+using Vigilante.Modifiers.Logic.Neutral;
 using Vigilante.Roles.Crewmate;
 using Vigilante.Roles.Impostor;
+using Vigilante.Roles.Neutral;
 
 namespace Vigilante.Patches;
 
@@ -40,6 +42,25 @@ public static class VigilanteHudPatches
              PlayerControl.LocalPlayer.IsImpostorAligned())
         {
             playerName += $"{TownOfUsColors.Impostor.ToTextColor()} #</color>";
+        }
+
+        if (player.TryGetModifier<AuditorRevealModifier>(out var mod) &&
+             PlayerControl.LocalPlayer.IsRole<AuditorRole>())
+        {
+            if (mod.TimesSmokebombed == 1)
+            {
+                playerName += $"{TownOfUsColors.Chef.ToTextColor()} X</color>";
+            }
+
+            if (mod.TimesSmokebombed == 2)
+            {
+                playerName += $"{TownOfUsColors.Chef.ToTextColor()} Y</color>";
+            }
+
+            if (mod.TimesSmokebombed >= 3)
+            {
+                playerName += $"{TownOfUsColors.Chef.ToTextColor()} Z</color>";
+            }
         }
 
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)

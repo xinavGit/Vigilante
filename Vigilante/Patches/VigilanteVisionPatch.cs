@@ -13,6 +13,7 @@ using TownOfUs.Patches;
 using TownOfUs.Utilities.Appearances;
 using Vigilante.Modifiers.Logic.Crewmate;
 using Vigilante.Modifiers.Logic.Impostor;
+using Vigilante.Modifiers.Logic.Neutral;
 using Vigilante.Options;
 
 namespace Vigilante.Patches;
@@ -25,6 +26,11 @@ public static class VigilanteVisionPatch
         if (player._object.HasModifier<DiplomatRevealModifier>())
         {
             __result *= OptionGroupSingleton<DiplomatOptions>.Instance.RevealVision.Value;
+        }
+
+        if (player._object.HasModifier<AuditorSmokebombedModifier>())
+        {
+            __result *= 0.1f;
         }
     }
 }

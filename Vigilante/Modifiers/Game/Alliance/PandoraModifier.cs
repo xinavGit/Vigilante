@@ -33,18 +33,18 @@ public sealed class PandoraModifier : AllianceGameModifier, IWikiDiscoverable, I
         TmpSpriteUtils.CreateSpriteAsset(TouModifierIcons.Crewpostor.LoadAsset(),
             "TouMira.Modifier.Alliance.Crewpostor", 1.45f));
     public override string IdPart => "Crewpostor";
-    public override string ModifierName => MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}");
-    public string ShortName => MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}ShortName");
-    public override string IntroInfo => MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}.IntroBlurb");
+    public override string ModifierName => MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}");
+    public string ShortName => MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}ShortName");
+    public override string IntroInfo => MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}.IntroBlurb");
 
     public override string GetDescription()
     {
-        return MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}.TabDescription");
+        return MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}.TabDescription");
     }
 
     public string GetAdvancedDescription()
     {
-        return MiraLocaleManager.Get($"TownOfUsMira.Modifier.{IdPart}.WikiDescription") + MiscUtils.AppendOptionsText(GetType());
+        return MiraLocaleManager.Get($"Vigilante.Modifier.{IdPart}.WikiDescription") + MiscUtils.AppendOptionsText(GetType());
     }
 
     public override string Symbol => "*";

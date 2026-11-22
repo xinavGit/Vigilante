@@ -11,7 +11,7 @@ namespace Vigilante.Options;
 
 public class RitualistOptions : AbstractOptionGroup<RitualistRole>
 {
-    public override string GroupName => MiraLocaleManager.Get("TownOfUsMira.Role.Ritualist", "Ritualist");
+    public override string GroupName => MiraLocaleManager.Get("Vigilante.Role.Ritualist", "Ritualist");
 
     public ModdedNumberOption MaxEliminations { get; } = new(
         "Vigilante.Options.Ritualist.MaxEliminations", 3f, 1f, 15f, 1f, MiraNumberSuffixes.None);
