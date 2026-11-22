@@ -30,15 +30,17 @@ public static class AuditorEvents
     {
         foreach (var player in ModifierUtils.GetPlayersWithModifier<AuditorAuditTargetModifier>().ToList())
         {
+            Info("1");
+            player.RemoveModifier<AuditorAuditTargetModifier>();
             if (player.IsCrewmate())
                     {
-                        var originalRole = player.GetRoleWhenAlive();
-                        player.RemoveModifier<AuditorAuditTargetModifier>();
-                        if (player.AmOwner)
+                        Info("2");
+                        player.AddModifier<AuditorAuditedModifier>(player.Data.Role);
+                        if (PlayerControl.LocalPlayer.IsHost())
                         {
+                            Info("3");
                             player.RpcSetRole(RoleTypes.Crewmate);
                         }
-                        player.AddModifier<AuditorAuditedModifier>(originalRole);
                     }
         }
     }
@@ -52,11 +54,13 @@ public static class AuditorEvents
         {
             foreach (var player in PlayerControl.AllPlayerControls.ToArray())
             {
-                Info("d");
                 if (player.TryGetModifier<AuditorAuditedModifier>(out var mod))
                 {
-                    player.RpcSetRole(mod.CachedRole.Role);
-                    player.RpcRemoveModifier<AuditorAuditedModifier>();
+                    if (PlayerControl.LocalPlayer.IsHost())
+                    {
+                        player.RpcSetRole(mod.CachedRole.Role);
+                        player.RpcRemoveModifier<AuditorAuditedModifier>();
+                    }
                 }
             }
         }

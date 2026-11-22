@@ -3,7 +3,10 @@ using HarmonyLib;
 using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
 using MiraAPI.Roles;
+using MiraAPI.Translation;
 using MiraAPI.Utilities;
+using TownOfUs;
+using TownOfUs.Assets;
 using TownOfUs.Events;
 using TownOfUs.Extensions;
 using TownOfUs.Interfaces;
@@ -43,5 +46,22 @@ public sealed class AuditorAuditedModifier(RoleBehaviour originalRole) : BaseMod
     public override void OnActivate()
     {
         base.OnActivate();
+
+        var notif1 = Helpers.CreateAndShowNotification(
+            $"<b>{TownOfUsColors.Chef.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Auditor.Audited")}</color></b>",
+            Color.white, new Vector3(0f, 1f, -150f),
+            spr: TouRoleIcons.Fairy);
+        notif1.AdjustNotification();
+    }
+
+    public override void OnDeactivate()
+    {
+        var notif1 = Helpers.CreateAndShowNotification(
+            $"<b>{TownOfUsColors.Chef.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Auditor.AuditOver")}</color></b>",
+            Color.white, new Vector3(0f, 1f, -150f),
+            spr: TouRoleIcons.Fairy);
+        notif1.AdjustNotification();
+
+        base.OnDeactivate();
     }
 }

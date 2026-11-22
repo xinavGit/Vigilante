@@ -5,6 +5,7 @@ using Rewired;
 using TownOfUs;
 using TownOfUs.Assets;
 using TownOfUs.Modifiers;
+using TownOfUs.Utilities;
 using UnityEngine;
 
 namespace Vigilante.Modifiers.Logic.Neutral;
@@ -27,9 +28,10 @@ public sealed class AuditorRevealProgressModifier()
         if (TimesSmokebombed == 3)
         {
             var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>{TownOfUsColors.Chef.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Modifier.AuditorFlashedNotification")}</color></b>",
+                    $"<b>{MiraLocaleManager.Get("Vigilante.Feedback.Auditor.Revealed")}</color></b>",
                     Color.red,
                     spr: TouRoleIcons.Fairy);
+            notif1.AdjustNotification();
             
            
         }

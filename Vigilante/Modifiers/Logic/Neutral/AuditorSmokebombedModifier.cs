@@ -37,7 +37,7 @@ public sealed class AuditorSmokebombedModifier() : DisabledModifier
         if (Player.AmOwner)
         {
                 var notif1 = Helpers.CreateAndShowNotification(
-                    $"<b>{TownOfUsColors.Chef.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Modifier.AuditorFlashedNotification")}</color></b>",
+                    $"<b>{TownOfUsColors.Chef.ToTextColor()}{MiraLocaleManager.Get("Vigilante.Feedback.Auditor.Smokebombed")}</color></b>",
                     Color.white,
                     spr: TouRoleIcons.Fairy);
 

@@ -364,6 +364,7 @@
     <string name="Vigilante.Feedback.Auditor.Smokebombing">All nearby players were smokebombed!</string>
     <string name="Vigilante.Feedback.Auditor.Auditing">You decided to audit [player] next round, removing their abilities if they are a Crewmate.</string>
     <string name="Vigilante.Feedback.Auditor.AuditOver">The Auditor has died- you can now use your abilities again!</string>
+    <string name="Vigilante.Feedback.Auditor.Revealed">The Auditor knows your role now!</string>
     <!-- Auditor Options, option for auditor to not be able to vote? w/ anon voting, when alive? -->
     <string name="Vigilante.Options.Auditor.SmokebombUses">Smokebomb Uses Per Game</string>
     <string name="Vigilante.Options.Auditor.SmokebombCooldown">Smokebomb Cooldown</string>
