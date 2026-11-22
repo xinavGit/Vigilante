@@ -165,15 +165,6 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     [MethodRpc((uint)VigilanteRpcs.RitualistEliminate)]
     public static void RpcRitualistEliminate(PlayerControl ritualist, PlayerControl victim)
     {
-        if (ritualist == null || victim == null) return;
-
-        if (!victim.HasModifier<RitualistRitualizedModifier>()) return;
-
-        if (PlayerControl.LocalPlayer == ritualist)
-        {
-            ritualist.RpcMeetingMurder(victim,MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
-                causeOfDeath: "RitualistRitualized");
-        }
 
         Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.ImpSoft));
         TouAudio.PlaySound(VigilanteAssets.RitualistRit);
@@ -184,6 +175,12 @@ public sealed class RitualistRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
             Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.RitualistIcon.LoadAsset());
 
         notif1.AdjustNotification();
+
+        if (PlayerControl.LocalPlayer == ritualist)
+        {
+            ritualist.RpcMeetingMurder(victim,MeetingAnimation.PlayerNameplateAnimation, CustomTouMurderRpcs.GetRandomMeetingAnim(DeathAnimType.Nameplate),
+                causeOfDeath: "RitualistRitualized");
+        }
 
     }
 
