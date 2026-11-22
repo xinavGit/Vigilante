@@ -364,6 +364,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
             return true;
         }
 
+        if (target.HasModifier<InspectorPublishedModifier>())
+        {
+            return true;
+        }
+
         return false;
     }
 
@@ -388,6 +393,11 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         var target = voteArea.GetPlayer();
 
         if (target == null || target.HasDied())
+        {
+            return true;
+        }
+
+        if (target.HasModifier<InspectorPublishedModifier>())
         {
             return true;
         }
