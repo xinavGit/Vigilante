@@ -12,6 +12,7 @@ using TownOfUs.Modules;
 using TownOfUs.Options.Roles.Impostor;
 using TownOfUs.Utilities;
 using UnityEngine;
+using Vigilante.Options;
 using Color = UnityEngine.Color;
 
 namespace Vigilante.Modifiers.Logic.Neutral;
@@ -20,7 +21,7 @@ public sealed class AuditorSmokebombedModifier() : DisabledModifier
 {
     public override string ModifierName => "Flashed";
     public override bool HideOnUi => true;
-    public override float Duration => OptionGroupSingleton<AuditorOptions>.Instance.GrenadeDuration + 0.5f;
+    public override float Duration => OptionGroupSingleton<AuditorOptions>.Instance.SmokebombDuration + 0.5f;
     public override bool AutoStart => true;
     public override bool CanBeInteractedWith => true;
     public override bool IsConsideredAlive => true;

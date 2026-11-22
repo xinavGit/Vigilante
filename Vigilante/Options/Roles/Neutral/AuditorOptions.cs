@@ -33,5 +33,5 @@ public class AuditorOptions : AbstractOptionGroup<AuditorRole>
     public float AuditCooldown { get; set; } = 25f;
 
     public ModdedToggleOption RoundOneAudit { get; } =
-        new($"Vigilante.Options.Auditor.CanAuditRoundOne", true);
+        new($"Vigilante.Options.Auditor.CanAuditRoundOne", false);
 }

@@ -19,7 +19,7 @@ using TownOfUs.Modules;
 
 namespace Vigilante.Events.Crewmate;
 
-public static class MagistrateEvents
+public static class MagistrateEvents 
 {
     [RegisterEvent]
     public static void OnRoundStart(RoundStartEvent evt)

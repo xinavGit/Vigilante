@@ -41,13 +41,18 @@ public sealed class AuditorSmokebombButton : TownOfUsRoleButton<AuditorRole>
         {
             player.RpcAddModifier<AuditorSmokebombedModifier>();
 
-            if (player.TryGetModifier<AuditorRevealModifier>(out var mod))
+            if (player.TryGetModifier<AuditorRevealProgressModifier>(out var mod))
             {
                 mod.TimesSmokebombed++;
+
+                if (mod.TimesSmokebombed == 3)
+                {
+                    player.AddModifier<AuditorRevealModifier>(player.Data.Role);
+                }
             }
             else
             {
-                player.RpcAddModifier<AuditorRevealModifier>();
+                player.RpcAddModifier<AuditorRevealProgressModifier>();
             }
         }
 

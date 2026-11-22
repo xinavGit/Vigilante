@@ -355,11 +355,14 @@
     <string name="Vigilante.Role.Auditor.TabDescription">Smokebomb players multiple times to reveal their roles, and audit Crewmates to make them lose their abilities until you die.</string>
     <string name="Vigilante.Role.Auditor.WikiDescription">The Auditor is a Crewmate Protective role that can choose a player to sanctify on their menu. The chosen player will be fortified for a certain amount of time, and the Auditor will kill the first person to interact with them if they are interacted with.</string>
     <string name="Vigilante.Role.Auditor.Smokebomb">Smokebomb</string>
-    <string name="Vigilante.Role.Auditor.Sanctify.WikiDescription">Lower the vision all players in your vicinity. Smokebombing a player three times will give you their role.</string>
+    <string name="Vigilante.Role.Auditor.Smokebomb.WikiDescription">Lower the vision all players in your vicinity. Smokebombing a player three times will give you their role.</string>
+    <string name="Vigilante.Role.Auditor.Audit">Audit</string>
+    <string name="Vigilante.Role.Auditor.Audit.WikiDescription">Make your target lose their abilities the next round if they are a Crewmate. They will be unable to use their abilities until you die.</string>
     <!-- Auditor Feedback -->
     <string name="Vigilante.Feedback.Auditor.Smokebombed">You were smokebombed by the Auditor!</string>
     <string name="Vigilante.Feedback.Auditor.Audited">The Auditor has made you lose your abilities! You will regain your abilities after the Auditor's death.</string>
     <string name="Vigilante.Feedback.Auditor.Smokebombing">All nearby players were smokebombed!</string>
+    <string name="Vigilante.Feedback.Auditor.Auditing">You decided to audit [player] next round, removing their abilities if they are a Crewmate.</string>
     <string name="Vigilante.Feedback.Auditor.AuditOver">The Auditor has died- you can now use your abilities again!</string>
     <!-- Auditor Options, option for auditor to not be able to vote? w/ anon voting, when alive? -->
     <string name="Vigilante.Options.Auditor.SmokebombUses">Smokebomb Uses Per Game</string>

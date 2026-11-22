@@ -44,7 +44,7 @@ public static class VigilanteHudPatches
             playerName += $"{TownOfUsColors.Impostor.ToTextColor()} #</color>";
         }
 
-        if (player.TryGetModifier<AuditorRevealModifier>(out var mod) &&
+        if (player.TryGetModifier<AuditorRevealProgressModifier>(out var mod) &&
              PlayerControl.LocalPlayer.IsRole<AuditorRole>())
         {
             if (mod.TimesSmokebombed == 1)
@@ -61,6 +61,12 @@ public static class VigilanteHudPatches
             {
                 playerName += $"{TownOfUsColors.Chef.ToTextColor()} Z</color>";
             }
+        }
+
+        if (player.HasModifier<AuditorAuditTargetModifier>() &&
+             PlayerControl.LocalPlayer.IsRole<AuditorRole>())
+        {
+            playerName += $"{TownOfUsColors.Executioner.ToTextColor()} -</color>";
         }
 
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)

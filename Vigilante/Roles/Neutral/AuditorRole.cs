@@ -33,11 +33,12 @@ using TownOfUs.Roles.Neutral;
 using TownOfUs.Roles.Other;
 using TownOfUs.Utilities;
 using UnityEngine;
+using Vigilante.Interfaces;
 using Random = System.Random;
 
 namespace Vigilante.Roles.Neutral;
 
-public sealed class AuditorRole(IntPtr cppPtr) : NeutralRole(cppPtr), ITownOfUsRole, IWikiDiscoverable,
+public sealed class AuditorRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigilanteRole, IWikiDiscoverable,
     IDoomable, ICrewVariant
 {
     public override void SpawnTaskHeader(PlayerControl playerControl)
