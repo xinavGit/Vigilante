@@ -22,8 +22,8 @@ public class RitualistOptions : AbstractOptionGroup<RitualistRole>
     public ModdedNumberOption CooldownIncrease { get; } =
         new($"Vigilante.Options.Ritualist.CooldownIncrease", 15f, 5f, 30f, 2.5f, MiraNumberSuffixes.Seconds);
 
-    public ModdedToggleOption NotifyVictim { get; } =
-        new($"Vigilante.Options.Ritualist.NotifyVictim", true);
+    /*public ModdedToggleOption NotifyVictim { get; } =
+        new($"Vigilante.Options.Ritualist.NotifyVictim", true);*/
     
     public ModdedToggleOption EliminateCI { get; } =
         new($"Vigilante.Options.Ritualist.CanRitCI", true);
