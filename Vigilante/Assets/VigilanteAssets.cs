@@ -45,6 +45,8 @@ public static class VigilanteAssets
     public static LoadableAsset<Sprite> MagistrateJudgement { get; } = new LoadableResourceAsset($"{ButtonPath}.Judgement.png", 300f); // button from BTOS2
     public static LoadableAsset<Sprite> DiplomatManipulate { get; } = new LoadableResourceAsset($"{ButtonPath}.Manipulate.png", 300f);
     public static LoadableAsset<Sprite> RitualistEliminate { get; } = new LoadableResourceAsset($"{ButtonPath}.Eliminate.png", 300f);
+    public static LoadableAsset<Sprite> InspectorPublishButton { get; } = new LoadableResourceAsset($"{ButtonPath}.Publish.png", 300f);
+    public static LoadableAsset<Sprite> InspectorForgeButton { get; } = new LoadableResourceAsset($"{ButtonPath}.Forge.png", 300f);
 
 
     public static LoadableAsset<Sprite> CourtOverlay { get; } = new LoadableResourceAsset($"Vigilante.Resources.CourtOverlay.png");

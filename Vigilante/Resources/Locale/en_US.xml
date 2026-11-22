@@ -56,6 +56,7 @@
     <string name="Vigilante.Role.Inspector.Inspect.WikiDescription">Inspect a player during the meeting to check if they are a certain role with a guesser menu.</string>
     <string name="Vigilante.Role.Inspector.Publish">Publish</string>
     <string name="Vigilante.Role.Inspector.Publish.WikiDescription">Reveal the role of a player that you successfully inspected to everyone. This does not reveal alliance modifiers.</string>
+    <string name="Vigilante.Role.Inspector.Forge">Forge</string>
     <!-- Inspector Feedback -->
     <string name="Vigilante.Feedback.Inspector.InspectsRemaining">inspections used this round.</string>
     <string name="Vigilante.Feedback.Inspector.InspectFalse">[player] does not seem to be the [role].</string>

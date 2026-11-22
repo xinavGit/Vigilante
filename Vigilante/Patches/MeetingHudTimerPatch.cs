@@ -36,7 +36,7 @@ public static class MeetingHudTimerPatch
                     $"\n{insp.RoundInspects} / {(int)OptionGroupSingleton<InspectorOptions>.Instance.InspectsPerMeeting} {MiraLocaleManager.Get("Vigilante.Feedback.Inspector.InspectsRemaining")}";
 
                 break;
-            case MagistrateRole magi:
+            /*case MagistrateRole magi:
                 if (MagistrateRole.CourtActive)
                 {
                     newText =
@@ -55,7 +55,7 @@ public static class MeetingHudTimerPatch
                             $"\n{magi.JudgementUsesLeft} / {(int)OptionGroupSingleton<MagistrateOptions>.Instance.JudgementUses} {MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.JudgementsRemaining")}";
                     }
                 }
-                break;
+                break;*/
             case RitualistRole rit:
                 newText =
                     $"\n{rit.StrikesLeft} / {(int)OptionGroupSingleton<RitualistOptions>.Instance.MaxEliminations} {MiraLocaleManager.Get("Vigilante.Feedback.Ritualist.EliminationsRemaining")}";

@@ -117,20 +117,20 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
                 CheckPublish,
                 MiraLocaleManager.Get("Vigilante.Role.Inspector.Publish"),
                 MeetingAbilityType.Click,
-                TouAssets.RevealCleanSprite,
+                VigilanteAssets.InspectorPublishButton,
                 null!,
                 IsPublishExempt,
                 position: new Vector3(-0.35f, 0f, -3f));
         
-        /*forgeMenu = new MeetingMenu(
+        forgeMenu = new MeetingMenu(
                 this,
-                CheckPublish,
-                MiraLocaleManager.Get("Vigilante.Role.Inspector.Publish"),
+                OpenForgeMenu,
+                MiraLocaleManager.Get("Vigilante.Role.Inspector.Forge"),
                 MeetingAbilityType.Click,
-                TouAssets.HysteriaCleanSprite,
+                VigilanteAssets.InspectorForgeButton,
                 null!,
-                IsInspectExempt,
-                position: new Vector3(-0.75f, 0f, -3f));*/
+                IsForgeExempt,
+                position: new Vector3(1f, 0f, -3f));
     }
     public override void OnMeetingStart()
     {
@@ -149,7 +149,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         {
             inspectMenu?.GenButtons(meeting, true);
             publishMenu?.GenButtons(meeting, true);
-            //forgeMenu?.GenButtons(meeting, true);
+            forgeMenu?.GenButtons(meeting, true);
         }
 
         RefreshButtons();
@@ -179,6 +179,30 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
     }
 
     [HideFromIl2Cpp]
+    public void OpenForgeMenu(PlayerVoteArea voteArea, MeetingHud meeting)
+    {
+
+        if (meeting.state == MeetingHud.MeetingStates.Discussion || IsForgeExempt(voteArea))
+        {
+            return;
+        }
+
+        if (Minigame.Instance)
+        {
+            return;
+        }
+
+        var forgeTarget = GameData.Instance.GetPlayerById(voteArea.PlayerId)?.Object;
+        if (forgeTarget == null)
+        {
+            return;
+        }
+
+        inspectGuesserMenu = GuesserMenu.Create();
+        inspectGuesserMenu.Begin(IsRoleValid, role => OnForgeSelected(role, forgeTarget.PlayerId));
+    }
+
+    [HideFromIl2Cpp]
     public void CheckPublish(PlayerVoteArea voteArea, MeetingHud meeting)
     {
         if (meeting.state == MeetingHud.MeetingStates.Discussion || IsPublishExempt(voteArea))
@@ -201,6 +225,20 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         {
             RpcInspectorPublish(inspectTarget, RoleId.Get(publishRole.GetType()));
         }
+    }
+
+    [HideFromIl2Cpp]
+    public void OnForgeSelected(RoleBehaviour role, byte targetId)
+    {
+        var target = GameData.Instance.GetPlayerById(targetId)?.Object;
+
+        if (target == null)
+        {
+            return;
+        }
+
+        inspectGuesserMenu?.Close();
+        RpcInspectorPublish(target, RoleId.Get(role.GetType()));
     }
 
     [HideFromIl2Cpp]
@@ -292,6 +330,36 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         }
 
         if (InspectedPlayers.ContainsKey(target))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    [HideFromIl2Cpp]
+    public bool IsForgeExempt(PlayerVoteArea voteArea)
+    {
+        if (!Player.HasModifier<AllianceGameModifier>()) return true;
+
+        if (Player.HasModifier<JailedModifier>())
+        {
+            return true;
+        }
+
+        if (playersPublished >= OptionGroupSingleton<InspectorOptions>.Instance.MaxPublishUses.Value)
+        {
+            return true;
+        }
+
+        if (voteArea == null || voteArea.PlayerId == Player.PlayerId)
+        {
+            return true;
+        }
+
+        var target = voteArea.GetPlayer();
+
+        if (target == null || target.HasDied())
         {
             return true;
         }
@@ -438,7 +506,7 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
 
         publishMenu?.GenButtons(meeting, true);
         inspectMenu?.GenButtons(meeting, true);
-        //forgeMenu?.GenButtons(meeting, true);
+        forgeMenu?.GenButtons(meeting, true);
     }
 
 
