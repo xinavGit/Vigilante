@@ -1,4 +1,4 @@
-using HarmonyLib;
+/*using HarmonyLib;
 using MiraAPI.GameOptions;
 using MiraAPI.Keybinds;
 using MiraAPI.Modifiers;
@@ -47,4 +47,4 @@ public sealed class KidnapperKidnapButton : TownOfUsRoleButton<KidnapperRole, Pl
         Target?.RpcAddModifier<KidnapperKidnappedModifier>(PlayerControl.LocalPlayer.PlayerId);
         TouAudio.PlaySound(TouAudio.JailSound);
     }
-}
+}*/

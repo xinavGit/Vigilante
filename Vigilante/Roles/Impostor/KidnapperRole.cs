@@ -1,4 +1,4 @@
-using HarmonyLib;
+/*using HarmonyLib;
 using Il2CppInterop.Runtime.Attributes;
 using MiraAPI.GameOptions;
 using MiraAPI.Hud;
@@ -176,4 +176,4 @@ public sealed class KidnapperRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
 
     }
 
-}
+}*/

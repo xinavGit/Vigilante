@@ -1,4 +1,4 @@
-using MiraAPI.Events;
+/*using MiraAPI.Events;
 using MiraAPI.Modifiers;
 using MiraAPI.Roles;
 using MiraAPI.Translation;
@@ -113,4 +113,4 @@ public sealed class KidnapperKidnappedModifier(byte kidnapperId) : BaseModifier
     {
         RemoveSelf();
     }
-}
+}*/
