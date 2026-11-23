@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="DiedToJudge">Judged</string>
-    <string name="DiedToKidnapper">Exterminated</string>
+    <string name="DiedToKidnapperExterminated">Exterminated</string>
     <string name="DiedToJinx">Jinxed</string>
     <string name="DiedToDiplomatLeave">Banished</string>
     <string name="DiedToRitualistRitualized">Ritualized</string>
@@ -227,14 +227,17 @@
     <!-- Kidnapper Feedback -->
     <string name="Vigilante.Feedback.Kidnapper.CannotExecute">Unstoppable attack meets immovable object! [player] cannot be executed! They must be Invulnerable or blessed! You can no longer exterminate.</string>
     <string name="Vigilante.Feedback.Kidnapper.ExterminatedYesKidnap">[player] was successfully exterminated! You can no longer exterminate.</string>
+    <string name="Vigilante.Feedback.Kidnapper.ExterminatedNotify">The Kidnapper has exterminated their target!</string>
     <string name="Vigilante.Feedback.Kidnapper.ExterminatedNoKidnap">[player] was successfully exterminated! You can no longer kidnap players.</string>
     <!-- Kidnapper Options maybe change to uses per kill and make it a decimal value -->
-    <string name="Vigilante.Options.Kidnapper.KidnapUses">Inital Kidnap Uses</string>
+    <string name="Vigilante.Options.Kidnapper.KidnapUses">Initial Kidnap Uses</string>
     <string name="Vigilante.Options.Kidnapper.KidnapCooldown">Kidnap Cooldown</string>
     <string name="Vigilante.Options.Kidnapper.KidnapDelay">Meetings Till Kidnapper Can Execute</string>
     <string name="Vigilante.Options.Kidnapper.MoreKidnapsFromKills">Get More Kidnap Uses From Kills</string>
     <string name="Vigilante.Options.Kidnapper.KillsPerUse">Kills Needed For Kidnap Use</string>
     <string name="Vigilante.Options.Kidnapper.CanKidnapPostExterminate">Can Kidnap After Exterminating Player</string>
+    <string name="Vigilante.Options.Kidnapper.CanExterminateRoundOne">Can Exterminate Round One</string>
+    <string name="Vigilante.Options.Kidnapper.NotifyAllOnExterminate">Notify All Players Of Kidnapper On Exterminate</string>
 
     <!-- Jinx - Impostor Killing-->
     <!-- Jinx Wiki / Abilities -->
@@ -249,7 +252,7 @@
     <string name="Vigilante.Feedback.Jinx.YouWereJinxed">You were jinxed by the Jinx! The first person to interact with you will die.</string>
     <!-- Jinx Options -->
     <string name="Vigilante.Options.Jinx.JinxedBodyDuration">Jinx Deadly Body Duration</string>
-    <string name="Vigilante.Options.Jinx.JinxUses">Inital Jinx Uses</string>
+    <string name="Vigilante.Options.Jinx.JinxUses">Initial Jinx Uses</string>
     <string name="Vigilante.Options.Jinx.NotifyJinxed">Notify Jinxed Player On Jinx</string>
     <string name="Vigilante.Options.Jinx.CanGetMoreUses">Can Get More Jinx Uses From Kills</string>
     <string name="Vigilante.Options.Jinx.KillsPerUse">Kills Needed For Jinx Use</string>

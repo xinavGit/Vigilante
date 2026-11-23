@@ -10,5 +10,7 @@ public enum VigilanteRpcs : uint
     RitualistEliminate,
     MagistrateEnlist,
     MagistrateCourt,
-    MagistrateEndCourt
+    MagistrateEndCourt,
+    KidnapperExterminate,
+    SendKidnapperChat,
 }
