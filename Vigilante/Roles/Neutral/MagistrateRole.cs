@@ -37,25 +37,38 @@ using Reactor.Utilities;
 using MiraAPI.Voting;
 using Vigilante.Buttons.Crewmate;
 using HarmonyLib;
+using TownOfUs.Roles.Neutral;
 
 namespace Vigilante.Roles.Crewmate;
 //using TOUM monarch role code for enlist rpc
 #pragma warning disable CA1001
-public sealed class MagistrateRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable
+public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable, ICrewVariant
 #pragma warning restore CA1001
 {
+    public override void SpawnTaskHeader(PlayerControl playerControl)
+    {
+        if (!playerControl.AmOwner)
+        {
+            return;
+        }
+        ImportantTextTask orCreateTask = PlayerTask.GetOrCreateTask<ImportantTextTask>(playerControl, 0);
+        orCreateTask.Text = $"{TownOfUsColors.Neutral.ToTextColor()}{MiraLocaleManager.Get("NeutralEvilTaskHeader")}</color>";
+        orCreateTask.name = "NeutralRoleText";
+    }
+
     private MeetingMenu? judgeMenu;
 
     public string IdPart => "Magistrate";
     public Color RoleColor => VigilanteColors.Magistrate;
-    public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
-    public RoleAlignment RoleAlignment => RoleAlignment.CrewmatePower;
+    public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
+    public RoleAlignment RoleAlignment => RoleAlignment.NeutralEvil;
 
     public string RoleName => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}");
     public string RoleDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.IntroBlurb");
     public string RoleLongDescription => MiraLocaleManager.Get($"Vigilante.Role.{IdPart}.TabDescription");
 
     public DoomableType DoomHintType => DoomableType.Fearmonger;
+    public RoleBehaviour CrewVariant => RoleManager.Instance.GetRole((RoleTypes)RoleId.Get<ProsecutorRole>());
 
     public float JudgementUsesLeft { get; set; }
 

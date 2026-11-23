@@ -16,13 +16,15 @@
   <img width="30%" src="./Images/RoleBanners/chameleon.png" alt="Chameleon"/>
   <img width="30%" src="./Images/RoleBanners/decryptor.png" alt="Decryptor"/>
   <img width="30%" src="./Images/RoleBanners/inspector.png" alt="Inspector"/>
-  <img src="./Images/Groups/CrewPower.png" alt="Crewmate Power"/>
-  <img width="30%" src="./Images/RoleBanners/magistrate.png" alt="Magistrate"/>
+  <img src="./Images/Groups/CrewProtect.png" alt="Crewmate Protective"/>
+  <img width="30%" src="./Images/RoleBanners/crusader.png" alt="Crusader"/>
   <img src="./Images/Groups/ImpKilling.png" alt="Impostor Killing"/>
   <img width="30%" src="./Images/RoleBanners/ritualist.png" alt="Ritualist"/>
   <img src="./Images/Groups/ImpPower.png" alt="Impostor Power"/>
   <img width="30%" src="./Images/RoleBanners/diplomat.png" alt="Diplomat"/>
   <img width="30%" src="./Images/RoleBanners/disruptor.png" alt="Disruptor"/>
+  <img src="./Images/Groups/NeutEvil.png" alt="Neutral Evil"/>
+  <img width="30%" src="./Images/RoleBanners/magistrate.png" alt="Magistrate"/>
 </p>
 
 
