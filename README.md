@@ -42,6 +42,7 @@
 [BepInEx](https://github.com/BepInEx) - For hooking game functions\
 [Divani Mods](https://github.com/DivaniNL/TownOfUsMiraDivaniModsAddOn) - Code reference\
 [TOU-Mira](https://github.com/AU-Avengers/TOU-Mira) - Code reference, mod framework, assets
+[Mira Unleashed](https://github.com/rewalo/TownOfUsMiraUnleashed) - Code reference (Extra tasks patching)
 
 BTOS2/TOS2 - Button art assets
 

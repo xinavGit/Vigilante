@@ -27,4 +27,10 @@ public class DecryptorOptions : AbstractOptionGroup<DecryptorRole>
         Visible = () => OptionGroupSingleton<DecryptorOptions>.Instance.AlertImpostors ||
             OptionGroupSingleton<DecryptorOptions>.Instance.AlertNeutrals
     };
+
+    public ModdedNumberOption ExtraShortTasks { get; } = new(
+        "Vigilante.Options.Decryptor.ExtraShortTasks", 3f, 0f, 5f, 1f, MiraNumberSuffixes.None);
+
+    public ModdedNumberOption ExtraLongTasks { get; } = new(
+        "Vigilante.Options.Decryptor.ExtraLongTasks", 2f, 0f, 5f, 1f, MiraNumberSuffixes.None);
 }
