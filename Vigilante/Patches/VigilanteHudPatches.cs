@@ -10,10 +10,8 @@ using TownOfUs.Utilities;
 using UnityEngine;
 using Vigilante.Modifiers.Logic.Crewmate;
 using Vigilante.Modifiers.Logic.Impostor;
-using Vigilante.Modifiers.Logic.Neutral;
 using Vigilante.Roles.Crewmate;
 using Vigilante.Roles.Impostor;
-using Vigilante.Roles.Neutral;
 
 namespace Vigilante.Patches;
 
@@ -44,7 +42,7 @@ public static class VigilanteHudPatches
             playerName += $"{TownOfUsColors.Impostor.ToTextColor()} #</color>";
         }
 
-        if (player.TryGetModifier<AuditorRevealProgressModifier>(out var mod) &&
+        /*if (player.TryGetModifier<AuditorRevealProgressModifier>(out var mod) &&
              PlayerControl.LocalPlayer.IsRole<AuditorRole>())
         {
             if (mod.TimesSmokebombed == 1)
@@ -67,7 +65,7 @@ public static class VigilanteHudPatches
              PlayerControl.LocalPlayer.IsRole<AuditorRole>())
         {
             playerName += $"{TownOfUsColors.Executioner.ToTextColor()} -</color>";
-        }
+        }*/
 
         if (PlayerControl.LocalPlayer.Data.Role is DecryptorRole)
         {
