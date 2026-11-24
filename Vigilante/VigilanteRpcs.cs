@@ -4,13 +4,9 @@ public enum VigilanteRpcs : uint
 {
     DecryptorAlert,
     InspectorPublish,
-    CrusaderSanctify,
-    CrusaderClearSanctify,
     DiplomatReveal,
     RitualistEliminate,
     MagistrateEnlist,
     MagistrateCourt,
     MagistrateEndCourt,
-    //KidnapperExterminate,
-    //SendKidnapperChat,
 }
