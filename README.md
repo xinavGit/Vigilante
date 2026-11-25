@@ -1,8 +1,8 @@
 <div align="center">
   <img src="./Images/VigilanteBanner.png" alt="Vigilante"/>
   <p>Vigilante</p>
+  <a href="https://discord.gg/ugyc4EVUYZ"> <img alt="Mod Discord" src="https://img.shields.io/discord/890249154402586734.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2"></a>
 </div>
-
 
 
 
@@ -21,8 +21,6 @@
   <img src="./Images/Groups/ImpPower.png" alt="Impostor Power"/>
   <img width="30%" src="./Images/RoleBanners/diplomat.png" alt="Diplomat"/>
   <img width="30%" src="./Images/RoleBanners/disruptor.png" alt="Disruptor"/>
-  <img src="./Images/Groups/NeutEvil.png" alt="Neutral Evil"/>
-  <img width="30%" src="./Images/RoleBanners/magistrate.png" alt="Magistrate"/>
 </p>
 
 
