@@ -16,8 +16,6 @@
   <img width="30%" src="./Images/RoleBanners/chameleon.png" alt="Chameleon"/>
   <img width="30%" src="./Images/RoleBanners/decryptor.png" alt="Decryptor"/>
   <img width="30%" src="./Images/RoleBanners/inspector.png" alt="Inspector"/>
-  <img src="./Images/Groups/CrewProtect.png" alt="Crewmate Protective"/>
-  <img width="30%" src="./Images/RoleBanners/crusader.png" alt="Crusader"/>
   <img src="./Images/Groups/ImpKilling.png" alt="Impostor Killing"/>
   <img width="30%" src="./Images/RoleBanners/ritualist.png" alt="Ritualist"/>
   <img src="./Images/Groups/ImpPower.png" alt="Impostor Power"/>

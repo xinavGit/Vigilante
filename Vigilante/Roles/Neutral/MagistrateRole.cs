@@ -1,7 +1,7 @@
-/*using AmongUs.GameOptions;
+using AmongUs.GameOptions;
 using System.Linq;
 using Vigilante.Assets;
-using Vigilante.Modifiers.Logic.Crewmate;
+using Vigilante.Modifiers.Logic.Neutral;
 using Vigilante.Options;
 using Il2CppInterop.Runtime.Attributes;
 using Il2CppSystem.Runtime.InteropServices;
@@ -35,11 +35,11 @@ using TownOfUs.Networking;
 using Reactor.Utilities.Extensions;
 using Reactor.Utilities;
 using MiraAPI.Voting;
-using Vigilante.Buttons.Crewmate;
+using Vigilante.Buttons.Neutral;
 using HarmonyLib;
 using TownOfUs.Roles.Neutral;
 
-namespace Vigilante.Roles.Crewmate;
+namespace Vigilante.Roles.Neutral;
 //using TOUM monarch role code for enlist rpc
 #pragma warning disable CA1001
 public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigilanteRole, IWikiDiscoverable, IDoomable, ICrewVariant
@@ -174,16 +174,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigila
             return;
         }
 
-        if (summoned.Count <= OptionGroupSingleton<MagistrateOptions>.Instance.SummonsNeeded.Value)
-        {
-            if (Player.AmOwner)
-            {
-                ClearMenu();
-            }
-
-            return;
-        }
-
         RpcCourt(summoned);
 
         if (Player.AmOwner)
@@ -220,22 +210,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigila
 
         var magistrate = CustomRoleUtils.GetActiveRolesOfType<MagistrateRole>().FirstOrDefault();
 
-
-        if (!EnemySummoned(summoned))
-        {
-            if (PlayerControl.LocalPlayer == magistrate?.Player)
-            {
-                var msg2a = MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.FailedCourt");
-            var notif2a = Helpers.CreateAndShowNotification(
-                $"<b>{msg2a}</b></color>",
-                Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.JudgeIcon.LoadAsset());
-            notif2a.AdjustNotification();
-
-                MiscUtils.AddFakeChat(magistrate.Player.Data, MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.MagistrateFeedback"), MiraLocaleManager.Get("Vigilante.Feedback.Magistrate.FailedCourt"), false, true);
-            }
-        }
-        else
-        {
             Coroutines.Start(MiscUtils.CoFlash(VigilanteColors.Magistrate));
             TouAudio.PlaySound(VigilanteAssets.CourtGavel);
 
@@ -282,7 +256,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigila
                 }
             }
         }
-        }
     }
 
     public void ClearMenu()
@@ -297,27 +270,6 @@ public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigila
         {
             
         }
-    }
-
-    [HideFromIl2Cpp]
-    public static bool EnemySummoned(List<PlayerControl> summoned)
-    {
-        foreach (var summonedPlayer in summoned)
-        {
-            if (summonedPlayer.IsImpostor() || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralKilling)
-            {
-                return true;
-            }
-
-            if ((summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralKilling || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralEvil || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralBenign || summonedPlayer.Data.Role.GetRoleAlignment() == RoleAlignment.NeutralOutlier) && OptionGroupSingleton<MagistrateOptions>.Instance.NonKillingEvils.Value)
-            {
-                return true;
-            }
-
-            continue;
-        }
-
-        return false;
     }
 
     [MethodRpc((uint)VigilanteRpcs.MagistrateEnlist)]
@@ -357,4 +309,4 @@ public sealed class MagistrateRole(IntPtr cppPtr) : NeutralRole(cppPtr), IVigila
             notif.Text.SetOutlineThickness(0.35f);
         }
     }
-}*/
+}

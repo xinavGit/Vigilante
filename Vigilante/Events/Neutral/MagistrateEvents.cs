@@ -1,4 +1,4 @@
-/*using System.Linq;
+using System.Linq;
 using MiraAPI.Events;
 using MiraAPI.Events.Vanilla.Gameplay;
 using MiraAPI.GameOptions;
@@ -16,10 +16,11 @@ using MiraAPI.Hud;
 using Vigilante.Buttons.Crewmate;
 using MiraAPI.Events.Vanilla.Meeting.Voting;
 using TownOfUs.Modules;
+using Vigilante.Roles.Neutral;
 
-namespace Vigilante.Events.Crewmate;
+namespace Vigilante.Events.Neutral;
 
-public static class MagistrateEvents 
+public static class MagistrateEvents
 {
     [RegisterEvent]
     public static void OnRoundStart(RoundStartEvent evt)
@@ -74,4 +75,4 @@ public static class MagistrateEvents
             evt.AllowSelect = false;
         }
     }
-}*/
+}
