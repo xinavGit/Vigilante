@@ -44,6 +44,8 @@
     <string name="Vigilante.Options.Decryptor.AlertImpostors">Alert Impostors Of Decryptor</string>
     <string name="Vigilante.Options.Decryptor.AlertNeutrals">Alert Neutrals Of Decryptor</string>
     <string name="Vigilante.Options.Decryptor.LettersForAlert">Number Of Letters Revealed For Evil Alert</string>
+    <string name="Vigilante.Options.Decryptor.ExtraShortTasks">Extra Short Tasks</string>
+    <string name="Vigilante.Options.Decryptor.ExtraLongTasks">Extra Long Tasks</string>
 
     <!-- Inspector - Crewmate Investigative what if the magnifiying glass was black and white like assassin ui lol -->
     <!-- Inspector Wiki / Abilities -->

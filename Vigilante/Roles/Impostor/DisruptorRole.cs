@@ -39,7 +39,7 @@ public sealed class DisruptorRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigila
     public CustomRoleConfiguration Configuration => new(this)
     {
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DisruptorIcon.LoadAsset(), "Vigilante.Role.Impostor.Disruptor", 1.45f),
-        OptionsScreenshot = TouBanners.ImpostorRoleBanner,
+        OptionsScreenshot = VigilanteAssets.DisruptorBanner,
         Icon = VigilanteAssets.DisruptorIcon,
         CanUseVent = OptionGroupSingleton<DisruptorOptions>.Instance.CanVent,
         //CanUseSabotage = OptionGroupSingleton<DisruptorOptions>.Instance.CanSabotage

@@ -60,7 +60,8 @@ public sealed class DecryptorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DecryptorIcon.LoadAsset(), "Vigilante.Role.Crewmate.Decryptor", 1.45f),
         Icon = VigilanteAssets.DecryptorIcon,
         IntroSound = TouAudio.GlitchSound,
-        MaxRoleCount = 1
+        MaxRoleCount = 1,
+        OptionsScreenshot = VigilanteAssets.DecryptorBanner
     };
 
 

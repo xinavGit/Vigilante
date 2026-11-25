@@ -52,9 +52,10 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
     public CustomRoleConfiguration Configuration => new(this)
     {
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.DiplomatIcon.LoadAsset(), "Vigilante.Role.Impostor.Diplomat", 1.45f),
-        OptionsScreenshot = TouBanners.ImpostorRoleBanner,
+        OptionsScreenshot = VigilanteAssets.DiplomatBanner,
         Icon = VigilanteAssets.DiplomatIcon,
-        MaxRoleCount = 1
+        MaxRoleCount = 1,
+        IntroSound = VigilanteAssets.DiplomatIntro
     };
 
     [HideFromIl2Cpp]
@@ -178,8 +179,8 @@ public sealed class DiplomatRole(IntPtr cppPtr) : ImpostorRole(cppPtr), IVigilan
         TouAudio.PlaySound(TouAudio.ScreamIntro);
         Coroutines.Start(MiscUtils.CoFlash(TownOfUsColors.Impostor));
 
-        var notif = Helpers.CreateAndShowNotification("The Diplomat has revealed themself!!!", // replace with proper locale later
-            Color.white, new Vector3(0f, 1f, -20f), spr: TouRoleIcons.Impostor.LoadAsset());
+        var notif = Helpers.CreateAndShowNotification("The Diplomat has revealed themself!", // replace with proper locale later
+            Color.white, new Vector3(0f, 1f, -20f), spr: VigilanteAssets.DiplomatIcon);
         notif.AdjustNotification();
     }
 

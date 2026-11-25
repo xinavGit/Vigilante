@@ -29,7 +29,7 @@ namespace Vigilante;
 public partial class VigilantePlugin : BasePlugin, IMiraPlugin
 {
     public static CultureInfo Culture => TownOfUs.TownOfUsPlugin.Culture;
-    public string OptionsTitleText => "Vigi";
+    public string OptionsTitleText => "Vigilante";
     public static bool IsDevBuild => true;
     public ConfigFile GetConfigFile() => Config;
 

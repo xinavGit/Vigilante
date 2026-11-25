@@ -74,7 +74,8 @@ public sealed class ChameleonRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.ChameleonIcon.LoadAsset(), "Vigilante.Role.Crewmate.Chameleon", 1.45f),
         Icon = VigilanteAssets.ChameleonIcon,
         IntroSound = TouAudio.DetectiveIntroSound,
-        GetsVentData = OptionGroupSingleton<ChameleonOptions>.Instance.CanVent.Value
+        GetsVentData = OptionGroupSingleton<ChameleonOptions>.Instance.CanVent.Value,
+        OptionsScreenshot = VigilanteAssets.ChameleonBanner,
     };
 
     public override void Initialize(PlayerControl player)

@@ -11,6 +11,7 @@ public static class VigilanteAssets
     private const string ButtonPath = "Vigilante.Resources.Buttons";
     private const string IconPath = "Vigilante.Resources.Icons";
     private const string SoundPath = "Vigilante.Resources.Sound";
+    private const string BannerPath = "Vigilante.Resources.Banners";
 
     //icons
     public static LoadableAsset<Sprite> ChameleonIcon { get; } = new LoadableResourceAsset($"{IconPath}.Chameleon.png", 200);
@@ -39,6 +40,7 @@ public static class VigilanteAssets
     public static LoadableAsset<AudioClip> InspectorPublish { get; } = new LoadableAudioResourceAsset($"{SoundPath}.InspectorPublish.wav");
     public static LoadableAsset<AudioClip> RitualistRit { get; } = new LoadableAudioResourceAsset($"{SoundPath}.Ritted.wav");
     public static LoadableAsset<AudioClip> CourtGavel { get; } = new LoadableAudioResourceAsset($"{SoundPath}.CourtGavel.wav");
+    public static LoadableAsset<AudioClip> DiplomatIntro { get; } = new LoadableAudioResourceAsset($"{SoundPath}.DiplomatIntro.wav");
 
     // Meeting nameplate toggles:
     public static LoadableAsset<Sprite> InspectorInspect { get; } = new LoadableResourceAsset($"{ButtonPath}.Inspect.png", 300f);
@@ -47,6 +49,14 @@ public static class VigilanteAssets
     public static LoadableAsset<Sprite> RitualistEliminate { get; } = new LoadableResourceAsset($"{ButtonPath}.Eliminate.png", 300f);
     public static LoadableAsset<Sprite> InspectorPublishButton { get; } = new LoadableResourceAsset($"{ButtonPath}.Publish.png", 300f);
     public static LoadableAsset<Sprite> InspectorForgeButton { get; } = new LoadableResourceAsset($"{ButtonPath}.Forge.png", 300f);
+
+    // Option Banners:
+    public static LoadableAsset<Sprite> ChameleonBanner { get; } = new LoadableResourceAsset($"{BannerPath}.ChameleonBanner.png");
+    public static LoadableAsset<Sprite> DecryptorBanner { get; } = new LoadableResourceAsset($"{BannerPath}.DecryptorBanner.png");
+    public static LoadableAsset<Sprite> InspectorBanner { get; } = new LoadableResourceAsset($"{BannerPath}.InspectorBanner.png");
+    public static LoadableAsset<Sprite> DisruptorBanner { get; } = new LoadableResourceAsset($"{BannerPath}.DisruptorBanner.png");
+    public static LoadableAsset<Sprite> DiplomatBanner { get; } = new LoadableResourceAsset($"{BannerPath}.DiplomatBanner.png");
+    // i forgot to make one for ritualist
 
 
     public static LoadableAsset<Sprite> CourtOverlay { get; } = new LoadableResourceAsset($"Vigilante.Resources.CourtOverlay.png");

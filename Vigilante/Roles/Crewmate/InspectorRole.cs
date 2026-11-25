@@ -92,7 +92,8 @@ public sealed class InspectorRole(IntPtr cppPtr) : CrewmateRole(cppPtr), IVigila
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(VigilanteAssets.InspectorIcon.LoadAsset(), "Vigilante.Role.Crewmate.Inspector", 1.45f),
         Icon = VigilanteAssets.InspectorIcon,
         IntroSound = TouAudio.GlitchSound,
-        MaxRoleCount = 1
+        MaxRoleCount = 1,
+        OptionsScreenshot = VigilanteAssets.InspectorBanner
     };
 
     public override void Initialize(PlayerControl player)
