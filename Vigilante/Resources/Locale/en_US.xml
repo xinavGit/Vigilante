@@ -109,7 +109,7 @@
     <string name="Vigilante.Feedback.Magistrate.Judgement">[player] has been judged and executed.</string>
     <string name="Vigilante.Feedback.Magistrate.JudgementDefended">[player] was unable to be judged! They are either blessed or are immune.</string>
     <string name="Vigilante.Feedback.Magistrate.YouWereJudged">You were judged and executed!</string> <!-- implement this -->
-    <string name="Vigilante.Feedback.Magistrate.YouWereJudged">The Magistrate has left the town for their poor judgment.</string>
+    <string name="Vigilante.Feedback.Magistrate.JudgeFail">The Magistrate has left the town for their poor judgment.</string>
     <string name="Vigilante.Feedback.Magistrate.CalledCourt">The Magistrate has called court! An evil lies among the summoned.</string>
     <string name="Vigilante.Feedback.Magistrate.MagistrateFeedback">Magistrate Feedback</string>
     <string name="Vigilante.Feedback.Magistrate.FailedCourt">Your court failed! An evil player could not be found among the summoned.</string>
@@ -304,27 +304,7 @@
     <string name="Vigilante.Feedback.Banshee.DeafenImmune">Your ears are now immune to being deafened for [number] round(s).</string>
     <!-- Banshee Options -->
     <string name="Vigilante.Options.Banshee.ScreechCooldown">Screech Cooldown</string>
-    <string name="Vigilante.Options.Banshee.ScreechCooldown">Echo Cooldown</string>
-    <string name="Vigilante.Options.Banshee.DeafenImmunityRounds">Rounds Deafen Immunity Lasts</string>
-
-    <!-- accumulator, will do later, maybe make screen flash to everyone on every task complete?  -->
-    <!-- Banshee Wiki / Abilities -->
-    <string name="Vigilante.Role.Banshee">Banshee</string>
-    <string name="Vigilante.Role.Banshee.IntroBlurb">Cause terror with your screeches.</string>
-    <string name="Vigilante.Role.Banshee.MedDescription">Screech to deafen players near you and debuff them temporarily.</string>
-    <string name="Vigilante.Role.Banshee.TabDescription">Screech to deafen and lower the vision and speed of players nearby. Echo to locate players.</string>
-    <string name="Vigilante.Role.Banshee.WikiDescription">The Banshee is an Impostor Support role that can screech to deafen all unimmune players around them as well as debuff their vision and speed temporarily. They can also use their echo ability to locate where players are.</string> 
-    <string name="Vigilante.Role.Banshee.Screech">Screech</string>
-    <string name="Vigilante.Role.Banshee.Screech.WikiDescription">Deafen and temporarily debuff all players nearby. Deafened players cannot hear/see any messages in chat the next meeting. They will be immune to being deafened again after being deafened.</string> <!-- add symbols, x symbol for immune and stuff-->
-    <string name="Vigilante.Role.Banshee.Echo">Echo</string>
-    <string name="Vigilante.Role.Banshee.Echo.WikiDescription">Locate where people are on the map.</string>
-    <!-- Banshee Feedback -->
-    <string name="Vigilante.Feedback.Banshee.BansheeScreech">A Banshee screeched at you!</string>
-    <string name="Vigilante.Feedback.Banshee.BansheeDeafened">You were deafened by a Banshee and cannot hear/see others messages!</string>
-    <string name="Vigilante.Feedback.Banshee.DeafenImmune">Your ears are now immune to being deafened for [number] round(s).</string>
-    <!-- Banshee Options -->
-    <string name="Vigilante.Options.Banshee.ScreechCooldown">Screech Cooldown</string>
-    <string name="Vigilante.Options.Banshee.ScreechCooldown">Echo Cooldown</string>
+    <string name="Vigilante.Options.Banshee.EchoCooldown">Echo Cooldown</string>
     <string name="Vigilante.Options.Banshee.DeafenImmunityRounds">Rounds Deafen Immunity Lasts</string>
     
     <!-- Starspawn - Neutral Outlier maybe will make it so that it doesnt block abilities later on-->
